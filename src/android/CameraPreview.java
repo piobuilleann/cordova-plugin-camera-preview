@@ -256,6 +256,11 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
           containerView.bringToFront();
         }
 
+		
+		
+		
+		webView.loadUrl("javascript:console.log('"+ fragment +"');");
+		
         //add the fragment to the container
         FragmentManager fragmentManager = cordova.getActivity().getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
