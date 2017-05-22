@@ -259,7 +259,6 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 		
 		
 		
-		webView.loadUrl("javascript:console.log('"+ fragment +"');");
 		
         //add the fragment to the container
         FragmentManager fragmentManager = cordova.getActivity().getFragmentManager();
@@ -291,6 +290,8 @@ public class CameraPreview extends CordovaPlugin implements CameraActivity.Camer
 
     JSONArray data = new JSONArray();
     data.put(originalPicture);
+
+	webView.loadUrl("javascript:console.log('"+ originalPicture +"');");
 
     PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, data);
     pluginResult.setKeepCallback(true);
