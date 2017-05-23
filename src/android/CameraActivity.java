@@ -45,7 +45,7 @@ import java.util.Date;
 import java.util.List;
 
 
-
+import org.opencv.*;
 
 
 public class CameraActivity extends Fragment {
