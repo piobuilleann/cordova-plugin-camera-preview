@@ -14,6 +14,9 @@
   </js-module>
 
   <platform name="android">
+    <source-file src="libs/armeabi/libopencv_java3.so" target-dir="libs/armeabi" />
+	<source-file src="libs/armeabi-v7a/libopencv_java3.so" target-dir="libs/armeabi-v7a" />	
+
     <source-file src="src/android/CameraPreview.java" target-dir="src/com/cordovaplugincamerapreview" />
     <source-file src="src/android/CameraActivity.java" target-dir="src/com/cordovaplugincamerapreview" />
     <source-file src="src/android/CustomSurfaceView.java" target-dir="src/com/cordovaplugincamerapreview" />
@@ -24,8 +27,6 @@
     <source-file src="src/android/camera_ids.xml" target-dir="res/values" />
 	
 	
-    <source-file src="libs/armeabi/libopencv_java3.so" target-dir="libs/armeabi" />
-	<source-file src="libs/armeabi-v7a/libopencv_java3.so" target-dir="libs/armeabi-v7a" />	
 	
 	
 	
