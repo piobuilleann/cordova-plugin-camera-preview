@@ -1,0 +1,14 @@
+android {
+    sourceSets {
+        //noinspection GroovyAssignabilityCheck
+        main {
+            jni {
+                srcDirs = []
+            }
+
+            jniLibs {
+                srcDir 'libs'
+            }
+        }
+    }
+}
