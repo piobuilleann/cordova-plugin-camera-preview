@@ -7,7 +7,8 @@ android {
             }
 
             jniLibs {
-                srcDir 'libs'
+                srcDir 'libs/armeabi',
+                srcDir 'libs/armeabi-v7a'
             }
         }
     }
