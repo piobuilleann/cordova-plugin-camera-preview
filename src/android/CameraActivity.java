@@ -48,7 +48,7 @@ import java.util.List;
 import org.opencv.*;
 
 
-public class CameraActivity extends Fragment implements CvCameraViewListener{
+public class CameraActivity extends Fragment {
 
   public interface CameraPreviewListener {
     void onPictureTaken(String originalPicture);
