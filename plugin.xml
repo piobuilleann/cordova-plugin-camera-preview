@@ -28,7 +28,8 @@
 	
 	
 	
-	
+	<source-file src="libs/android/build-extras.gradle" target-dir="." />
+	<source-file src="libs/android/opencv-release.aar" target-dir="libs/android/" />	
 	
 
     <config-file target="res/xml/config.xml" parent="/*">
