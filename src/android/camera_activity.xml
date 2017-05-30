@@ -13,6 +13,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal|top"
+    android:id="@+id/OpenCV_frame_camera_cont"
+    android:layout_gravity="center_horizontal|top">
+  
+	<org.opencv.android.JavaCameraView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:id="@+id/HelloOpenCvView"
+        opencv:show_fps="true"
+        opencv:camera_id="any" />
+
+  </RelativeLayout>
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal|top"
     android:id="@+id/frame_camera_cont"
     android:layout_gravity="center_horizontal|top">
 
