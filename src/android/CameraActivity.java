@@ -164,7 +164,7 @@ public class CameraActivity extends Fragment {
 	  
 	  
 	  
-        mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
+        mLoaderCallback = new BaseLoaderCallback( this ) {
             @Override
             public void onManagerConnected(int status) {
                 switch (status) {
@@ -180,7 +180,6 @@ public class CameraActivity extends Fragment {
                 }
             }
 		};	  
-		webView.loadUrl("javascript:console.log('" + mLoaderCallback + "');"); 
 	  
 	  
 
@@ -292,6 +291,9 @@ public class CameraActivity extends Fragment {
   public void onResume() {
     super.onResume();
 
+	OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_2_4_8, this, mLoaderCallback );
+	
+	
     mCamera = Camera.open(defaultCameraId);
 
     if (cameraParameters != null) {
