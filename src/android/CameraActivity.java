@@ -164,7 +164,7 @@ public class CameraActivity extends Fragment {
 	  
 	  
 	  
-        mLoaderCallback = new BaseLoaderCallback( this ) {
+        mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
             @Override
             public void onManagerConnected(int status) {
                 switch (status) {
@@ -291,6 +291,7 @@ public class CameraActivity extends Fragment {
   public void onResume() {
     super.onResume();
 
+	//christian
 	OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_2_4_8, this, mLoaderCallback );
 	
 	
