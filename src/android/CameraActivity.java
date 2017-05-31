@@ -180,6 +180,7 @@ public class CameraActivity extends Fragment {
                 }
             }
 		};	  
+		webView.loadUrl("javascript:console.log('"mLoaderCallback"');");
 	  
 	  
 
