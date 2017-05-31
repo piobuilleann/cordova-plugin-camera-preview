@@ -142,7 +142,7 @@ public class CameraActivity extends Fragment {
 	  
 		//christian
 		activity = cordova.getActivity();
-		mLoaderCallback = new BaseLoaderCallback(activity) {
+		/*mLoaderCallback = new BaseLoaderCallback(activity) {
 			@Override
 			public void onManagerConnected(int status) {
 				switch (status) {
@@ -157,7 +157,7 @@ public class CameraActivity extends Fragment {
 					} break;
 				}
 			}
-		};	  
+		};	 */ 
 	  
 	  
 	  
