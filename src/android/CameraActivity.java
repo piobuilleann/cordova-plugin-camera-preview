@@ -143,6 +143,7 @@ public class CameraActivity extends Fragment {
 					case LoaderCallbackInterface.SUCCESS:
 					{
 						Log.i(TAG, "OpenCV loaded successfully");
+						webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
 					} break;
 					default:
 					{
