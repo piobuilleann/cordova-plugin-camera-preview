@@ -129,6 +129,35 @@ public class CameraActivity extends Fragment {
   private void createCameraPreview(){
     if(mPreview == null) {
       setDefaultCameraId();
+	  
+	  
+	  
+	  
+	  
+	  
+		//christian
+		mLoaderCallback = new BaseLoaderCallback(activity) {
+			@Override
+			public void onManagerConnected(int status) {
+				switch (status) {
+					case LoaderCallbackInterface.SUCCESS:
+					{
+						Log.i(TAG, "OpenCV loaded successfully");
+					} break;
+					default:
+					{
+						super.onManagerConnected(status);
+					} break;
+				}
+			}
+		};	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 
       //set box position and size
       FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(width, height);
