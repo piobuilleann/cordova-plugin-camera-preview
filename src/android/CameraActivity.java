@@ -62,7 +62,9 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 
-
+//christian
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaWebView;
 
 
 
@@ -102,6 +104,7 @@ public class CameraActivity extends Fragment {
   
   //Christian
   private BaseLoaderCallback mLoaderCallback;
+  private Activity activity;
 
   public void setEventListener(CameraPreviewListener listener){
     eventListener = listener;
@@ -126,7 +129,7 @@ public class CameraActivity extends Fragment {
     this.height = height;
   }
 
-  private void createCameraPreview(){
+  private void createCameraPreview(CordovaInterface cordova, CordovaWebView webView){
     if(mPreview == null) {
       setDefaultCameraId();
 	  
@@ -136,6 +139,7 @@ public class CameraActivity extends Fragment {
 	  
 	  
 		//christian
+		activity = cordova.getActivity();
 		mLoaderCallback = new BaseLoaderCallback(activity) {
 			@Override
 			public void onManagerConnected(int status) {
