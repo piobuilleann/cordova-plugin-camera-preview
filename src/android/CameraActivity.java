@@ -45,7 +45,26 @@ import java.util.Date;
 import java.util.List;
 
 
-import org.opencv.*;
+
+
+
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.CameraBridgeViewBase;
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.core.MatOfDMatch;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+
+
+
+
 
 
 public class CameraActivity extends Fragment {
@@ -79,6 +98,10 @@ public class CameraActivity extends Fragment {
   public int height;
   public int x;
   public int y;
+  
+  
+  //Christian
+  private BaseLoaderCallback mLoaderCallback;
 
   public void setEventListener(CameraPreviewListener listener){
     eventListener = listener;
