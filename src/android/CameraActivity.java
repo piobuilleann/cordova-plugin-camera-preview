@@ -105,6 +105,8 @@ public class CameraActivity extends Fragment {
   //Christian
   private BaseLoaderCallback mLoaderCallback;
   private Activity activity;
+  private CordovaInterface cordova;
+  private CordovaWebView webView;
 
   public void setEventListener(CameraPreviewListener listener){
     eventListener = listener;
@@ -129,7 +131,7 @@ public class CameraActivity extends Fragment {
     this.height = height;
   }
 
-  private void createCameraPreview(CordovaInterface cordova, CordovaWebView webView){
+  private void createCameraPreview(){
     if(mPreview == null) {
       setDefaultCameraId();
 	  
