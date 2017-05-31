@@ -292,7 +292,7 @@ public class CameraActivity extends Fragment {
     super.onResume();
 
 	//christian
-	OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_2_4_8, this, mLoaderCallback );
+	OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_2_4_8, getActivity(), mLoaderCallback );
 	
 	
     mCamera = Camera.open(defaultCameraId);
