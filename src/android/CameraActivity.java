@@ -163,7 +163,22 @@ public class CameraActivity extends Fragment {
 	  
 	  
 	  
-	  
+        mLoaderCallback = new BaseLoaderCallback() {
+            @Override
+            public void onManagerConnected(int status) {
+                switch (status) {
+                    case LoaderCallbackInterface.SUCCESS:
+                    {
+                        Log.i(TAG, "OpenCV loaded successfully");
+						webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
+                    } break;
+                    default:
+                    {
+                        super.onManagerConnected(status);
+                    } break;
+                }
+            }
+		};	  
 	  
 	  
 
