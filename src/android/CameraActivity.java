@@ -158,12 +158,13 @@ public class CameraActivity extends Fragment {
 					} break;
 				}
 			}
-		};	 */ 
+		};	 
+	  
+		*/ 
 	  
 	  
 	  
-	  
-        mLoaderCallback = new BaseLoaderCallback() {
+        mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
             @Override
             public void onManagerConnected(int status) {
                 switch (status) {
