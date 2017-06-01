@@ -18,6 +18,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.cordova.CordovaWebView;
+
 class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceHolder.Callback {
   private final String TAG = "Preview";
 
@@ -30,6 +32,8 @@ class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceH
   int displayOrientation;
   int viewWidth;
   int viewHeight;
+  
+  private CordovaWebView webView;
 
   Preview(Context context) {
     super(context);
@@ -51,6 +55,7 @@ class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceH
   //Christian
   @Override
   public void onPreviewFrame(byte[] arg0, Camera arg1) {
+		webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
   }
   
   
