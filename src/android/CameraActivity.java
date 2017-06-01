@@ -130,48 +130,6 @@ public class CameraActivity extends Fragment {
     this.width = width;
     this.height = height;
   }
-  
-  
-	//christian
-	/*
-	activity = cordova.getActivity();
-	mLoaderCallback = new BaseLoaderCallback(activity) {
-		@Override
-		public void onManagerConnected(int status) {
-			switch (status) {
-				case LoaderCallbackInterface.SUCCESS:
-				{
-					Log.i(TAG, "OpenCV loaded successfully");
-					webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
-				} break;
-				default:
-				{
-					super.onManagerConnected(status);
-				} break;
-			}
-		}
-	};	 
-  
-	*/ 
-  
-  
-  
-	mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
-		@Override
-		public void onManagerConnected(int status) {
-			switch (status) {
-				case LoaderCallbackInterface.SUCCESS:
-				{
-					Log.i(TAG, "OpenCV loaded successfully");
-					webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
-				} break;
-				default:
-				{
-					super.onManagerConnected(status);
-				} break;
-			}
-		}
-	};	  
 
   private void createCameraPreview(){
     if(mPreview == null) {
@@ -180,6 +138,48 @@ public class CameraActivity extends Fragment {
 	  
 	  
 	  
+	  
+	  
+		//christian
+		/*
+		activity = cordova.getActivity();
+		mLoaderCallback = new BaseLoaderCallback(activity) {
+			@Override
+			public void onManagerConnected(int status) {
+				switch (status) {
+					case LoaderCallbackInterface.SUCCESS:
+					{
+						Log.i(TAG, "OpenCV loaded successfully");
+						webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
+					} break;
+					default:
+					{
+						super.onManagerConnected(status);
+					} break;
+				}
+			}
+		};	 
+	  
+		*/ 
+	  
+	  
+	  
+        mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
+            @Override
+            public void onManagerConnected(int status) {
+                switch (status) {
+                    case LoaderCallbackInterface.SUCCESS:
+                    {
+                        Log.i(TAG, "OpenCV loaded successfully");
+						webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
+                    } break;
+                    default:
+                    {
+                        super.onManagerConnected(status);
+                    } break;
+                }
+            }
+		};	  
 	  
 	  
 
@@ -292,7 +292,7 @@ public class CameraActivity extends Fragment {
     super.onResume();
 
 	//christian
-	OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_3_1_0, getActivity(), mLoaderCallback );
+	OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_4_1_0, getActivity(), mLoaderCallback );
 	
 	
     mCamera = Camera.open(defaultCameraId);
