@@ -325,7 +325,7 @@ public class CameraActivity extends Fragment implements CvCameraViewListener2 {
     super.onResume();
 
 	//christian
-	OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_3_1_0, getActivity(), mLoaderCallback );
+	//OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_3_1_0, getActivity(), mLoaderCallback );
 	
 	
     mCamera = Camera.open(defaultCameraId);
