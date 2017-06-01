@@ -143,7 +143,7 @@ public class CameraActivity extends Fragment  {
 
       final GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new TapGestureDetector());
 
-      getActivity().runOnUiThread(new Runnable() {
+     /* getActivity().runOnUiThread(new Runnable() {
         @Override
         public void run() {
           frameContainerLayout.setClickable(true);
@@ -211,7 +211,7 @@ public class CameraActivity extends Fragment  {
             }
           });
         }
-      });
+      });*/
     }
   }
 

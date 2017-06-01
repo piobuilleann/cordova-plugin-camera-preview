@@ -18,9 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.cordova.CordovaWebView;
-
-class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceHolder.Callback {
+class Preview extends RelativeLayout implements SurfaceHolder.Callback {
   private final String TAG = "Preview";
 
   CustomSurfaceView mSurfaceView;
@@ -32,8 +30,6 @@ class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceH
   int displayOrientation;
   int viewWidth;
   int viewHeight;
-  
-  private CordovaWebView webView;
 
   Preview(Context context) {
     super(context);
@@ -50,18 +46,6 @@ class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceH
     mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
   }
 
-  
-  
-  //Christian
-  @Override
-  public void onPreviewFrame(byte[] arg0, Camera arg1) {
-		webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
-  }
-  
-  
-  //Christian
-  
-  
   public void setCamera(Camera camera, int cameraId) {
     if (camera != null) {
       mCamera = camera;
