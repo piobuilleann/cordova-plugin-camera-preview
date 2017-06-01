@@ -136,19 +136,19 @@ public class CameraActivity extends Fragment  {
 
   private String appResourcesPackage;
 
-  @Override
+  //@Override
   public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
       return inputFrame.rgba();
   }
-  @Override
+  //@Override
   public void onCameraViewStarted(int width, int height) {
   }
 
-  @Override
+  //@Override
   public void onCameraViewStopped() {
   }  
   
-  @Override
+  //@Override
   public void onCreate(Bundle savedInstanceState) {
 
   }  
