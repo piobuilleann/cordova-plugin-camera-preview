@@ -48,29 +48,7 @@ import java.util.Arrays;
 
 
 
-//Christian
-
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.CameraBridgeViewBase;
-import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
-import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
-import org.opencv.android.LoaderCallbackInterface;
-import org.opencv.android.OpenCVLoader;
-import org.opencv.android.Utils;
-import org.opencv.core.Core;
-import org.opencv.core.CvType;
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
-import org.opencv.core.MatOfDMatch;
-import org.opencv.core.Point;
-import org.opencv.core.Scalar;
-import org.opencv.core.Size;
-
-//christian
-import org.apache.cordova.CordovaInterface;
-import org.apache.cordova.CordovaWebView;
-
-public class CameraActivity extends Fragment implements CvCameraViewListener2 {
+public class CameraActivity extends Fragment  {
 
   public interface CameraPreviewListener {
     void onPictureTaken(String originalPicture);
@@ -117,50 +95,7 @@ public class CameraActivity extends Fragment implements CvCameraViewListener2 {
   
   
   
-  private CameraBridgeViewBase mOpenCvCameraView;
-  private Activity activity;
-  private CordovaInterface cordova;
-  private CordovaWebView webView;  
-  private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
-	@Override
-	public void onManagerConnected(int status) {
-		switch (status) {
-			case LoaderCallbackInterface.SUCCESS:
-			{
-				Log.i(TAG, "OpenCV loaded successfully");
-				webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
-			} break;
-			default:
-			{
-				super.onManagerConnected(status);
-			} break;
-		}
-	}
-  };	  
-  
-  
-  
-  
 
-
-
-  //@Override
-  public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-      return inputFrame.rgba();
-  }
-  //@Override
-  public void onCameraViewStarted(int width, int height) {
-  }
-
-  //@Override
-  public void onCameraViewStopped() {
-  }  
-  
-  //@Override
-  public void onCreate(Bundle savedInstanceState) {
-
-  }    
-  
   
   
   
