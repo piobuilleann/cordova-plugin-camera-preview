@@ -46,9 +46,10 @@ import java.util.List;
 import java.util.Arrays;
 
 
+import android.renderscript.RenderScript;
 
 
-public class CameraActivity extends Fragment  {
+public class CameraActivity extends Fragment implements Camera.PreviewCallback  {
 
   public interface CameraPreviewListener {
     void onPictureTaken(String originalPicture);
@@ -95,7 +96,9 @@ public class CameraActivity extends Fragment  {
   
   
   
-
+  @Override
+  public void onPreviewFrame(byte[] data, Camera c) {
+  }
   
   
   
