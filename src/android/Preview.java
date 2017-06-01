@@ -49,7 +49,7 @@ class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceH
   
   
   //Christian
-  //@Override
+  @Override
   public void onPreviewFrame(byte[] arg0, Camera arg1) {
   }
   
