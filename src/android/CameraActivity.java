@@ -51,6 +51,7 @@ import java.util.List;
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
+import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
@@ -116,6 +117,11 @@ public class CameraActivity extends Fragment implements CvCameraViewListener2 {
 
   private String appResourcesPackage;
 
+  @Override
+  public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+      return inputFrame.rgba();
+  } 
+  
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     appResourcesPackage = getActivity().getPackageName();
