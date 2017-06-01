@@ -46,6 +46,17 @@ class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceH
     mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
   }
 
+  
+  
+  //Christian
+  //@Override
+  public void onPreviewFrame(byte[] arg0, Camera arg1) {
+  }
+  
+  
+  //Christian
+  
+  
   public void setCamera(Camera camera, int cameraId) {
     if (camera != null) {
       mCamera = camera;
