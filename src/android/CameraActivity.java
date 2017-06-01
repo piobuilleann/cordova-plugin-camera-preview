@@ -181,7 +181,7 @@ public class CameraActivity extends Fragment {
                 }
             }
 		};	  
-        mOpenCvCameraView = (CameraBridgeViewBase) findViewById(getResources().getIdentifier("HelloOpenCvView", "id", appResourcesPackage));
+        mOpenCvCameraView = (CameraBridgeViewBase) view.findViewById(getResources().getIdentifier("HelloOpenCvView", "id", appResourcesPackage));
         mOpenCvCameraView.setCvCameraViewListener(this);	  
 	  
 
