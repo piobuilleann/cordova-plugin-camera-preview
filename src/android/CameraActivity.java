@@ -104,6 +104,7 @@ public class CameraActivity extends Fragment {
   
   //Christian
   private BaseLoaderCallback mLoaderCallback;
+  private CameraBridgeViewBase mOpenCvCameraView;
   private Activity activity;
   private CordovaInterface cordova;
   private CordovaWebView webView;
@@ -180,7 +181,8 @@ public class CameraActivity extends Fragment {
                 }
             }
 		};	  
-	  
+        mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.HelloOpenCvView);
+        mOpenCvCameraView.setCvCameraViewListener(this);	  
 	  
 
       //set box position and size
