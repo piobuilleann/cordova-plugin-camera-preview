@@ -182,7 +182,7 @@ public class CameraActivity extends Fragment {
             }
 		};	  
         mOpenCvCameraView = (CameraBridgeViewBase) view.findViewById(getResources().getIdentifier("HelloOpenCvView", "id", appResourcesPackage));
-        mOpenCvCameraView.setCvCameraViewListener(this);	  
+        mOpenCvCameraView.setCvCameraViewListener(mLoaderCallback);	  
 	  
 
       //set box position and size
