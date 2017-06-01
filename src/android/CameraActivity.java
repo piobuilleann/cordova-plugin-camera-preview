@@ -142,7 +142,7 @@ public class CameraActivity extends Fragment implements CvCameraViewListener2 {
   
   
 
-  private String appResourcesPackage;
+
 
   //@Override
   public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
