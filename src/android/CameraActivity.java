@@ -120,7 +120,27 @@ public class CameraActivity extends Fragment implements CvCameraViewListener2 {
   @Override
   public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
       return inputFrame.rgba();
-  } 
+  }
+  @Override
+  public void onCameraViewStarted(int width, int height) {
+  }
+
+  @Override
+  public void onCameraViewStopped() {
+  }  
+  
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+
+  }  
+  
+  
+  public void onDestroy() {
+    super.onDestroy();
+    if (mOpenCvCameraView != null)
+    	mOpenCvCameraView.disableView();
+  }  
+  
   
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
