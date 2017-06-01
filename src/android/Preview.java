@@ -18,7 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-class Preview extends RelativeLayout implements SurfaceHolder.Callback {
+class Preview extends RelativeLayout implements Camera.PreviewCallback, SurfaceHolder.Callback {
   private final String TAG = "Preview";
 
   CustomSurfaceView mSurfaceView;
