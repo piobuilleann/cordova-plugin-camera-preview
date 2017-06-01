@@ -109,6 +109,68 @@ public class CameraActivity extends Fragment implements CvCameraViewListener2 {
   }
 
   private String appResourcesPackage;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
+		@Override
+		public void onManagerConnected(int status) {
+			switch (status) {
+				case LoaderCallbackInterface.SUCCESS:
+				{
+					Log.i(TAG, "OpenCV loaded successfully");
+					webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
+				} break;
+				default:
+				{
+					super.onManagerConnected(status);
+				} break;
+			}
+		}
+	};	  
+  
+  
+  
+  
+  public void setEventListener(CameraPreviewListener listener){
+    eventListener = listener;
+  }
+
+  private String appResourcesPackage;
+
+  //@Override
+  public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
+      return inputFrame.rgba();
+  }
+  //@Override
+  public void onCameraViewStarted(int width, int height) {
+  }
+
+  //@Override
+  public void onCameraViewStopped() {
+  }  
+  
+  //@Override
+  public void onCreate(Bundle savedInstanceState) {
+
+  }    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
