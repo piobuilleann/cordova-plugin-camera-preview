@@ -43,39 +43,15 @@ import java.lang.Integer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Arrays;
 
-
-
-
-
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.CameraBridgeViewBase;
-import org.opencv.android.CameraBridgeViewBase.CvCameraViewListener2;
-import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
-import org.opencv.android.LoaderCallbackInterface;
-import org.opencv.android.OpenCVLoader;
-import org.opencv.android.Utils;
-import org.opencv.core.Core;
-import org.opencv.core.CvType;
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
-import org.opencv.core.MatOfDMatch;
-import org.opencv.core.Point;
-import org.opencv.core.Scalar;
-import org.opencv.core.Size;
-
-//christian
-import org.apache.cordova.CordovaInterface;
-import org.apache.cordova.CordovaWebView;
-
-
-
-
-public class CameraActivity extends Fragment  {
+public class CameraActivity extends Fragment {
 
   public interface CameraPreviewListener {
     void onPictureTaken(String originalPicture);
     void onPictureTakenError(String message);
+    void onFocusSet(int pointX, int pointY);
+    void onFocusSetError(String message);
   }
 
   private CameraPreviewListener eventListener;
@@ -102,65 +78,13 @@ public class CameraActivity extends Fragment  {
   public int height;
   public int x;
   public int y;
-  
-  
-  //Christian
-  private CameraBridgeViewBase mOpenCvCameraView;
-  private Activity activity;
-  private CordovaInterface cordova;
-  private CordovaWebView webView;
 
-	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
-		@Override
-		public void onManagerConnected(int status) {
-			switch (status) {
-				case LoaderCallbackInterface.SUCCESS:
-				{
-					Log.i(TAG, "OpenCV loaded successfully");
-					webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
-				} break;
-				default:
-				{
-					super.onManagerConnected(status);
-				} break;
-			}
-		}
-	};	  
-  
-  
-  
-  
   public void setEventListener(CameraPreviewListener listener){
     eventListener = listener;
   }
 
   private String appResourcesPackage;
 
-  //@Override
-  public Mat onCameraFrame(CvCameraViewFrame inputFrame) {
-      return inputFrame.rgba();
-  }
-  //@Override
-  public void onCameraViewStarted(int width, int height) {
-  }
-
-  //@Override
-  public void onCameraViewStopped() {
-  }  
-  
-  //@Override
-  public void onCreate(Bundle savedInstanceState) {
-
-  }  
-  
-  
-  public void onDestroy() {
-    super.onDestroy();
-    if (mOpenCvCameraView != null)
-    	mOpenCvCameraView.disableView();
-  }  
-  
-  
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     appResourcesPackage = getActivity().getPackageName();
@@ -181,40 +105,6 @@ public class CameraActivity extends Fragment  {
   private void createCameraPreview(){
     if(mPreview == null) {
       setDefaultCameraId();
-	  
-	  
-	  
-	  
-	  
-	  
-		//christian
-		/*
-		activity = cordova.getActivity();
-		mLoaderCallback = new BaseLoaderCallback(activity) {
-			@Override
-			public void onManagerConnected(int status) {
-				switch (status) {
-					case LoaderCallbackInterface.SUCCESS:
-					{
-						Log.i(TAG, "OpenCV loaded successfully");
-						webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
-					} break;
-					default:
-					{
-						super.onManagerConnected(status);
-					} break;
-				}
-			}
-		};	 
-	  
-		*/ 
-	  
-	  
-	  
-
-       // mOpenCvCameraView = (CameraBridgeViewBase) view.findViewById(getResources().getIdentifier("HelloOpenCvView", "id", appResourcesPackage));
-       // mOpenCvCameraView.setCvCameraViewListener(mLoaderCallback);	  
-	  
 
       //set box position and size
       FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(width, height);
@@ -324,10 +214,6 @@ public class CameraActivity extends Fragment  {
   public void onResume() {
     super.onResume();
 
-	//christian
-	//OpenCVLoader.initAsync( OpenCVLoader.OPENCV_VERSION_3_1_0, getActivity(), mLoaderCallback );
-	
-	
     mCamera = Camera.open(defaultCameraId);
 
     if (cameraParameters != null) {
@@ -582,5 +468,49 @@ public class CameraActivity extends Fragment  {
     } else {
       canTakePicture = true;
     }
+  }
+
+  public void setFocusArea(final int pointX, final int pointY) {
+    if (mCamera != null) {
+
+      mCamera.cancelAutoFocus();
+
+      Camera.Parameters parameters = mCamera.getParameters();
+
+      Rect focusRect = calculateTapArea(pointX, pointY, 1f);
+      parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+      parameters.setFocusAreas(Arrays.asList(new Camera.Area(focusRect, 1000)));
+
+      if (parameters.getMaxNumMeteringAreas() > 0) {
+        Rect meteringRect = calculateTapArea(pointX, pointY, 1.5f);
+        parameters.setMeteringAreas(Arrays.asList(new Camera.Area(meteringRect, 1000)));
+      }
+
+      try {
+        setCameraParameters(parameters);
+
+        mCamera.autoFocus(new Camera.AutoFocusCallback() {
+          public void onAutoFocus(boolean success, Camera camera) {
+            if (success) {
+              eventListener.onFocusSet(pointX, pointY);
+            } else {
+              eventListener.onFocusSetError("Focus set failed");
+            }
+          }
+        });
+      } catch (Exception e) {
+        Log.d(TAG, e.getMessage());
+        eventListener.onFocusSetError("Focus set parameters failed");
+      }
+    }
+  }
+
+  private Rect calculateTapArea(float x, float y, float coefficient) {
+    return new Rect(
+      Math.round((x - 100) * 2000 / width  - 1000),
+      Math.round((y - 100) * 2000 / height - 1000),
+      Math.round((x + 100) * 2000 / width  - 1000),
+      Math.round((y + 100) * 2000 / height - 1000)
+    );
   }
 }
