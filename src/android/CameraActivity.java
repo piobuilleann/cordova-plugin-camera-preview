@@ -117,23 +117,26 @@ public class CameraActivity extends Fragment implements CvCameraViewListener2 {
   
   
   
-  
-	private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
-		@Override
-		public void onManagerConnected(int status) {
-			switch (status) {
-				case LoaderCallbackInterface.SUCCESS:
-				{
-					Log.i(TAG, "OpenCV loaded successfully");
-					webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
-				} break;
-				default:
-				{
-					super.onManagerConnected(status);
-				} break;
-			}
+  private CameraBridgeViewBase mOpenCvCameraView;
+  private Activity activity;
+  private CordovaInterface cordova;
+  private CordovaWebView webView;  
+  private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback( getActivity() ) {
+	@Override
+	public void onManagerConnected(int status) {
+		switch (status) {
+			case LoaderCallbackInterface.SUCCESS:
+			{
+				Log.i(TAG, "OpenCV loaded successfully");
+				webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
+			} break;
+			default:
+			{
+				super.onManagerConnected(status);
+			} break;
 		}
-	};	  
+	}
+  };	  
   
   
   
