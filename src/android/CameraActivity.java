@@ -71,7 +71,7 @@ import org.apache.cordova.CordovaWebView;
 
 
 
-public class CameraActivity extends Fragment implements CvCameraViewListener2 {
+public class CameraActivity extends Fragment  {
 
   public interface CameraPreviewListener {
     void onPictureTaken(String originalPicture);
