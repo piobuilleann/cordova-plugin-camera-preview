@@ -141,9 +141,6 @@ public class CameraActivity extends Fragment implements CvCameraViewListener2 {
   
   
   
-  public void setEventListener(CameraPreviewListener listener){
-    eventListener = listener;
-  }
 
   private String appResourcesPackage;
 
