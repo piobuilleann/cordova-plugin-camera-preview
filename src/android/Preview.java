@@ -24,6 +24,7 @@ class Preview extends Activity implements TextureView.SurfaceTextureListener {
   //CustomSurfaceView mTextureView;
   //SurfaceHolder mHolder;
   private TextureView mTextureView = null;
+  Camera mCamera;
   SurfaceTexture surface;
   
   Preview(Context context) {
