@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 
+import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
 class Preview extends RelativeLayout implements SurfaceHolder.Callback {
