@@ -13,11 +13,11 @@ class CustomSurfaceView extends SurfaceTexture implements TextureView.SurfaceTex
   }
 
   @Override
-  public void surfaceCreated(SurfaceTexture texture) {
+  public void onSurfaceTextureAvailable(SurfaceTexture texture) {
   }
 
   @Override
-  public void surfaceChanged(SurfaceTexture texture, int format, int width, int height) {
+  public void onSurfaceTextureSizeChanged(SurfaceTexture texture, int format, int width, int height) {
   }
 
   @Override
