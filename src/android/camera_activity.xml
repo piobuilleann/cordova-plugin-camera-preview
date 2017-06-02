@@ -24,21 +24,12 @@
       android:scaleType="fitXY"
       android:layout_gravity="top" />
 
-    <ImageView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/picture_view"
-      android:layout_gravity="center|bottom"
-      android:adjustViewBounds="true"
-      android:scaleType="fitXY" />
-
-    <ImageView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/frame_view"
-      android:layout_gravity="center_horizontal|bottom"
-      android:adjustViewBounds="true"
-      android:scaleType="centerInside" />
+   <TextureView
+      android:id="@+id/textureView1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true" />
 
   </RelativeLayout>
 
