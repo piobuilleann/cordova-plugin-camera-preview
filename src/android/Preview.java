@@ -9,8 +9,12 @@ import android.hardware.Camera;
 //import android.support.v8.renderscript.RenderScript;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Surface;
-import android.view.SurfaceHolder;
+
+//import android.view.Surface;
+//import android.view.SurfaceHolder;
+import android.graphics.SurfaceTexture;
+import android.view.TextureView;
+
 import android.view.View;
 import android.widget.RelativeLayout;
 import org.apache.cordova.LOG;
@@ -21,11 +25,14 @@ import java.util.List;
 
 
 
-class Preview extends RelativeLayout implements SurfaceHolder.Callback {
+class Preview extends RelativeLayout implements TextureView.SurfaceTextureListener {
   private final String TAG = "Preview";
 
-  CustomSurfaceView mSurfaceView;
-  SurfaceHolder mHolder;
+  CustomSurfaceView mTextureView;
+  //SurfaceHolder mHolder;
+  SurfaceTexture surface;
+  
+  
   Camera.Size mPreviewSize;
   List<Camera.Size> mSupportedPreviewSizes;
   Camera mCamera;
@@ -36,7 +43,8 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
 
   Preview(Context context) {
     super(context);
-
+	
+	/*
     mSurfaceView = new CustomSurfaceView(context);
     addView(mSurfaceView);
 
@@ -47,6 +55,11 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
     mHolder = mSurfaceView.getHolder();
     mHolder.addCallback(this);
     mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+	*/
+    mTextureView = new CustomSurfaceView(context);
+	mTextureView.setSurfaceTextureListener(context);
+	setContentView(mTextureView);
+	
   }
 
   public void setCamera(Camera camera, int cameraId) {
@@ -136,7 +149,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
       Log.d("CameraPreview", "before setPreviewSize");
 
       mSupportedPreviewSizes = parameters.getSupportedPreviewSizes();
-      mPreviewSize = getOptimalPreviewSize(mSupportedPreviewSizes, mSurfaceView.getWidth(), mSurfaceView.getHeight());
+      mPreviewSize = getOptimalPreviewSize(mSupportedPreviewSizes, mTextureView.getWidth(), mTextureView.getHeight());
       parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
       Log.d(TAG, mPreviewSize.width + " " + mPreviewSize.height);
 
@@ -221,8 +234,8 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
     // to draw.
     try {
       if (mCamera != null) {
-        mSurfaceView.setWillNotDraw(false);
-        mCamera.setPreviewDisplay(holder);
+       // mSurfaceView.setWillNotDraw(false);
+        mCamera.setPreviewTexture(surface);
       }
     } catch (IOException exception) {
       Log.e(TAG, "IOException caused by setPreviewDisplay()", exception);
