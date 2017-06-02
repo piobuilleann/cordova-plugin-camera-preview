@@ -22,6 +22,15 @@ class Preview extends RelativeLayout implements TextureView.SurfaceTextureListen
   //SurfaceHolder mHolder;
   SurfaceTexture surface;
   
+  Preview(Context context) {
+    super(context);
+	
+    //mTextureView = new CustomSurfaceView(context);
+	//mTextureView.setSurfaceTextureListener(context);
+	//setContentView(mTextureView);	
+  }
+  
+  
  @Override
     protected void onCreate(Bundle savedInstanceState)
     {
