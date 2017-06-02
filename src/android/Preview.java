@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.util.List;
 
 
-import org.apache.cordova.CordovaInterface;
-import org.apache.cordova.CordovaWebView;
 
 class Preview extends RelativeLayout implements SurfaceHolder.Callback {
   private final String TAG = "Preview";
@@ -31,7 +29,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
   Camera.Size mPreviewSize;
   List<Camera.Size> mSupportedPreviewSizes;
   Camera mCamera;
-  CordovaWebView webView;
   int cameraId;
   int displayOrientation;
   int viewWidth;
