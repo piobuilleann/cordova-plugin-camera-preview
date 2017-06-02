@@ -16,11 +16,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
-class Preview extends RelativeLayout implements TextureView.SurfaceTextureListener {
+class Preview extends Activity implements TextureView.SurfaceTextureListener {
   private final String TAG = "Preview";
 
-  CustomSurfaceView mTextureView;
+  //CustomSurfaceView mTextureView;
   //SurfaceHolder mHolder;
+  private TextureView mTextureView = null;
   SurfaceTexture surface;
   
   Preview(Context context) {
