@@ -1,4 +1,8 @@
 android {
+	defaultConfig {
+		renderscriptTargetApi 19
+		renderscriptSupportModeEnabled true
+	}
     sourceSets {
         //noinspection GroovyAssignabilityCheck
         main {
