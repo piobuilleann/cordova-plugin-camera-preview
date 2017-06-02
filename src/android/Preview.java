@@ -25,7 +25,7 @@ class Preview extends Activity implements TextureView.SurfaceTextureListener {
   SurfaceTexture surface;
   
   Preview(Context context) {
-    super(context);
+    //super(context);
 	
     //mTextureView = new CustomSurfaceView(context);
 	//mTextureView.setSurfaceTextureListener(context);
