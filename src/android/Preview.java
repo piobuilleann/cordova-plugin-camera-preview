@@ -292,7 +292,6 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
       parameters.setPreviewSize(mPreviewSize.width, mPreviewSize.height);
       requestLayout();
 	  
-	  webView.loadUrl("javascript:console.log('OpenCV loaded successfully');");
 	  
 	  
       //mCamera.setDisplayOrientation(90);
