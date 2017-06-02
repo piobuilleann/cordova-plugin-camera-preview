@@ -30,7 +30,7 @@ class Preview extends RelativeLayout implements SurfaceHolder.Callback {
   Camera.Size mPreviewSize;
   List<Camera.Size> mSupportedPreviewSizes;
   Camera mCamera;
-  private CordovaWebView webView;
+  CordovaWebView webView;
   int cameraId;
   int displayOrientation;
   int viewWidth;
