@@ -141,7 +141,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
       mPreview = new Preview(getActivity());
       mainLayout = (FrameLayout) view.findViewById(getResources().getIdentifier("video_view", "id", appResourcesPackage));
       mainLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-      mainLayout.addView(mPreview);
+      //mainLayout.addView(mPreview);
       mainLayout.setEnabled(false);
 
       final GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new TapGestureDetector());
