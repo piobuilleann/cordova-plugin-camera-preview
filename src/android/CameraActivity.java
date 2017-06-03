@@ -141,7 +141,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
       mPreview = new Preview();
       mainLayout = (FrameLayout) view.findViewById(getResources().getIdentifier("video_view", "id", appResourcesPackage));
       mainLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-      mainLayout.addView(mPreview);
+      //mainLayout.addView(mPreview);
       mainLayout.setEnabled(false);
 
       final GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new TapGestureDetector());
@@ -247,12 +247,12 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
 
     cameraCurrentlyLocked = defaultCameraId;
 
-    if(mPreview.mPreviewSize == null){
+    /*if(mPreview.mPreviewSize == null){
       mPreview.setCamera(mCamera, cameraCurrentlyLocked);
     } else {
       mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
       mCamera.startPreview();
-    }
+    }*/
 
     Log.d(TAG, "cameraCurrentlyLocked:" + cameraCurrentlyLocked);
 
@@ -283,7 +283,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
     // Because the Camera object is a shared resource, it's very important to release it when the activity is paused.
     if (mCamera != null) {
       setDefaultCameraId();
-      mPreview.setCamera(null, -1);
+      //mPreview.setCamera(null, -1);
       mCamera.setPreviewCallback(null);
       mCamera.release();
       mCamera = null;
@@ -304,7 +304,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
       // OK, we have multiple cameras. Release this camera -> cameraCurrentlyLocked
       if (mCamera != null) {
         mCamera.stopPreview();
-        mPreview.setCamera(null, -1);
+        //mPreview.setCamera(null, -1);
         mCamera.release();
         mCamera = null;
       }
@@ -339,7 +339,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
         Log.d(TAG, "camera parameter NULL");
       }
 
-      mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
+      //mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
 
       mCamera.startPreview();
     }
@@ -386,14 +386,14 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
       Log.d(TAG, "CameraPreview jpegPictureCallback");
       Camera.Parameters params = mCamera.getParameters();
       try {
-        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0,data.length);
+        /*Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0,data.length);
         bitmap = rotateBitmap(bitmap, mPreview.getDisplayOrientation(), cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, params.getJpegQuality(), outputStream);
         byte[] byteArray = outputStream.toByteArray();
         String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
         eventListener.onPictureTaken(encodedImage);
-        Log.d(TAG, "CameraPreview pictureTakenHandler called back");
+        Log.d(TAG, "CameraPreview pictureTakenHandler called back");*/
       } catch (OutOfMemoryError e) {
         // most likely failed to allocate memory for rotateBitmap
         Log.d(TAG, "CameraPreview OutOfMemoryError");
