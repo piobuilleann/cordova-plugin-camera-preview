@@ -17,9 +17,8 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.view.TextureView;
 
-class Preview extends TextureView implements TextureView.SurfaceTextureListener {
+class Preview extends Action implements TextureView.SurfaceTextureListener {
   private final String TAG = "Preview";
 
   //CustomSurfaceView mTextureView;
@@ -30,25 +29,25 @@ class Preview extends TextureView implements TextureView.SurfaceTextureListener 
   SurfaceTexture surface;
   
   Preview(Context context) {
-    super(context);
+    //super(context);
 
 	mContext = context;
-    mTextureView = new TextureView(context);
+    /*mTextureView = new TextureView(context);
 	mTextureView.setSurfaceTextureListener(this);
-	setContentView(mTextureView);	
+	setContentView(mTextureView);	*/
   }
   
   
  //@Override
-    /*protected void onCreate(Bundle savedInstanceState)
+    protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-		mTextureView = new TextureView(this);
+		mTextureView = new TextureView(mContext);
 		mTextureView.setSurfaceTextureListener(this);
 
         setContentView(mTextureView);
-    }*/
+    }
 
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width,
