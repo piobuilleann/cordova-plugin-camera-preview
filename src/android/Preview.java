@@ -24,17 +24,18 @@ class Preview extends Activity implements TextureView.SurfaceTextureListener {
   //CustomSurfaceView mTextureView;
   //SurfaceHolder mHolder;
   private TextureView mTextureView = null;
+  private Context mContext;
   Camera mCamera;
   SurfaceTexture surface;
   
-  /*Preview(Context context) {
+  Preview(Context context) {
     super(context);
 
-	
+	mContext = context;
     //mTextureView = new CustomSurfaceView(context);
 	//mTextureView.setSurfaceTextureListener(context);
 	//setContentView(mTextureView);	
-  }*/
+  }
   
   
  //@Override
@@ -42,7 +43,7 @@ class Preview extends Activity implements TextureView.SurfaceTextureListener {
     {
         super.onCreate(savedInstanceState);
 
-		mTextureView = new TextureView(this);
+		mTextureView = new TextureView(mContext);
 		mTextureView.setSurfaceTextureListener(this);
 
         setContentView(mTextureView);
