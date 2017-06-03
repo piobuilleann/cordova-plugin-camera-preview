@@ -144,7 +144,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
       //video view
       mPreview = new Preview(getActivity());
 	  //webView.loadUrl("javascript:console.log('" + mPreview + "');");
-      mainLayout = (FrameLayout) view.findViewById(getResources().getIdentifier("video_view", "id", appResourcesPackage));
+      mainLayout = (FrameLayout) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
       mainLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
       mainLayout.addView(mPreview);
       mainLayout.setEnabled(false); 
