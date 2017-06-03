@@ -29,7 +29,7 @@ class Preview extends TextureView implements TextureView.SurfaceTextureListener 
   Camera mCamera;
   SurfaceTexture surface;
   
-  Preview(Context context) {
+ /* Preview(Context context) {
     //super(context);
 
 	mContext = context;
@@ -37,14 +37,14 @@ class Preview extends TextureView implements TextureView.SurfaceTextureListener 
 	//mTextureView.setSurfaceTextureListener(context);
 	//setContentView(mTextureView);	
   }
-  
+  */
   
  //@Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-		mTextureView = new TextureView(mContext);
+		mTextureView = new TextureView(this);
 		mTextureView.setSurfaceTextureListener(this);
 
         setContentView(mTextureView);
