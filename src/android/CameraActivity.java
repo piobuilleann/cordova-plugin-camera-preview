@@ -14,7 +14,6 @@ import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
-import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
@@ -28,8 +27,6 @@ import android.view.MotionEvent;
 //import android.view.Surface;
 //import android.view.SurfaceHolder;
 //import android.view.SurfaceView;
-import android.view.TextureView;
-import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -54,7 +51,7 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
 
-public class CameraActivity extends Fragment implements Camera.PreviewCallback, TextureView.SurfaceTextureListener  {
+public class CameraActivity extends Fragment implements Camera.PreviewCallback  {
 
   public interface CameraPreviewListener {
     void onPictureTaken(String originalPicture);
@@ -105,88 +102,6 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback, 
   @Override
   public void onPreviewFrame(byte[] data, Camera c) {
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-
-		mTextureView = new TextureView(mContext);
-		mTextureView.setSurfaceTextureListener(this);
-
-        setContentView(mTextureView);
-    }
-
-    @Override
-    public void onSurfaceTextureAvailable(SurfaceTexture surface, int width,
-            int height)
-    {
-        Log.i("onSurfaceTextureAvailable", "onSurfaceTextureAvailable");
-
-        mCamera = Camera.open();
-
-        Camera.Size previewSize = mCamera.getParameters().getPreviewSize();
-        mTextureView.setLayoutParams(new FrameLayout.LayoutParams(
-                previewSize.width, previewSize.height, Gravity.CENTER));
-
-        try
-        {
-            mCamera.setPreviewTexture(surface);
-        }
-        catch (IOException t)
-        {
-        }
-
-        mCamera.startPreview();
-
-    }
-
-    @Override
-    public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width,
-            int height)
-    {
-        // Ignored, the Camera does all the work for us
-    }
-
-    @Override
-    public boolean onSurfaceTextureDestroyed(SurfaceTexture surface)
-    {
-        Log.i("onSurfaceTextureDestroyed", "onSurfaceTextureDestroyed");
-        mCamera.stopPreview();
-        mCamera.release();
-        return true;
-    }
-
-    @Override
-    public void onSurfaceTextureUpdated(SurfaceTexture surface)
-    {
-        // Update your view here!
-    }    
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
