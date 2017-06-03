@@ -21,9 +21,9 @@ import android.widget.RelativeLayout;
 class Preview extends Activity implements TextureView.SurfaceTextureListener {
   private final String TAG = "Preview";
 
-  CustomSurfaceView mTextureView;
+  //CustomSurfaceView mTextureView;
   //SurfaceHolder mHolder;
-  //private TextureView mTextureView = null;
+  private TextureView mTextureView = null;
   private Context mContext;
   Camera mCamera;
   SurfaceTexture surface;
@@ -43,7 +43,7 @@ class Preview extends Activity implements TextureView.SurfaceTextureListener {
     {
         super.onCreate(savedInstanceState);
 
-		mTextureView = new CustomSurfaceView(mContext);
+		mTextureView = new TextureView(mContext);
 		mTextureView.setSurfaceTextureListener(this);
 
         setContentView(mTextureView);
