@@ -94,5 +94,10 @@ class Preview extends Activity implements TextureView.SurfaceTextureListener {
     {
         // Update your view here!
     }  
+
+    public void getView()
+	{
+		return mTextureView;
+	}
  
 }

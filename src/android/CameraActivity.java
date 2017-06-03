@@ -27,6 +27,7 @@ import android.view.MotionEvent;
 //import android.view.Surface;
 //import android.view.SurfaceHolder;
 //import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -66,6 +67,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
   public FrameLayout frameContainerLayout;
 
   private Preview mPreview;
+  private TextureView tView;
   private boolean canTakePicture = true;
 
   private View view;
@@ -142,10 +144,11 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
 
       //video view
       mPreview = new Preview(getActivity());
+	  tView = mPreview.getView();
 	  //webView.loadUrl("javascript:console.log('" + mPreview + "');");
       mainLayout = (FrameLayout) view.findViewById(getResources().getIdentifier("video_view", "id", appResourcesPackage));
       mainLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
-      //mainLayout.addView(mPreview);
+      mainLayout.addView( tView );
       mainLayout.setEnabled(false); 
 
       final GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new TapGestureDetector());
