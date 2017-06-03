@@ -33,14 +33,14 @@ class Preview extends TextureView implements TextureView.SurfaceTextureListener 
     super(context);
 
 	mContext = context;
-    //mTextureView = new CustomSurfaceView(context);
-	//mTextureView.setSurfaceTextureListener(context);
-	//setContentView(mTextureView);	
+    mTextureView = new CustomSurfaceView(context);
+	mTextureView.setSurfaceTextureListener(context);
+	setContentView(mTextureView);	
   }
   
   
  //@Override
-    protected void onCreate(Bundle savedInstanceState)
+    /*protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
@@ -48,7 +48,7 @@ class Preview extends TextureView implements TextureView.SurfaceTextureListener 
 		mTextureView.setSurfaceTextureListener(this);
 
         setContentView(mTextureView);
-    }
+    }*/
 
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width,
