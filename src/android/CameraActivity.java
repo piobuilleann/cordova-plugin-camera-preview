@@ -114,6 +114,88 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback, 
   
   
   
+  
+  
+  
+  
+  
+  
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+		mTextureView = new TextureView(mContext);
+		mTextureView.setSurfaceTextureListener(this);
+
+        setContentView(mTextureView);
+    }
+
+    @Override
+    public void onSurfaceTextureAvailable(SurfaceTexture surface, int width,
+            int height)
+    {
+        Log.i("onSurfaceTextureAvailable", "onSurfaceTextureAvailable");
+
+        mCamera = Camera.open();
+
+        Camera.Size previewSize = mCamera.getParameters().getPreviewSize();
+        mTextureView.setLayoutParams(new FrameLayout.LayoutParams(
+                previewSize.width, previewSize.height, Gravity.CENTER));
+
+        try
+        {
+            mCamera.setPreviewTexture(surface);
+        }
+        catch (IOException t)
+        {
+        }
+
+        mCamera.startPreview();
+
+    }
+
+    @Override
+    public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width,
+            int height)
+    {
+        // Ignored, the Camera does all the work for us
+    }
+
+    @Override
+    public boolean onSurfaceTextureDestroyed(SurfaceTexture surface)
+    {
+        Log.i("onSurfaceTextureDestroyed", "onSurfaceTextureDestroyed");
+        mCamera.stopPreview();
+        mCamera.release();
+        return true;
+    }
+
+    @Override
+    public void onSurfaceTextureUpdated(SurfaceTexture surface)
+    {
+        // Update your view here!
+    }    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
