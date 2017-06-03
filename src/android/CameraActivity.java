@@ -93,7 +93,8 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
   
   
   
-  
+  private CordovaInterface cordova;
+  private CordovaWebView webView;  
   
   
   
