@@ -29,15 +29,15 @@ class Preview extends TextureView implements TextureView.SurfaceTextureListener 
   Camera mCamera;
   SurfaceTexture surface;
   
- /* Preview(Context context) {
-    //super(context);
+  Preview(Context context) {
+    super(context);
 
 	mContext = context;
     //mTextureView = new CustomSurfaceView(context);
 	//mTextureView.setSurfaceTextureListener(context);
 	//setContentView(mTextureView);	
   }
-  */
+  
   
  //@Override
     protected void onCreate(Bundle savedInstanceState)
