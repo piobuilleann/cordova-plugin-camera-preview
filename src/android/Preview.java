@@ -17,6 +17,7 @@ import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.view.TextureView;
 
 class Preview extends TextureView implements TextureView.SurfaceTextureListener {
   private final String TAG = "Preview";
