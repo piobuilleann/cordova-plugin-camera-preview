@@ -47,6 +47,8 @@ import java.util.Arrays;
 
 
 import android.renderscript.RenderScript;
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaWebView;
 
 
 public class CameraActivity extends Fragment implements Camera.PreviewCallback  {
@@ -139,7 +141,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
 
       //video view
       mPreview = new Preview();
-	  webView.loadUrl("javascript:console.log('" + mPreview.typeOf + "');");
+	  webView.loadUrl("javascript:console.log('" + mPreview + "');");
       mainLayout = (FrameLayout) view.findViewById(getResources().getIdentifier("video_view", "id", appResourcesPackage));
       mainLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
       //mainLayout.addView(mPreview);
