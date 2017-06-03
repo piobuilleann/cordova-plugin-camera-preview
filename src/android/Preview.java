@@ -47,7 +47,6 @@ class Preview extends Activity implements TextureView.SurfaceTextureListener {
 		mTextureView.setSurfaceTextureListener(this);
 
         setContentView(mTextureView);
-		return mTextureView;
     }
 
     @Override
