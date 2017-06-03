@@ -33,8 +33,8 @@ class Preview extends TextureView implements TextureView.SurfaceTextureListener 
     super(context);
 
 	mContext = context;
-    mTextureView = new CustomSurfaceView(context);
-	mTextureView.setSurfaceTextureListener(context);
+    mTextureView = new TextureView(context);
+	mTextureView.setSurfaceTextureListener(this);
 	setContentView(mTextureView);	
   }
   
