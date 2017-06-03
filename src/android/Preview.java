@@ -31,7 +31,7 @@ class Preview extends RelativeLayout implements TextureView.SurfaceTextureListen
     super(context);
 
 	mTextureView = new TextureView(context);
-    mTextureView.setSurfaceTextureListener(context);
+    mTextureView.setSurfaceTextureListener(this);
 	
     //mTextureView = new CustomSurfaceView(context);
 	//mTextureView.setSurfaceTextureListener(context);
