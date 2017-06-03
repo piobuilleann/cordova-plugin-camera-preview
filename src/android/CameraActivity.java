@@ -51,7 +51,7 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
 
-public class CameraActivity extends Activity implements Camera.PreviewCallback  {
+public class CameraActivity extends Fragment implements Camera.PreviewCallback  {
 
   public interface CameraPreviewListener {
     void onPictureTaken(String originalPicture);
