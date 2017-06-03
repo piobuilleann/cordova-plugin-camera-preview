@@ -142,7 +142,7 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
       mainLayout = (FrameLayout) view.findViewById(getResources().getIdentifier("video_view", "id", appResourcesPackage));
       mainLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
       //mainLayout.addView(mPreview);
-      mainLayout.setEnabled(false);
+      mainLayout.setEnabled(false); 
 
       final GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new TapGestureDetector());
 
@@ -251,8 +251,8 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
       mPreview.setCamera(mCamera, cameraCurrentlyLocked);
     } else {
       mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
-      mCamera.startPreview();
     }*/
+      mCamera.startPreview();
 
     Log.d(TAG, "cameraCurrentlyLocked:" + cameraCurrentlyLocked);
 
