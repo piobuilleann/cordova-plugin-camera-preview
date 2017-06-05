@@ -113,7 +113,6 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   
   
   
-    @Override
 	 //@Override
     protected void onCreate(Bundle savedInstanceState)
     {
