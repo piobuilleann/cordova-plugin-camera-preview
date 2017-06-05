@@ -166,6 +166,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     if(mPreview == null) {
       setDefaultCameraId();
 
+     /*
       //set box position and size
       FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(width, height);
       layoutParams.setMargins(x, y, 0, 0);
@@ -183,7 +184,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 
       final GestureDetector gestureDetector = new GestureDetector(getActivity().getApplicationContext(), new TapGestureDetector());
 
-     /* getActivity().runOnUiThread(new Runnable() {
+	 getActivity().runOnUiThread(new Runnable() {
         @Override
         public void run() {
           frameContainerLayout.setClickable(true);
