@@ -135,7 +135,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
         try
         {
             mCamera.setPreviewTexture(surface);
-			mCamera.startPreview();		
+            mCamera.startPreview();		
         }
         catch (IOException t)
         {
@@ -363,6 +363,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   }
 
   public void switchCamera() {
+    // check for availability of multiple cameras
 
   }
 
@@ -406,26 +407,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     public void onPictureTaken(byte[] data, Camera arg1){
       Log.d(TAG, "CameraPreview jpegPictureCallback");
       Camera.Parameters params = mCamera.getParameters();
-      try {
-        /*Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0,data.length);
-        bitmap = rotateBitmap(bitmap, mPreview.getDisplayOrientation(), cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT);
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, params.getJpegQuality(), outputStream);
-        byte[] byteArray = outputStream.toByteArray();
-        String encodedImage = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-        eventListener.onPictureTaken(encodedImage);
-        Log.d(TAG, "CameraPreview pictureTakenHandler called back");*/
-      } catch (OutOfMemoryError e) {
-        // most likely failed to allocate memory for rotateBitmap
-        Log.d(TAG, "CameraPreview OutOfMemoryError");
-        // failed to allocate memory
-        eventListener.onPictureTakenError("Picture too large (memory)");
-      } catch (Exception e) {
-        Log.d(TAG, "CameraPreview onPictureTaken general exception");
-      } finally {
-        canTakePicture = true;
-        mCamera.startPreview();
-      }
+
     }
   };
 
