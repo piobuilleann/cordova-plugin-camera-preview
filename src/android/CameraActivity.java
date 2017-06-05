@@ -68,7 +68,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   public FrameLayout frameContainerLayout;
 
   private Preview mPreview;
-  private TextureView tView;
+  private TextureView mTextureView;
   private boolean canTakePicture = true;
   SurfaceTexture surface;
   private View view;
@@ -117,10 +117,33 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     public void onCreate(Bundle savedInstanceState)
     {
 		//
+		super.onCreate(savedInstanceState);
+
+		mTextureView = new TextureView(this);
+		mTextureView.setSurfaceTextureListener(this);
+
+        setContentView(mTextureView);		
 	}
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture s, int width, int height) {
 		//
+        Log.i("onSurfaceTextureAvailable", "onSurfaceTextureAvailable");
+
+        mCamera = Camera.open();
+
+        Camera.Size previewSize = mCamera.getParameters().getPreviewSize();
+        mTextureView.setLayoutParams(new FrameLayout.LayoutParams(
+                previewSize.width, previewSize.height, Gravity.CENTER));
+
+        try
+        {
+            mCamera.setPreviewTexture(surface);
+        }
+        catch (IOException t)
+        {
+        }
+
+        mCamera.startPreview();		
 	}	
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
