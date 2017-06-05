@@ -122,7 +122,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		
 	}
     @Override
-    public void onSurfaceTextureAvailable(SurfaceTexture s, int width, int height) {
+    public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
 		//
         Log.i("onSurfaceTextureAvailable", "onSurfaceTextureAvailable");
 
@@ -135,12 +135,13 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
         try
         {
             mCamera.setPreviewTexture(surface);
+			mCamera.startPreview();		
         }
         catch (IOException t)
         {
+			Log.i("IOException", t.getMessage());
         }
 
-        mCamera.startPreview();		
 	}	
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
