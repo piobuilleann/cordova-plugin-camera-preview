@@ -171,17 +171,12 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 
     // Inflate the layout for this fragment
     view = inflater.inflate(getResources().getIdentifier("camera_activity", "layout", appResourcesPackage), container, false);
+    mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
 	
 	Log.d("onCreateView", "create new texture view");
 	
 	
-	  mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
-	  
-	  
-	  mTextureView.setSurfaceTextureListener(this);
-	  
-	  
-	  
+  
     createCameraPreview();
     return view;
   }
@@ -195,11 +190,16 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 
   private void createCameraPreview(){
     if(mPreview == null) {
+
+	  
+	  
+	  mTextureView.setSurfaceTextureListener(this);
+
+	/*
       setDefaultCameraId();
 	  
 
 
-     /*
       //set box position and size
       FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(width, height);
       layoutParams.setMargins(x, y, 0, 0);
