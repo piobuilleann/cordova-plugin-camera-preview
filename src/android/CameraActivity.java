@@ -114,7 +114,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   
   
 	 //@Override
-    protected void onCreate(Bundle savedInstanceState)
+    public void onCreate(Bundle savedInstanceState)
     {
 		//
 	}
