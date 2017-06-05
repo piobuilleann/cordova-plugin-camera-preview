@@ -363,54 +363,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   }
 
   public void switchCamera() {
-    // check for availability of multiple cameras
-    if (numberOfCameras == 1) {
-      //There is only one camera available
-    }else{
-      Log.d(TAG, "numberOfCameras: " + numberOfCameras);
 
-      // OK, we have multiple cameras. Release this camera -> cameraCurrentlyLocked
-      if (mCamera != null) {
-        mCamera.stopPreview();
-        //mPreview.setCamera(null, -1);
-        mCamera.release();
-        mCamera = null;
-      }
-
-      Log.d(TAG, "cameraCurrentlyLocked := " + Integer.toString(cameraCurrentlyLocked));
-      try {
-        cameraCurrentlyLocked = (cameraCurrentlyLocked + 1) % numberOfCameras;
-        Log.d(TAG, "cameraCurrentlyLocked new: " + cameraCurrentlyLocked);
-      } catch (Exception exception) {
-        Log.d(TAG, exception.getMessage());
-      }
-
-      // Acquire the next camera and request Preview to reconfigure parameters.
-      mCamera = Camera.open(cameraCurrentlyLocked);
-
-      if (cameraParameters != null) {
-        Log.d(TAG, "camera parameter not null");
-
-        // Check for flashMode as well to prevent error on frontward facing camera.
-        List<String> supportedFlashModesNewCamera = mCamera.getParameters().getSupportedFlashModes();
-        String currentFlashModePreviousCamera = cameraParameters.getFlashMode();
-        if (supportedFlashModesNewCamera != null && supportedFlashModesNewCamera.contains(currentFlashModePreviousCamera)) { 
-          Log.d(TAG, "current flash mode supported on new camera. setting params");
-         /* mCamera.setParameters(cameraParameters);
-            The line above is disabled because parameters that can actually be changed are different from one device to another. Makes less sense trying to reconfigure them when changing camera device while those settings gan be changed using plugin methods.
-         */
-        } else {
-          Log.d(TAG, "current flash mode NOT supported on new camera");
-        }
-
-      } else {
-        Log.d(TAG, "camera parameter NULL");
-      }
-
-      //mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
-
-      mCamera.startPreview();
-    }
   }
 
   public void setCameraParameters(Camera.Parameters params) {
