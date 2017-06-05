@@ -6,7 +6,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.CompressFormat
+import android.graphics.SurfaceTexture;
 import android.util.Base64;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -69,7 +70,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   private Preview mPreview;
   private TextureView tView;
   private boolean canTakePicture = true;
-
+  SurfaceTexture surface;
   private View view;
   private Camera.Parameters cameraParameters;
   private Camera mCamera;
