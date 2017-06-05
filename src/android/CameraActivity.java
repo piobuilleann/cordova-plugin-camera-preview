@@ -310,7 +310,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   public void onResume() {
     super.onResume();
 
-    mCamera = Camera.open(defaultCameraId);
+   /* mCamera = Camera.open(defaultCameraId);
 
     if (cameraParameters != null) {
       mCamera.setParameters(cameraParameters);
@@ -318,11 +318,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 
     cameraCurrentlyLocked = defaultCameraId;
 
-    /*if(mPreview.mPreviewSize == null){
-      mPreview.setCamera(mCamera, cameraCurrentlyLocked);
-    } else {
-      mPreview.switchCamera(mCamera, cameraCurrentlyLocked);
-    }*/
+
       mCamera.startPreview();
 
     Log.d(TAG, "cameraCurrentlyLocked:" + cameraCurrentlyLocked);
@@ -344,7 +340,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
           frameCamContainerLayout.setLayoutParams(camViewLayout);
         }
       });
-    }
+    }*/
   }
 
   @Override
