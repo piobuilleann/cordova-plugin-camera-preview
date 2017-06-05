@@ -52,7 +52,7 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
 
-public class CameraActivity extends Fragment implements Camera.PreviewCallback  {
+public class CameraActivity extends Fragment implements TextureView.SurfaceTextureListener, Camera.PreviewCallback  {
 
   public interface CameraPreviewListener {
     void onPictureTaken(String originalPicture);
@@ -106,6 +106,32 @@ public class CameraActivity extends Fragment implements Camera.PreviewCallback  
   }
   
   
+  
+  
+  
+  
+  
+  
+    @Override
+	 //@Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+		//
+	}
+    @Override
+    public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+        // Ignored, Camera does all the work for us
+    }
+
+    @Override
+    public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+        return true;
+    }
+
+    @Override
+    public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+        // Invoked every time there's a new Camera preview frame
+	}  
   
   
   
