@@ -119,7 +119,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		//
 		super.onCreate(savedInstanceState);
 
-		mTextureView = new TextureView(this);
+		mTextureView = new TextureView(getActivity().getApplicationContext());
 		mTextureView.setSurfaceTextureListener(this);
 
         setContentView(mTextureView);		
