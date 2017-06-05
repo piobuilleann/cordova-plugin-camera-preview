@@ -119,7 +119,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		//
 		super.onCreate(savedInstanceState);
 
-		mTextureView.setSurfaceTextureListener(this);
+		
 	}
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture s, int width, int height) {
@@ -178,7 +178,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
 	  
 	  
-	  
+	  mTextureView.setSurfaceTextureListener(this);
 	  
 	  
 	  
