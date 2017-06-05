@@ -120,6 +120,10 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		//
 	}
     @Override
+    public void onSurfaceTextureAvailable(SurfaceTexture s, int width, int height) {
+		//
+	}	
+    @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
         // Ignored, Camera does all the work for us
     }
