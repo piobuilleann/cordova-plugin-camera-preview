@@ -129,8 +129,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
         mCamera = Camera.open();
 
         Camera.Size previewSize = mCamera.getParameters().getPreviewSize();
-        mTextureView.setLayoutParams(new FrameLayout.LayoutParams(
-                previewSize.width, previewSize.height, Gravity.CENTER));
+
 
         try
         {
@@ -173,6 +172,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     // Inflate the layout for this fragment
     view = inflater.inflate(getResources().getIdentifier("camera_activity", "layout", appResourcesPackage), container, false);
     mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
+	mTextureView.setSurfaceTextureListener(this);
 	
 	Log.d("onCreateView", "create new texture view");
 	
@@ -194,7 +194,6 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 
 	  
 	  
-	  mTextureView.setSurfaceTextureListener(this);
 
 	/*
       setDefaultCameraId();
