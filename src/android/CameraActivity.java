@@ -6,7 +6,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.SurfaceTexture;
 import android.util.Base64;
 import android.graphics.BitmapFactory;
