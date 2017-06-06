@@ -18,16 +18,16 @@ import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.renderscript.RenderScript;
 import android.util.Log;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-//import android.view.Surface;
-//import android.view.SurfaceHolder;
-//import android.view.SurfaceView;
+
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +76,8 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   private Camera mCamera;
   private int numberOfCameras;
   private int cameraCurrentlyLocked;
-
+  private Filter filter;
+  
   // The first rear facing camera
   private int defaultCameraId;
   public String defaultCamera;
@@ -123,20 +124,15 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	}
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-		//
-        Log.i("onSurfaceTextureAvailable", "onSurfaceTextureAvailable");
-
         mCamera = Camera.open();
 
         Camera.Size previewSize = mCamera.getParameters().getPreviewSize();
-        //mTextureView.setLayoutParams(new FrameLayout.LayoutParams(previewSize.width, previewSize.height, Gravity.CENTER));
         mTextureView.setLayoutParams(new RelativeLayout.LayoutParams(previewSize.width, previewSize.height));
 		
 		
 		
 		Camera.Parameters parameters = mCamera.getParameters();
-		parameters.set("orientation", "portrait");
-		//parameters.setRotation(90);
+		parameters.set("orientation", "portrait"););
 		mCamera.setDisplayOrientation(90);
 		mCamera.setParameters(parameters);		
 		
@@ -182,7 +178,10 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     // Inflate the layout for this fragment
     view = inflater.inflate(getResources().getIdentifier("camera_activity", "layout", appResourcesPackage), container, false);
     mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
-	mTextureView.setSurfaceTextureListener(this);
+	
+	filter = new Filter(RenderScript.create(this));
+	
+	mTextureView.setSurfaceTextureListener(filter);
 	
 	Log.d("onCreateView", "create new texture view");
 	
