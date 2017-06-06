@@ -124,7 +124,7 @@ float __attribute__((kernel)) compute_gradient(uint32_t x, uint32_t y) {
 	gy -= rsGetElementAt_float(blurred, x + 1, y + 1);
 
 	int d = ((int) round(atan2pi(gy, gx) * 4.0f) + 4) % 4;
-	rsSetElementAt_int(direction, d, x, y);
+	rsSetElementAt_int(direction, d, (uint32_t)x, (uint32_t)y);
 	return hypot(gx, gy);
 }
 
