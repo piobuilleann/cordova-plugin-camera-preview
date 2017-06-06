@@ -1,5 +1,5 @@
 #pragma version(1)
-#pragma rs java_package_name(com.arekolek.onioncamera)
+#pragma rs java_package_name(com.cordovaplugincamerapreview)
 #pragma rs_fp_relaxed
 
 static rs_allocation raw, magnitude, blurred, direction, candidates;
