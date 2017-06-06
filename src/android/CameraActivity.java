@@ -131,6 +131,14 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
         Camera.Size previewSize = mCamera.getParameters().getPreviewSize();
         //mTextureView.setLayoutParams(new FrameLayout.LayoutParams(previewSize.width, previewSize.height, Gravity.CENTER));
         mTextureView.setLayoutParams(new RelativeLayout.LayoutParams(previewSize.width, previewSize.height));
+		
+		
+		
+		Camera.Parameters parameters = mCamera.getParameters();
+		parameters.set("orientation", "portrait");
+		parameters.setRotation(90);
+		mCamera.setParameters(parameters);		
+		
 
         try
         {
