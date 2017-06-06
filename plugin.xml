@@ -33,6 +33,7 @@
 	<source-file src="libs/android/build-extras.gradle" target-dir="." />
 	<source-file src="libs/android/opencv-release.aar" target-dir="libs/android/" />	
 	
+	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="19" />
 
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="CameraPreview">
