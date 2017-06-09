@@ -3,7 +3,7 @@ package com.cordovaplugincamerapreview;
 import android.graphics.SurfaceTexture;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
-import android.support.v8.renderscript.RenderScript;
+import android.renderscript.RenderScript;
 import android.renderscript.Script.LaunchOptions;
 import android.renderscript.ScriptIntrinsicHistogram;
 import android.renderscript.Type;
