@@ -27,7 +27,7 @@ import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-
+import android.view.View.OnClickListener;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -188,6 +188,18 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	mTextureOverlay.setSurfaceTextureListener( filter );
 		
 	Log.d("onCreateView", "create new texture view");	
+	
+	
+	mTextureView.setOnClickListener(new OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			filter.toggleBlending();
+		}
+	});	
+	
+	
+	
+	
 	createCameraPreview();			
   
     
