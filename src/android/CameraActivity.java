@@ -179,7 +179,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     view = inflater.inflate(getResources().getIdentifier("camera_activity", "layout", appResourcesPackage), container, false);
     mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
 	
-	filter = new Filter(RenderScript.create(this));
+	filter = new Filter(RenderScript.create( getActivity().getApplicationContext() ));
 	
 	mTextureView.setSurfaceTextureListener(filter);
 	
