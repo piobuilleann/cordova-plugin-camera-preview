@@ -171,20 +171,16 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
         super.onAttach(context);
 
 		
-		Activity a;
 
-		if (context instanceof Activity){
-			a=(Activity) context;
 
-			mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
-			
-			filter = new Filter(RenderScript.create( a ));
-			
-			mTextureView.setSurfaceTextureListener(filter);
-			
-			Log.d("onCreateView", "create new texture view");	
-			createCameraPreview();		
-		}		
+		mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
+		
+		filter = new Filter(RenderScript.create( context ));
+		
+		mTextureView.setSurfaceTextureListener(filter);
+		
+		Log.d("onCreateView", "create new texture view");	
+		createCameraPreview();		
 		
 		
     }  
