@@ -69,6 +69,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 
   private Preview mPreview;
   private TextureView mTextureView;
+  private TextureView mTextureOverlay;
   private boolean canTakePicture = true;
   SurfaceTexture surface;
   private View view;
@@ -173,11 +174,12 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		
 
 
-		mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("textureView1", "id", appResourcesPackage));
+		mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("preview", "id", appResourcesPackage));
+		mTextureOverlay = (TextureView) view.findViewById(getResources().getIdentifier("overlay", "id", appResourcesPackage));
 		
 		filter = new Filter(RenderScript.create( context ));
 		
-		mTextureView.setSurfaceTextureListener(filter);
+		mTextureView.setSurfaceTextureListener( getActivity() );
 		
 		Log.d("onCreateView", "create new texture view");	
 		createCameraPreview();		
