@@ -154,7 +154,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
                 || previewSize.width != filter.getWidth()
                 || previewSize.height != filter.getHeight()) {
 
-            filter.reset(cameraSize.width, cameraSize.height);
+            filter.reset(previewSize.width, previewSize.height);
         }
 		new ProcessPreviewDataTask().execute(data);		
 		
