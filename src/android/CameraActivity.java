@@ -278,7 +278,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("preview", "id", appResourcesPackage));
 	mTextureOverlay = (TextureView) view.findViewById(getResources().getIdentifier("overlay", "id", appResourcesPackage));
 	
-	filter = new Filter(RenderScript.create( this ));
+	filter = new Filter(RenderScript.create( getActivity() ));
 	
 	mTextureView.setSurfaceTextureListener( this );
 	mTextureOverlay.setSurfaceTextureListener( filter );
