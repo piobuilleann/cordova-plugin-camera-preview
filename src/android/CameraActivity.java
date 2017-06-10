@@ -115,12 +115,50 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   private CordovaInterface cordova;
   private CordovaWebView webView;  
   
+
+
+
+
+
+    private class ProcessPreviewDataTask extends AsyncTask<byte[], Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(byte[]... datas) {
+            byte[] data = datas[0];
+            filter.execute(data);
+            mCamera.addCallbackBuffer(data);
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            isProcessing = false;
+            mTextureOverlay.invalidate();
+        }
+
+	}  
   
   
-  
-  @Override
-  public void onPreviewFrame(byte[] data, Camera c) {
-  }
+	@Override
+	public void onPreviewFrame(byte[] data, Camera c) {
+        if (isProcessing || state != STATE_PREVIEW) {
+            mCamera.addCallbackBuffer(data);
+            return;
+		}
+        if (data == null) {
+            return;
+		}
+		
+		isProcessing = true;		
+		
+        if (filter == null
+                || previewSize.width != filter.getWidth()
+                || previewSize.height != filter.getHeight()) {
+
+            filter.reset(cameraSize.width, cameraSize.height);
+        }
+		new ProcessPreviewDataTask().execute(data);		
+		
+	}
   
   
   
