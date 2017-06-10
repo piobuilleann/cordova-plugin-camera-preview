@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.ImageFormat;
+import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.util.Base64;
 import android.graphics.BitmapFactory;
@@ -20,6 +22,7 @@ import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.renderscript.RenderScript;
 import android.util.Log;
 import android.util.DisplayMetrics;
@@ -79,7 +82,9 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   private int cameraCurrentlyLocked;
   private Filter filter;
   private Camera.Size previewSize;
-  
+  private int surfaceWidth;
+  private int surfaceHeight;
+
   
   
   private static final int STATE_OFF = 0;
@@ -120,7 +125,52 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   
   
   
-  
+  private void startPreview() {
+	  if( state != STATE_OFF) {
+		  //Stop for a while to drain callbacks
+		  mCamera.setPreviewCallbackWithBuffer(null);
+		  mCamera.stopPreview();
+		  state = STATE_OFF;
+		  Handler h = new Handler();
+          Runnable mDelayedPreview = new Runnable() {
+              @Override
+              public void run() {
+                  startPreview();
+              }
+          };
+          h.postDelayed(mDelayedPreview, 300);
+		  return;		  
+	  }
+	  
+	  state = STATE_PREVIEW;
+	  
+	  Matrix transform = new Matrix();
+	  float widthRatio = previewSize.width / (float) surfaceWidth;
+	  float heightRatio = previewSize.height / (float) surfaceHeight;
+	  
+	  transform.setScale(1, heightRatio / widthRatio);
+	  transform.postTranslate(0,
+		surfaceHeight * (1 - heightRatio / widthRatio) / 2);
+		
+	  mTextureView.setTransform(transform);
+	  mTextureOverlay.setTransform(transform);
+	  
+	  mCamera.setPreviewCallbackWithBuffer(this);
+	  int expectedBytes = previewSize.width * previewSize.height *
+		ImageFormat.getBitPerPixel(ImageFormat.NV21) / 8;
+		
+	  for(int i =0; i < 4; i++){
+		  mCamera.addCallbackBuffer(new byte[expectedBytes]);
+		  
+	  }
+	  
+	  try {
+            mCamera.setPreviewTexture(surface);
+            mCamera.startPreview();				  
+	  }catch (IOException t){
+		  Log.i("IOException", t.getMessage());
+	  }
+  }
   
   
   
@@ -140,6 +190,8 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
         mTextureView.setLayoutParams(new RelativeLayout.LayoutParams(previewSize.width, previewSize.height));
         mTextureOverlay.setLayoutParams(new RelativeLayout.LayoutParams(previewSize.width, previewSize.height));
 		
+		surfaceWidth = width;
+		surfaceHeight = height;
 		
 		
 		Camera.Parameters parameters = mCamera.getParameters();
@@ -148,15 +200,11 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		mCamera.setParameters(parameters);		
 		
 
-        try
-        {
-            mCamera.setPreviewTexture(surface);
-            mCamera.startPreview();		
-        }
-        catch (IOException t)
-        {
-			Log.i("IOException", t.getMessage());
-        }
+		if(mCamera != null){
+			startPreview();
+		}
+		
+
 
 	}	
     @Override
