@@ -78,6 +78,15 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   private int numberOfCameras;
   private int cameraCurrentlyLocked;
   private Filter filter;
+  private Camera.Size previewSize;
+  
+  
+  
+  private static final int STATE_OFF = 0;
+  private static final int STATE_PREVIEW = 1;
+  private int state = STATE_OFF;
+  private boolean isProcessing = false;
+  
   
   // The first rear facing camera
   private int defaultCameraId;
@@ -127,7 +136,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
         mCamera = Camera.open();
 
-        Camera.Size previewSize = mCamera.getParameters().getPreviewSize();
+        previewSize = mCamera.getParameters().getPreviewSize();
         mTextureView.setLayoutParams(new RelativeLayout.LayoutParams(previewSize.width, previewSize.height));
         mTextureOverlay.setLayoutParams(new RelativeLayout.LayoutParams(previewSize.width, previewSize.height));
 		
