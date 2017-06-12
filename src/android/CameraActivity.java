@@ -221,7 +221,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		
 	}
     @Override
-    public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
+    public void onSurfaceTextureAvailable(SurfaceTexture s, int width, int height) {
         mCamera = Camera.open();
 
         previewSize = mCamera.getParameters().getPreviewSize();
@@ -230,7 +230,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		
 		surfaceWidth = width;
 		surfaceHeight = height;
-		
+		surface = s;
 		
 		Camera.Parameters parameters = mCamera.getParameters();
 		parameters.set("orientation", "portrait");
