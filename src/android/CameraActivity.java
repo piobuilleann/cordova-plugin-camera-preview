@@ -190,8 +190,8 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  transform.postTranslate(0,
 		surfaceHeight * (1 - heightRatio / widthRatio) / 2);
 		
-	  mTextureView.setTransform(transform);
-	  mTextureOverlay.setTransform(transform);
+	  //mTextureView.setTransform(transform);
+	  //mTextureOverlay.setTransform(transform);
 	  
 	  mCamera.setPreviewCallbackWithBuffer(this);
 	  int expectedBytes = previewSize.width * previewSize.height *
