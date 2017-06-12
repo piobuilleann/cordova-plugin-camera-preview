@@ -262,7 +262,11 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   
   
   
-
+	private void setUpCamera() {
+        if (surface != null) {
+            startPreview();
+		}		
+	}
   
   
   
@@ -430,6 +434,9 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   public void onResume() {
     super.onResume();
 
+	setUpCamera();
+	
+	
    /* mCamera = Camera.open(defaultCameraId);
 
     if (cameraParameters != null) {
