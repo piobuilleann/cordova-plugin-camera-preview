@@ -48,6 +48,13 @@ public class Filter implements TextureView.SurfaceTextureListener {
         }
     }
 
+	
+	/*
+	 *
+	 *		This is called in onPreviewFrame within CameraActivity.java
+	 *		it is fired when the filter is null OR if the camera size != the filter dimentions
+	 *
+	*/
     public void reset(int width, int height) {
         if (mAllocationOut != null) {
             mAllocationOut.destroy();
@@ -104,7 +111,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
     public void execute(byte[] yuv) {
         if (mHaveSurface) {
-            mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
+            /*mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
 
             if (blending == 0) {
                 mEffects.forEach_copy(mAllocationIn, mAllocationOut);
@@ -119,12 +126,9 @@ public class Filter implements TextureView.SurfaceTextureListener {
                 if (blending == 2) {
                     mEffects.forEach_blend(mAllocationOut, mAllocationOut);
                 }
-            }
-            //            mEffects.forEach_addhisto(mAllocationIn, mAllocationOut);
+            }*/
 
-            // hidden API
-            //mAllocationOut.ioSendOutput();
-            ioSendOutput(mAllocationOut);
+            ioSendOutput(yuv);
         }
     }
 
