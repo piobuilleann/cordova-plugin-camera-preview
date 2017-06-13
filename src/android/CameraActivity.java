@@ -196,7 +196,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  
 	  mCamera.setPreviewCallbackWithBuffer(this);
 	  int expectedBytes = previewSize.width * previewSize.height *
-		ImageFormat.getBitsPerPixel(ImageFormat.FLEX_RGBA_8888) / 8;
+		ImageFormat.getBitsPerPixel(ImageFormat.JPEG) / 8;
 		
 	  for(int i =0; i < 4; i++){
 		  mCamera.addCallbackBuffer(new byte[expectedBytes]);
@@ -235,7 +235,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		
 		Camera.Parameters parameters = mCamera.getParameters();
 		parameters.set("orientation", "portrait");
-		parameters.setPictureFormat(ImageFormat.FLEX_RGBA_8888);
+		parameters.setPictureFormat(ImageFormat.JPEG);
 		mCamera.setDisplayOrientation(90);
 		mCamera.setParameters(parameters);		
 		
