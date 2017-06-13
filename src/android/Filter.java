@@ -9,6 +9,8 @@ import android.renderscript.ScriptIntrinsicHistogram;
 import android.renderscript.Type;
 import android.view.TextureView;
 
+import android.renderscript.ScriptIntrinsicYuvToRGB;
+
 public class Filter implements TextureView.SurfaceTextureListener {
     private int mWidth;
     private int mHeight;
@@ -29,6 +31,13 @@ public class Filter implements TextureView.SurfaceTextureListener {
     private int[] histo;
     private int blending = 0;
 
+	
+	//
+	private ScriptIntrinsicYuvToRGB yuvToRgbScript;
+    private Allocation mAllocationRgb;
+	//
+	
+	
     public Filter(RenderScript rs) {
         mRS = rs;
         mEffects = new ScriptC_effects(mRS);
@@ -68,6 +77,19 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
         tb = new Type.Builder(mRS, Element.U8(mRS)).setX(mWidth).setY(mHeight);
         mAllocationIn = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
+
+		//
+        tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
+        mAllocationRgb = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
+		//
+		
+		
+		
+		
+		
+		
+		
+		
 
         tb = new Type.Builder(mRS, Element.F32(mRS)).setX(mWidth).setY(mHeight);
         mAllocationBlurred = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
