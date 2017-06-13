@@ -113,7 +113,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         if (mHaveSurface) {
             mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
 
-            if (blending == 0) {
+            /*if (blending == 0) {
                 mEffects.forEach_copy(mAllocationIn, mAllocationOut);
             } else {
                 mHistogram.forEach_Dot(mAllocationIn);
@@ -126,8 +126,9 @@ public class Filter implements TextureView.SurfaceTextureListener {
                 if (blending == 2) {
                     mEffects.forEach_blend(mAllocationOut, mAllocationOut);
                 }
-            }
+            }*/
 
+            mEffects.forEach_copy(mAllocationIn, mAllocationOut);
             ioSendOutput(mAllocationOut);
         }
     }
