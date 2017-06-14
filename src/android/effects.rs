@@ -56,7 +56,7 @@ uchar4 __attribute__((kernel)) addhisto(uchar in, uint32_t x, uint32_t y) {
 }
 
 uchar4 __attribute__((kernel)) copy(uchar in) {
-	uchar4 out = { in, in, in, in };
+	uchar4 out = { in, in, in, 255 };
 	return out;
 }
 
