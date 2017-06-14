@@ -42,6 +42,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mRS = rs;
         mEffects = new ScriptC_effects(mRS);
         mHistogram = ScriptIntrinsicHistogram.create(mRS, Element.U8(mRS));
+		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.RGBA_8888(mRS));
     }
 
     private void setupSurface() {
@@ -83,7 +84,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mAllocationRgb = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT  |
                 Allocation.USAGE_IO_OUTPUT);
 		
-		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.U8_4(mRS));
+		
 		
 		//
 		
