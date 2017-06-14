@@ -150,7 +150,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
                 }
             }*/
 
-            mEffects.forEach_copy(mAllocationIn, mAllocationOut);
+            mEffects.forEach(mAllocationIn, mAllocationOut);
             ioSendOutput(mAllocationOut);
         }
     }
