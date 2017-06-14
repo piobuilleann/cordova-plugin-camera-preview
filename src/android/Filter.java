@@ -80,7 +80,8 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
 		//
         tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
-        mAllocationRgb = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
+        mAllocationRgb = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT  |
+                Allocation.USAGE_IO_OUTPUT);
 		
 		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.RGBA_8888(mRS));
 		
@@ -156,7 +157,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			yuvToRgbScript.forEach(mAllocationRgb);
 			
             mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-            ioSendOutput(mAllocationOut);
+            ioSendOutput(mAllocationRgb);
         }
     }
 
