@@ -83,7 +83,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mAllocationRgb = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT  |
                 Allocation.USAGE_IO_OUTPUT);
 		
-		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.RGBA_8888(mRS));
+		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.U8_4(mRS));
 		
 		//
 		
