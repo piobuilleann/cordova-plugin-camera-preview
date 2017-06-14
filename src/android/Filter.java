@@ -75,7 +75,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
         Type.Builder tb;
 
-        tb = new Type.Builder(mRS, Element.YUV(mRS)).setX(mWidth).setY(mHeight);
+        tb = new Type.Builder(mRS, Element.U8(mRS)).setX(mWidth).setY(mHeight);
         mAllocationIn = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
 		//
