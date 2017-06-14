@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.ImageFormat;
+import android.graphics.PixelFormat;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
@@ -283,6 +284,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	
 	mTextureView = (TextureView) view.findViewById(getResources().getIdentifier("preview", "id", appResourcesPackage));
 	mTextureOverlay = (TextureView) view.findViewById(getResources().getIdentifier("overlay", "id", appResourcesPackage));
+	mTextureOverlay.setFormat(PixelFormat.RGBA_8888);
 	
 	filter = new Filter(RenderScript.create( getActivity() ));
 	
