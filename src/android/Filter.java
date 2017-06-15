@@ -155,7 +155,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
                 }
             }*/
 			yuvToRgbScript.setInput(mAllocationIn);
-			yuvToRgbScript.forEach(mAllocationRgb);
+			yuvToRgbScript.forEach(mAllocationIn);
 			
             //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
             ioSendOutput(mAllocationRgb);
