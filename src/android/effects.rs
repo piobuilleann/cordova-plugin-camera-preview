@@ -65,6 +65,29 @@ uchar4 __attribute__((kernel)) copy(uchar in) {
 	return out;
 }
 
+
+uchar4 __attribute__((kernel)) yuv_to_rgba(uint32_t x, uint32_t y) {
+    uint32_t index = y * width + x;
+    uint32_t uv_index = (y >> 1) * width + (x >> 1);
+    float Y = (float)rsGetElementAt_uchar(yuv_in, index);
+    float U = (float)rsGetElementAt_uchar(yuv_in, uv_index + offset_to_u);
+    float V = (float)rsGetElementAt_uchar(yuv_in, uv_index + offset_to_v);
+    float3 f_out;
+    f_out.r = Y + 1.403f * V;
+    f_out.g = Y - 0.344f * U - 0.714f * V;
+    f_out.b = Y + 1.770f * U;
+    f_out = clamp(f_out, 0.f, 255.f);
+    uchar4 out;
+    out.rgb = convert_uchar3(f_out);
+    out.a = 255;
+    return out;	
+}
+
+
+
+
+
+
 uchar4 __attribute__((kernel)) blend(uchar4 in, uint32_t x, uint32_t y) {
 	uchar r = rsGetElementAt_uchar(raw, x, y);
 	uchar4 out = { r, r, r, 255 };

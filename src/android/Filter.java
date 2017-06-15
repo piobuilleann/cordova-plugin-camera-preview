@@ -155,17 +155,17 @@ public class Filter implements TextureView.SurfaceTextureListener {
                 }
             }*/
 			
-			yuvToRgbScript.setInput(mAllocationIn);
-			yuvToRgbScript.forEach(mAllocationRgb);
+			//yuvToRgbScript.setInput(mAllocationIn);
+			//yuvToRgbScript.forEach(mAllocationRgb);
 			
 			mAllocationIn.copyFrom(yuv);
 			mEffects.set_yuv_in(mAllocationIn);
 			mEffects.set_width(mWidth);
 			mEffects.set_offset_to_u(mWidth * mHeight);
 			mEffects.set_offset_to_v( (mWidth * mHeight) + ( (mWidth/2) * (mHeight/2) ) );
-			
+			mEffects.forEach_yuv_to_rba(mAllocationOut);
             //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-            ioSendOutput(mAllocationRgb);
+            ioSendOutput(mAllocationOut);
         }
     }
 
