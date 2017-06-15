@@ -2,6 +2,11 @@
 #pragma rs java_package_name(com.cordovaplugincamerapreview)
 #pragma rs_fp_relaxed
 
+rs_allocation yuv_in;
+uint32_t width;
+uint32_t offset_to_u;
+uint32_t offset_to_v;
+
 static rs_allocation raw, magnitude, blurred, direction, candidates;
 static float low, high;
 static const uint32_t zero = 0;

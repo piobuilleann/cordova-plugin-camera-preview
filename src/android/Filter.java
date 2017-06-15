@@ -76,7 +76,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
         Type.Builder tb;
 
-        tb = new Type.Builder(mRS, Element.U8(mRS)).setX(mWidth).setY(mHeight);
+        tb = new Type.Builder(mRS, Element.YUV(mRS)).setX(mWidth).setY(mHeight);
         mAllocationIn = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
 		//
@@ -138,7 +138,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
     public void execute(byte[] yuv) {
         if (mHaveSurface) {
-            mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
+            //mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
 
             /*if (blending == 0) {
                 mEffects.forEach_copy(mAllocationIn, mAllocationOut);
@@ -154,8 +154,15 @@ public class Filter implements TextureView.SurfaceTextureListener {
                     mEffects.forEach_blend(mAllocationOut, mAllocationOut);
                 }
             }*/
+			
 			yuvToRgbScript.setInput(mAllocationIn);
-			yuvToRgbScript.forEach(mAllocationIn);
+			yuvToRgbScript.forEach(mAllocationRgb);
+			
+			mAllocationIn.copyFrom(yuv);
+			mEffects.set_yuv_in(mAllocationIn);
+			mEffects.set_width(mWidth);
+			mEffects.set_offset_to_u(mWidth * mHeight);
+			mEffects.set_offset_to_v( (mWidth * mHeight) + ( (mWidth/2) * (mHeight/2) ) );
 			
             //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
             ioSendOutput(mAllocationRgb);
