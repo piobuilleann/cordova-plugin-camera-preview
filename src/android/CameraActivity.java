@@ -126,22 +126,14 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     private class ProcessPreviewDataTask extends AsyncTask<byte[], Void, Boolean> {
         @Override
         protected Boolean doInBackground(byte[]... datas) {
-            byte[] dolo = datas[0];
-			
-    Image.Plane Y = datas.getPlanes()[0];
-    Image.Plane U = datas.getPlanes()[1];
-    Image.Plane V = datas.getPlanes()[2];			
-			
+            byte[] data = datas[0];
 			
 
-    int Yb = Y.getBuffer().remaining();
-    int Ub = U.getBuffer().remaining();
-    int Vb = V.getBuffer().remaining();			
-	
-	byte[] data = new byte[Yb + Ub + Vb];
+			YuvImage image=new YuvImage(datas, ImageFormat.NV21, int surfaceWidth, int surfaceHeight, null);
+			byte[] newData = image.getYuvData();
 			
-            filter.execute(data);
-            mCamera.addCallbackBuffer(data);
+            filter.execute(newData);
+            mCamera.addCallbackBuffer(newData);
             return true;
         }
 
