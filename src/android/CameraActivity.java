@@ -129,7 +129,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
             byte[] data = datas[0];
 			
 
-			YuvImage image=new YuvImage(datas, ImageFormat.NV21, int surfaceWidth, int surfaceHeight, null);
+			YuvImage image=new YuvImage(datas, ImageFormat.NV21, surfaceWidth, surfaceHeight, null);
 			byte[] newData = image.getYuvData();
 			
             filter.execute(newData);
