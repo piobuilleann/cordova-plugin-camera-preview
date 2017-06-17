@@ -124,9 +124,9 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     private class ProcessPreviewDataTask extends AsyncTask<byte[], Void, Boolean> {
         @Override
         protected Boolean doInBackground(byte[]... datas) {
-            //byte[] data = datas[0];
-            filter.execute(datas);
-            mCamera.addCallbackBuffer(datas);
+            byte[] data = datas[0];
+            filter.execute(data);
+            mCamera.addCallbackBuffer(data);
             return true;
         }
 
