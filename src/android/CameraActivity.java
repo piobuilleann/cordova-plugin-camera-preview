@@ -21,6 +21,8 @@ import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
+import android.media.Image;
+import android.media.Image.Plane;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -124,7 +126,20 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     private class ProcessPreviewDataTask extends AsyncTask<byte[], Void, Boolean> {
         @Override
         protected Boolean doInBackground(byte[]... datas) {
-            byte[] data = datas;
+            //byte[] data = datas[0];
+			
+    Image.Plane Y = datas[0].getPlanes()[0];
+    Image.Plane U = datas[0].getPlanes()[1];
+    Image.Plane V = datas[0].getPlanes()[2];			
+			
+			
+
+    int Yb = Y.getBuffer().remaining();
+    int Ub = U.getBuffer().remaining();
+    int Vb = V.getBuffer().remaining();			
+	
+	byte[] data = new byte[Yb + Ub + Vb];
+			
             filter.execute(data);
             mCamera.addCallbackBuffer(data);
             return true;
