@@ -126,11 +126,11 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
     private class ProcessPreviewDataTask extends AsyncTask<byte[], Void, Boolean> {
         @Override
         protected Boolean doInBackground(byte[]... datas) {
-            //byte[] data = datas[0];
+            byte[] dolo = datas[0];
 			
-    Image.Plane Y = datas[0].getPlanes()[0];
-    Image.Plane U = datas[0].getPlanes()[1];
-    Image.Plane V = datas[0].getPlanes()[2];			
+    Image.Plane Y = dolo.getPlanes()[0];
+    Image.Plane U = dolo.getPlanes()[1];
+    Image.Plane V = dolo.getPlanes()[2];			
 			
 			
 
