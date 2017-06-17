@@ -128,9 +128,9 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
         protected Boolean doInBackground(byte[]... datas) {
             byte[] dolo = datas[0];
 			
-    Image.Plane Y = dolo.getPlanes()[0];
-    Image.Plane U = dolo.getPlanes()[1];
-    Image.Plane V = dolo.getPlanes()[2];			
+    Image.Plane Y = datas.getPlanes()[0];
+    Image.Plane U = datas.getPlanes()[1];
+    Image.Plane V = datas.getPlanes()[2];			
 			
 			
 
