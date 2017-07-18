@@ -113,13 +113,13 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
         setupSurface();
 
-        /*mHistogram.setOutput(mAllocationHistogram);
+        mHistogram.setOutput(mAllocationHistogram);
         mEffects.invoke_set_histogram(mAllocationHistogram);
         mEffects.invoke_set_blur_input(mAllocationIn);
         mEffects.invoke_set_compute_gradient_input(mAllocationBlurred);
         mEffects.invoke_set_suppress_input(mAllocationMagnitude, mAllocationDirection);
         mEffects.invoke_set_hysteresis_input(mAllocationEdge);
-        mEffects.invoke_set_thresholds(0.2f, 0.6f);*/
+        mEffects.invoke_set_thresholds(0.2f, 0.6f);
 
         sc = new LaunchOptions();
         sc.setX(2, mWidth - 3);
