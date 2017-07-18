@@ -79,23 +79,6 @@ public class Filter implements TextureView.SurfaceTextureListener {
         tb = new Type.Builder(mRS, Element.U8(mRS)).setX(mWidth).setY(mHeight);
         mAllocationIn = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
-		//
-        tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
-        mAllocationRgb = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT  |
-                Allocation.USAGE_IO_OUTPUT);
-		
-		
-		
-		//
-		
-		
-		
-		
-		
-		
-		
-		
-
         tb = new Type.Builder(mRS, Element.F32(mRS)).setX(mWidth).setY(mHeight);
         mAllocationBlurred = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
         mAllocationMagnitude = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
@@ -138,7 +121,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
     public void execute(byte[] yuv) {
         if (mHaveSurface) {
-            //mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
+            mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
 
             if (blending == 0) {
                 mEffects.forEach_copy(mAllocationIn, mAllocationOut);
