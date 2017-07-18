@@ -165,7 +165,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			mEffects.set_offset_to_v( (mWidth * mHeight) + ( (mWidth/2) * (mHeight/2) ) );
 			mEffects.forEach_yuv_to_rgba(mAllocationOut);
             //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-            ioSendOutput(mAllocationOut);
+            ioSendOutput(mAllocationIn);
         }
     }
 
