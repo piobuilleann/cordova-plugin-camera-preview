@@ -243,7 +243,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		
 		Camera.Parameters parameters = mCamera.getParameters();
 		parameters.set("orientation", "portrait");
-		parameters.setPictureFormat(ImageFormat.JPEG);
+		parameters.setPictureFormat(ImageFormat.NV21);
 		mCamera.setDisplayOrientation(90);
 		mCamera.setParameters(parameters);		
 		
