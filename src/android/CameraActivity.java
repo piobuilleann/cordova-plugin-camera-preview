@@ -132,8 +132,8 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 			//YuvImage image=new YuvImage(data, ImageFormat.NV21, surfaceWidth, surfaceHeight, null);
 			//byte[] newData = image.getYuvData();
 			
-            filter.execute(newData);
-            mCamera.addCallbackBuffer(newData);
+            filter.execute(data);
+            mCamera.addCallbackBuffer(data);
             return true;
         }
 
