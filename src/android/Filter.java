@@ -140,7 +140,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         if (mHaveSurface) {
             //mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
 
-            /*if (blending == 0) {
+            if (blending == 0) {
                 mEffects.forEach_copy(mAllocationIn, mAllocationOut);
             } else {
                 mHistogram.forEach_Dot(mAllocationIn);
@@ -153,19 +153,19 @@ public class Filter implements TextureView.SurfaceTextureListener {
                 if (blending == 2) {
                     mEffects.forEach_blend(mAllocationOut, mAllocationOut);
                 }
-            }*/
+            }
 			
 			//yuvToRgbScript.setInput(mAllocationIn);
 			//yuvToRgbScript.forEach(mAllocationRgb);
 			
-			mAllocationIn.copyFrom(yuv);
+			/*mAllocationIn.copyFrom(yuv);
 			mEffects.set_yuv_in(mAllocationIn);
 			mEffects.set_width(mWidth);
 			mEffects.set_offset_to_u(mWidth * mHeight);
 			mEffects.set_offset_to_v( (mWidth * mHeight) + ( (mWidth/2) * (mHeight/2) ) );
 			mEffects.forEach_yuv_to_rgba(mAllocationOut);
-            //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-            ioSendOutput(mAllocationIn);
+            //mEffects.forEach_copy(mAllocationIn, mAllocationOut);*/
+            ioSendOutput(mAllocationOut);
         }
     }
 
