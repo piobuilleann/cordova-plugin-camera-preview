@@ -133,7 +133,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 			//byte[] newData = image.getYuvData();
 			
             filter.execute(data);
-            mCamera.addCallbackBuffer(data);
+            mCamera.addCallbackBuffer(datas);
             return true;
         }
 
@@ -189,7 +189,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  }
 	  
 	  state = STATE_PREVIEW;
-	  
+	  /*
 	  Matrix transform = new Matrix();
 	  float widthRatio = previewSize.width / (float) surfaceWidth;
 	  float heightRatio = previewSize.height / (float) surfaceHeight;
@@ -198,9 +198,9 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  transform.postTranslate(0,
 		surfaceHeight * (1 - heightRatio / widthRatio) / 2);
 		
-	  mTextureView.setTransform(transform);
-	  mTextureOverlay.setTransform(transform);
-	  
+	  //mTextureView.setTransform(transform);
+	  //mTextureOverlay.setTransform(transform);
+	  */
 	  
 	  mCamera.setPreviewCallbackWithBuffer(this);
 	  int expectedBytes = previewSize.width * previewSize.height *
