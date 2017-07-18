@@ -133,7 +133,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 			//byte[] newData = image.getYuvData();
 			
             filter.execute(data);
-            mCamera.addCallbackBuffer(datas);
+            mCamera.addCallbackBuffer(data);
             return true;
         }
 
@@ -243,7 +243,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		
 		Camera.Parameters parameters = mCamera.getParameters();
 		parameters.set("orientation", "portrait");
-		//parameters.setPictureFormat(ImageFormat.JPEG);
+		parameters.setPictureFormat(ImageFormat.JPEG);
 		mCamera.setDisplayOrientation(90);
 		mCamera.setParameters(parameters);		
 		
