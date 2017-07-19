@@ -16,15 +16,18 @@
     android:id="@+id/frame_camera_cont"
     android:layout_gravity="center_horizontal|top">
 
-   <TextureView
-      android:id="@+id/preview"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent" />
-	  
-   <TextureView
-      android:id="@+id/overlay"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent" />
+	
+		<TextureView
+		  android:id="@+id/overlay"
+		  android:layout_width="match_parent"
+		  android:layout_height="match_parent" />	
+	
+	   <TextureView
+		  android:id="@+id/preview"
+		  android:layout_width="match_parent"
+		  android:layout_height="match_parent" />
+		  
+	   
 
   </RelativeLayout>
 
