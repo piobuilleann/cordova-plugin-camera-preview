@@ -147,7 +147,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
   
   
 	@Override
-	public void onPreviewFrame(byte[] data, Camera c) {
+	public void onPreviewFrame(byte[]... data, Camera c) {
         if (isProcessing || state != STATE_PREVIEW) {
             mCamera.addCallbackBuffer(data);
             return;
