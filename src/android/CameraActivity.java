@@ -165,9 +165,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
             filter.reset(previewSize.width, previewSize.height);
         }
 
-        mCamera.addCallbackBuffer(data);
-		//new ProcessPreviewDataTask().execute(data);		
-		
+		new ProcessPreviewDataTask().execute(data);		
 	}
   
   
