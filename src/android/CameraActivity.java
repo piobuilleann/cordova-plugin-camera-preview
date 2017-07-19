@@ -168,8 +168,9 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		//new ProcessPreviewDataTask().execute(data);		
 		
 		//
-		filter.execute(data[0]);
-        mCamera.addCallbackBuffer(data[0]);		
+		byte[] datas = data[0];
+		filter.execute( datas );
+        mCamera.addCallbackBuffer( datas );		
 		//
 	}
   
