@@ -207,7 +207,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		ImageFormat.getBitsPerPixel(ImageFormat.NV21) / 8;
 		
 	  for(int i =0; i < 4; i++){
-		  //mCamera.addCallbackBuffer(new byte[expectedBytes]);
+		  mCamera.addCallbackBuffer(new byte[expectedBytes]);
 	  }
 	  
 	  try {
