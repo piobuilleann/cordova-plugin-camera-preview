@@ -204,7 +204,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  
 	  mCamera.setPreviewCallbackWithBuffer(this);
 	  int expectedBytes = previewSize.width * previewSize.height *
-		 ImageFormat.getBitsPerPixel(ImageFormat.NV21) / 12 ;
+		 ImageFormat.getBitsPerPixel(ImageFormat.NV21) / 7 ;
 		
 	  for(int i =0; i < 4; i++){
 		  mCamera.addCallbackBuffer(new byte[expectedBytes]);
