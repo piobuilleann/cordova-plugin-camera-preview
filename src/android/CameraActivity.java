@@ -189,7 +189,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  }
 	  
 	  state = STATE_PREVIEW;
-	  /*
+	  /*	  */
 	  Matrix transform = new Matrix();
 	  float widthRatio = previewSize.width / (float) surfaceWidth;
 	  float heightRatio = previewSize.height / (float) surfaceHeight;
@@ -198,9 +198,8 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  transform.postTranslate(0,
 		surfaceHeight * (1 - heightRatio / widthRatio) / 2);
 		
-	  //mTextureView.setTransform(transform);
-	  //mTextureOverlay.setTransform(transform);
-	  */
+	  mTextureView.setTransform(transform);
+	  mTextureOverlay.setTransform(transform);
 	  
 	  mCamera.setPreviewCallbackWithBuffer(this);
 	  int expectedBytes = previewSize.width * previewSize.height *
@@ -244,7 +243,7 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 		parameters.set("orientation", "portrait");
 		parameters.setPreviewFormat(ImageFormat.NV21);
 		//parameters.setPictureFormat(17);
-		mCamera.setDisplayOrientation(180);
+		mCamera.setDisplayOrientation(90);
 		mCamera.setParameters(parameters);		
 		
 
