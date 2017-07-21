@@ -79,7 +79,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         tb = new Type.Builder(mRS, Element.U8(mRS)).setX(mWidth).setY(mHeight);
         mAllocationIn = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
-        tb = new Type.Builder(mRS, Element.F32(mRS)).setX(mWidth).setY(mHeight);
+       /* tb = new Type.Builder(mRS, Element.F32(mRS)).setX(mWidth).setY(mHeight);
         mAllocationBlurred = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
         mAllocationMagnitude = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
@@ -89,12 +89,13 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
         tb = new Type.Builder(mRS, Element.I32(mRS)).setX(256);
         mAllocationHistogram = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
-
+		*/
+		
         tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
         mAllocationOut = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT |
                 Allocation.USAGE_IO_OUTPUT);
 
-        setupSurface();
+        /*setupSurface();
 
         mHistogram.setOutput(mAllocationHistogram);
         mEffects.invoke_set_histogram(mAllocationHistogram);
@@ -103,12 +104,12 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mEffects.invoke_set_suppress_input(mAllocationMagnitude, mAllocationDirection);
         mEffects.invoke_set_hysteresis_input(mAllocationEdge);
         mEffects.invoke_set_thresholds(0.2f, 0.6f);
-
         sc = new LaunchOptions();
         sc.setX(2, mWidth - 3);
         sc.setY(2, mHeight - 3);
 
         histo = new int[256];
+		*/
     }
 
     public int getWidth() {
@@ -121,14 +122,14 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
     public void execute(byte[] yuv) {
         if (mHaveSurface) {
-            //mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
+            mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
+            mEffects.forEach_copy(mAllocationIn, mAllocationOut);
 
             if (blending == 0) {
-                //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-				mAllocationIn.copyFrom(yuv);
-				mAllocationOut.copyFrom(mAllocationIn);
+				//mAllocationIn.copyFrom(yuv);
+				//mAllocationOut.copyFrom(mAllocationIn);
             } else {
-                mHistogram.forEach_Dot(mAllocationIn);
+               /* mHistogram.forEach_Dot(mAllocationIn);
                 mAllocationHistogram.copyTo(histo);
                 setThresholds();
                 mEffects.forEach_blur(mAllocationBlurred, sc);
@@ -137,7 +138,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
                 mEffects.forEach_hysteresis(mAllocationOut, sc);
                 if (blending == 2) {
                     mEffects.forEach_blend(mAllocationOut, mAllocationOut);
-                }
+                }*/
             }
 			
 			//yuvToRgbScript.setInput(mAllocationIn);
@@ -209,6 +210,6 @@ public class Filter implements TextureView.SurfaceTextureListener {
     }
 
     public void toggleBlending() {
-        blending = (blending + 1) % 3;
+       // blending = (blending + 1) % 3;
     }
 }
