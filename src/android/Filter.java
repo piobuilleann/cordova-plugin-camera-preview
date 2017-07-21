@@ -121,11 +121,11 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
     public void execute(byte[] yuv) {
         if (mHaveSurface) {
-            mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
+            //mAllocationIn.copy1DRangeFrom(0, mSize, yuv);
 
             if (blending == 0) {
                 //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-				mAllocationOut.copyFrom(mAllocationIn);
+				mAllocationIn.copyFrom(yuv);
 				//mAllocationOut.copyFrom(mAllocationIn);
             } else {
                 mHistogram.forEach_Dot(mAllocationIn);
