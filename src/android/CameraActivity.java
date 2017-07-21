@@ -195,8 +195,8 @@ public class CameraActivity extends Fragment implements TextureView.SurfaceTextu
 	  float heightRatio = previewSize.height / (float) surfaceHeight;
 	  
 	  transform.setScale(1, heightRatio / widthRatio);
-	  transform.postTranslate(0,
-		surfaceHeight * (1 - heightRatio / widthRatio) / 2);
+	  transform.postTranslate(90,
+		surfaceHeight * (1 - heightRatio / widthRatio) );
 		
 	  mTextureView.setTransform(transform);
 	  mTextureOverlay.setTransform(transform);
