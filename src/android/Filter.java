@@ -79,7 +79,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
 		yuvToRgbIntrinsic = ScriptIntrinsicYuvToRGB.create(mRS, Element.U8_4(mRS));
 		
-        tb = new Type.Builder(mRS, Element.U8(mRS)).setX(mWidth).setY(mHeight);
+        tb = new Type.Builder(mRS, Element.U8_4(mRS)).setX(mWidth).setY(mHeight);
         mAllocationIn = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
        /* tb = new Type.Builder(mRS, Element.F32(mRS)).setX(mWidth).setY(mHeight);
