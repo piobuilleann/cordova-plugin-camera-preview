@@ -125,8 +125,8 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
             if (blending == 0) {
                 //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-				mAllocationOut.copyFrom(yuv);
-				//mAllocationOut.copyFrom(mAllocationIn);
+				mAllocationIn.copyFrom(yuv);
+				mAllocationOut.copyFrom(mAllocationIn);
             } else {
                 mHistogram.forEach_Dot(mAllocationIn);
                 mAllocationHistogram.copyTo(histo);
