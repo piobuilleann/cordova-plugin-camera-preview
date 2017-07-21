@@ -1,5 +1,6 @@
 package com.cordovaplugincamerapreview;
 
+import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
@@ -80,7 +81,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 		yuvToRgbIntrinsic = ScriptIntrinsicYuvToRGB.create(mRS, Element.U8_4(mRS));
 		
         tb = new Type.Builder(mRS, Element.createPixel(mRS, 
-              Element.DataType.UNSIGNED_8, Element.DataKind.PIXEL_YUV)).setX(mWidth).setY(mHeight);
+              Element.DataType.UNSIGNED_8, Element.DataKind.PIXEL_YUV)).setX(mWidth).setY(mHeight).setYuvFormat(ImageFormat.NV21);
         mAllocationIn = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
        /* tb = new Type.Builder(mRS, Element.F32(mRS)).setX(mWidth).setY(mHeight);
