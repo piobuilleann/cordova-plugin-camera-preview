@@ -210,6 +210,6 @@ public class Filter implements TextureView.SurfaceTextureListener {
     }
 
     public void toggleBlending() {
-       // blending = (blending + 1) % 3;
+        blending = (blending + 1) % 3;
     }
 }
