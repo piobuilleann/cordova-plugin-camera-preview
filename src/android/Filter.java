@@ -95,7 +95,8 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mAllocationOut = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT |
                 Allocation.USAGE_IO_OUTPUT);
 
-        /*setupSurface();
+		setupSurface();
+        /*
 
         mHistogram.setOutput(mAllocationHistogram);
         mEffects.invoke_set_histogram(mAllocationHistogram);
