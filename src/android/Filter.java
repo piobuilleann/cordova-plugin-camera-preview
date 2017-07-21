@@ -27,6 +27,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
     private SurfaceTexture mSurface;
     private LaunchOptions sc;
     private ScriptIntrinsicHistogram mHistogram;
+    private ScriptIntrinsicYuvToRGB yuvToRgbIntrinsic ;
     private Allocation mAllocationHistogram;
     private int[] histo;
     private int blending = 0;
@@ -76,6 +77,8 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
         Type.Builder tb;
 
+		yuvToRgbIntrinsic = ScriptIntrinsicYuvToRGB.create(rs, Element.U8_4(mRS));
+		
         tb = new Type.Builder(mRS, Element.U8(mRS)).setX(mWidth).setY(mHeight);
         mAllocationIn = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
@@ -147,12 +150,18 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			//yuvToRgbScript.forEach(mAllocationRgb);
 			
 			mAllocationIn.copyFrom(yuv);
+			
+			yuvToRgbIntrinsic.setInput(mAllocationIn);
+			yuvToRgbIntrinsic.forEach(mAllocationOut);
+			
+			
+			/*
+			mAllocationIn.copyFrom(yuv);
 			mEffects.set_yuv_in(mAllocationIn);
 			mEffects.set_width(mWidth);
 			mEffects.set_offset_to_u(mWidth * mHeight);
 			mEffects.set_offset_to_v( (mWidth * mHeight) + ( (mWidth/2) * (mHeight/2) ) );
 			mEffects.forEach_yuv_to_rgba(mAllocationOut);
-			/*
 			*/
             //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
             ioSendOutput(mAllocationOut);
