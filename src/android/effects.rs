@@ -1,6 +1,7 @@
 #pragma version(1)
 #pragma rs java_package_name(com.cordovaplugincamerapreview)
 #pragma rs_fp_relaxed
+\#include "rs_debug.rsh" 
 
 rs_allocation yuv_in;
 rs_allocation kmeans_in;
@@ -252,9 +253,9 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 	return black;
 }
 
-uchar4 __attribute__((kernel)) kMeans(uint32_t x, uint32_t y) {
+uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	//uchar4 result;
-	
-	return kmeans_in;
+
+	rsDebug("x: ", x);
 }
 
