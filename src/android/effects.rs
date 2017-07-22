@@ -257,8 +257,9 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	//uchar4 result;
 	
-	float pixel = getElementAt_uchar_to_float(in, x, y);
-	rsDebug("pixel: ", pixel);
+	//float pixel = getElementAt_uchar_to_float(in, x, y);
+	float4 f4 = rsUnpackColor8888(in);
+	rsDebug("float4: ", float4);
 	
 	return mAllocationTest;
 }
