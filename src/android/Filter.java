@@ -97,6 +97,9 @@ public class Filter implements TextureView.SurfaceTextureListener {
 		*/
 		
         tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
+        mAllocationKmeans = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
+
+		tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
         mAllocationOut = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT |
                 Allocation.USAGE_IO_OUTPUT);
 
@@ -110,12 +113,12 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mEffects.invoke_set_suppress_input(mAllocationMagnitude, mAllocationDirection);
         mEffects.invoke_set_hysteresis_input(mAllocationEdge);
         mEffects.invoke_set_thresholds(0.2f, 0.6f);
-        sc = new LaunchOptions();
-        sc.setX(2, mWidth - 3);
-        sc.setY(2, mHeight - 3);
 
         histo = new int[256];
 		*/
+        sc = new LaunchOptions();
+        sc.setX(2, mWidth - 3);
+        sc.setY(2, mHeight - 3);
     }
 
     public int getWidth() {
@@ -154,7 +157,10 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			mAllocationIn.copyFrom(yuv);
 			
 			yuvToRgbIntrinsic.setInput(mAllocationIn);
-			yuvToRgbIntrinsic.forEach(mAllocationOut);
+			yuvToRgbIntrinsic.forEach(mAllocationKmeans);
+			
+			mEffects.set_kmeans_in(mAllocationKmeans);
+			mEffects.forEach_kMeans(mAllocationOut, sc);
 			
 			
 			/*

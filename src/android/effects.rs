@@ -3,6 +3,8 @@
 #pragma rs_fp_relaxed
 
 rs_allocation yuv_in;
+rs_allocation kmeans_in;
+
 uint32_t width;
 uint32_t offset_to_u;
 uint32_t offset_to_v;
@@ -248,5 +250,43 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 		}
 	}
 	return black;
+}
+
+uchar4 __attribute__((kernel)) kMeans(uint32_t x, uint32_t y) {
+	float pixel = 0;
+
+	pixel += 2 * getElementAt_uchar_to_float(kmeans_in, x - 2, y - 2);
+	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x - 1, y - 2);
+	pixel += 5 * getElementAt_uchar_to_float(kmeans_in, x, y - 2);
+	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x + 1, y - 2);
+	pixel += 2 * getElementAt_uchar_to_float(kmeans_in, x + 2, y - 2);
+
+	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x - 2, y - 1);
+	pixel += 9 * getElementAt_uchar_to_float(kmeans_in, x - 1, y - 1);
+	pixel += 12 * getElementAt_uchar_to_float(kmeans_in, x, y - 1);
+	pixel += 9 * getElementAt_uchar_to_float(kmeans_in, x + 1, y - 1);
+	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x + 2, y - 1);
+
+	pixel += 5 * getElementAt_uchar_to_float(kmeans_in, x - 2, y);
+	pixel += 12 * getElementAt_uchar_to_float(kmeans_in, x - 1, y);
+	pixel += 15 * getElementAt_uchar_to_float(kmeans_in, x, y);
+	pixel += 12 * getElementAt_uchar_to_float(kmeans_in, x + 1, y);
+	pixel += 5 * getElementAt_uchar_to_float(kmeans_in, x + 2, y);
+
+	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x - 2, y + 1);
+	pixel += 9 * getElementAt_uchar_to_float(kmeans_in, x - 1, y + 1);
+	pixel += 12 * getElementAt_uchar_to_float(kmeans_in, x, y + 1);
+	pixel += 9 * getElementAt_uchar_to_float(kmeans_in, x + 1, y + 1);
+	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x + 2, y + 1);
+
+	pixel += 2 * getElementAt_uchar_to_float(kmeans_in, x - 2, y + 2);
+	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x - 1, y + 2);
+	pixel += 5 * getElementAt_uchar_to_float(kmeans_in, x, y + 2);
+	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x + 1, y + 2);
+	pixel += 2 * getElementAt_uchar_to_float(kmeans_in, x + 2, y + 2);
+
+	pixel /= 159;
+
+	return pixel;
 }
 
