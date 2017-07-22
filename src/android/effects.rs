@@ -253,7 +253,7 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 }
 
 uchar4 __attribute__((kernel)) kMeans(uint32_t x, uint32_t y) {
-	uchar4 result;
+	//uchar4 result;
 	
 	return kmeans_in;
 }
