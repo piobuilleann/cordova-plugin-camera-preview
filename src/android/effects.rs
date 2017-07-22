@@ -265,8 +265,9 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    
    //Get item from input allocation  
    modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
+	rsDebug("float4: ", modifiedData);
    
-   uchar addVal = 10;  
+  /* uchar addVal = 10;  
    //Increment all values by addVal  
    modifiedData.w += addVal;  
    modifiedData.x += addVal;  
@@ -274,10 +275,9 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    modifiedData.z += addVal;  
    
    //Place modified data in output allocation  
-   rsSetElementAt_uchar4(mAllocationTest, modifiedData, x, y);  	
+   rsSetElementAt_uchar4(mAllocationTest, modifiedData, x, y);  	*/
 	
 	
-	rsDebug("float4: ", in);
 	
 	//return mAllocationTest;
 }
