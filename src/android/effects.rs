@@ -267,15 +267,15 @@ void kMeans(uchar4 in, uchar4* out, uint32_t x, uint32_t y) {
    modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
 	rsDebug("float4: ", modifiedData);
    
-  /* uchar addVal = 10;  
+   uchar addVal = 0;  
    //Increment all values by addVal  
-   modifiedData.w += addVal;  
-   modifiedData.x += addVal;  
-   modifiedData.y += addVal;  
-   modifiedData.z += addVal;  
+   modifiedData.r += addVal;  
+   modifiedData.g += addVal;  
+   modifiedData.b += addVal;  
+   modifiedData.a += addVal;  
    
    //Place modified data in output allocation  
-   rsSetElementAt_uchar4(mAllocationTest, modifiedData, x, y);  	*/
+   rsSetElementAt_uchar4(mAllocationTest, modifiedData, x, y);  	
 	
 	
 	
