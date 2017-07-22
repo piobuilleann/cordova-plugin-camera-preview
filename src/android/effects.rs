@@ -261,6 +261,6 @@ uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	float4 f4 = rsUnpackColor8888(in);
 	rsDebug("float4: ", f4);
 	
-	return mAllocationTest;
+	//return mAllocationTest;
 }
 
