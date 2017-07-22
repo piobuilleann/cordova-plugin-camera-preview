@@ -97,7 +97,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mAllocationHistogram = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 		*/
 		
-        tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
+        tb = new Type.Builder(mRS, Element.I32(mRS)).setX(mWidth).setY(mHeight);
         mAllocationKmeans = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
 		tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
