@@ -253,40 +253,8 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 }
 
 uchar4 __attribute__((kernel)) kMeans(uint32_t x, uint32_t y) {
-	float pixel = 0;
-
-	pixel += 2 * getElementAt_uchar_to_float(kmeans_in, x - 2, y - 2);
-	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x - 1, y - 2);
-	pixel += 5 * getElementAt_uchar_to_float(kmeans_in, x, y - 2);
-	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x + 1, y - 2);
-	pixel += 2 * getElementAt_uchar_to_float(kmeans_in, x + 2, y - 2);
-
-	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x - 2, y - 1);
-	pixel += 9 * getElementAt_uchar_to_float(kmeans_in, x - 1, y - 1);
-	pixel += 12 * getElementAt_uchar_to_float(kmeans_in, x, y - 1);
-	pixel += 9 * getElementAt_uchar_to_float(kmeans_in, x + 1, y - 1);
-	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x + 2, y - 1);
-
-	pixel += 5 * getElementAt_uchar_to_float(kmeans_in, x - 2, y);
-	pixel += 12 * getElementAt_uchar_to_float(kmeans_in, x - 1, y);
-	pixel += 15 * getElementAt_uchar_to_float(kmeans_in, x, y);
-	pixel += 12 * getElementAt_uchar_to_float(kmeans_in, x + 1, y);
-	pixel += 5 * getElementAt_uchar_to_float(kmeans_in, x + 2, y);
-
-	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x - 2, y + 1);
-	pixel += 9 * getElementAt_uchar_to_float(kmeans_in, x - 1, y + 1);
-	pixel += 12 * getElementAt_uchar_to_float(kmeans_in, x, y + 1);
-	pixel += 9 * getElementAt_uchar_to_float(kmeans_in, x + 1, y + 1);
-	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x + 2, y + 1);
-
-	pixel += 2 * getElementAt_uchar_to_float(kmeans_in, x - 2, y + 2);
-	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x - 1, y + 2);
-	pixel += 5 * getElementAt_uchar_to_float(kmeans_in, x, y + 2);
-	pixel += 4 * getElementAt_uchar_to_float(kmeans_in, x + 1, y + 2);
-	pixel += 2 * getElementAt_uchar_to_float(kmeans_in, x + 2, y + 2);
-
-	pixel /= 159;
-
-	return pixel;
+	uchar4 result;
+	
+	return kmeans_in;
 }
 
