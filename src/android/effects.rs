@@ -258,7 +258,7 @@ uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	//uchar4 result;
 	
 	//float pixel = getElementAt_uchar_to_float(in, x, y);
-	float4 f4 = (char4)convert_char4(in);
+	uchar4 f4 = convert_char4(in);
 	rsDebug("float4: ", f4);
 	
 	//return mAllocationTest;
