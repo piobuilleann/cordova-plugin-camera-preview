@@ -255,7 +255,8 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 
 uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	//uchar4 result;
-
-	rsDebug("x: ", x);
+	
+	float pixel = (float)rsGetElementAt_uchar3(kmeans_in, x, y);
+	rsDebug("pixel: ", pixel);
 }
 
