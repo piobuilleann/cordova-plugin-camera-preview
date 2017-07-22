@@ -1,7 +1,7 @@
 #pragma version(1)
 #pragma rs java_package_name(com.cordovaplugincamerapreview)
 #pragma rs_fp_relaxed
-\#include "rs_debug.rsh" 
+#include "rs_debug.rsh" 
 
 rs_allocation yuv_in;
 rs_allocation kmeans_in;
