@@ -279,6 +279,6 @@ uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	
 	
 	
-	return mAllocationTest;
+	//return mAllocationTest;
 }
 
