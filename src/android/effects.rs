@@ -265,7 +265,7 @@ uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    
    //Get item from input allocation  
    modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
-	rsDebug("float4: ", modifiedData);
+	//rsDebug("float4: ", modifiedData);
    
    uchar addVal = 0;  
    //Increment all values by addVal  
