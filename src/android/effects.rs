@@ -268,7 +268,7 @@ uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
 	//rsDebug("float4: ", modifiedData);
    
-   uchar addVal = 10;  
+   /*uchar addVal = 10;  
    //Increment all values by addVal  
    modifiedData.r += addVal;  
    modifiedData.g += addVal;  
@@ -280,6 +280,6 @@ uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	
 	
 	
-	//return mAllocationOut;
+	//return mAllocationOut;*/
 }
 
