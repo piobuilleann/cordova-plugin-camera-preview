@@ -269,13 +269,13 @@ uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	//rsDebug("float4: ", modifiedData);
    
    uchar addVal = 10;  
-   /*
    //Increment all values by addVal  
    modifiedData.r += addVal;  
    modifiedData.g += addVal;  
    modifiedData.b += addVal;  
    modifiedData.a += addVal;  
    
+   /*
    //Place modified data in output allocation  
    rsSetElementAt_uchar4(mAllocationOut, modifiedData, x, y);  	
 	

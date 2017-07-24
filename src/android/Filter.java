@@ -164,7 +164,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			yuvToRgbIntrinsic.setInput(mAllocationIn);
 			yuvToRgbIntrinsic.forEach(mAllocationKmeans);
 			
-			//mEffects.set_kmeans_in(mAllocationKmeans);
+			mEffects.set_kmeans_in(mAllocationKmeans);
 			
             mEffects.forEach_kMeans(mAllocationKmeans, mAllocationOut);
 			
