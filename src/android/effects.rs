@@ -254,7 +254,8 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 	return black;
 }
 
-uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
+//uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
+void kMeans(uchar4* in, uint32_t x, uint32_t y) {
 	//uchar4 result;
 	
 	//float pixel = getElementAt_uchar_to_float(in, x, y);
@@ -267,7 +268,7 @@ uchar4 __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
 	//rsDebug("float4: ", modifiedData);
    
-   uchar addVal = 0;  
+   uchar addVal = 10;  
    //Increment all values by addVal  
    modifiedData.r += addVal;  
    modifiedData.g += addVal;  
