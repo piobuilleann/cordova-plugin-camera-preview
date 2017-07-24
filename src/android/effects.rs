@@ -280,6 +280,6 @@ void kMeans(uchar4 in, uint32_t x, uint32_t y) {
 	
 	
 	
-	return mAllocationOut;
+	//return mAllocationOut;
 }
 
