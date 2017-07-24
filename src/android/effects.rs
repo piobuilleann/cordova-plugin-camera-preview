@@ -271,7 +271,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
 	//rsDebug("float4: ", modifiedData);
    
-   uchar addVal = 10;  
+   uchar addVal = 0;  
    //Increment all values by addVal  
    modifiedData.r += addVal;  
    modifiedData.g += addVal;  
