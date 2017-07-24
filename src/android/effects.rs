@@ -276,7 +276,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    modifiedData.r += addVal;  
    modifiedData.g += addVal;  
    modifiedData.b += addVal;  
-   modifiedData.a += addVal;  
+   //modifiedData.a += addVal;  
    
    //Place modified data in output allocation  
    rsSetElementAt_uchar4(mAllocationOut, modifiedData, x, y);  	
