@@ -262,42 +262,14 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 	return black;
 }
 
-void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
-   uchar4 modifiedData;  
-   
-   //Get item from input allocation  
-   modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
-	//rsDebug("float4: ", modifiedData);
-   
-   uchar addVal = 0;  
-   //Increment all values by addVal  
-   modifiedData.r += addVal;  
-   modifiedData.g += addVal;  
-   modifiedData.b += addVal;  
-   //modifiedData.a += addVal;  
-   
-   //Place modified data in output allocation  
-   rsSetElementAt_uchar4(mAllocationOut, modifiedData, x, y);  	
-}
 
-void createClusters() {
-	// Here the clusters are taken with specific steps, 
-	// so the result looks always same with same image. 
-	// You can randomize the cluster centers, if you like. 	
-	//Cluster[] result = new Cluster[k]; 
-	int x = 0; 
-	int y = 0; 
-	int dx = width/k; 
-	int dy = height/k; 
-	struct cluster nCluster = NewCluster();
-	for (int i=0;i<k;i++) { 
-		//nCluster.
-		//result[i] = new Cluster(i,image.getRGB(x, y)); 
-		x+=dx;
-		y+=dy; 
-	} 
-	//return result; 	
-}
+
+
+
+
+
+
+
 
 int getId(cluster){
 	return 1;
@@ -320,6 +292,54 @@ typedef struct cluster {
 	int blues; 	
 	int (*getId)();
 } cluster;
+
+
+
+
+
+
+
+
+
+void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
+   uchar4 modifiedData;  
+   
+   //Get item from input allocation  
+   modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
+	//rsDebug("float4: ", modifiedData);
+   
+   uchar addVal = 0;  
+   //Increment all values by addVal  
+   modifiedData.r += addVal;  
+   modifiedData.g += addVal;  
+   modifiedData.b += addVal;  
+   //modifiedData.a += addVal;  
+   
+   //Place modified data in output allocation  
+   rsSetElementAt_uchar4(mAllocationOut, modifiedData, x, y);  	
+}
+
+
+
+
+void createClusters() {
+	// Here the clusters are taken with specific steps, 
+	// so the result looks always same with same image. 
+	// You can randomize the cluster centers, if you like. 	
+	//Cluster[] result = new Cluster[k]; 
+	int x = 0; 
+	int y = 0; 
+	int dx = width/k; 
+	int dy = height/k; 
+	struct cluster nCluster = NewCluster();
+	for (int i=0;i<k;i++) { 
+		//nCluster.
+		//result[i] = new Cluster(i,image.getRGB(x, y)); 
+		x+=dx;
+		y+=dy; 
+	} 
+	//return result; 	
+}
 
 
 
