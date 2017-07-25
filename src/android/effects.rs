@@ -315,6 +315,17 @@ void addPixel(int i, uchar4 pixel) {
 	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;
 }
 
+void removePixel(int i, uchar4 pixel) {
+	struct cluster Clusters[i];
+	Clusters[i].reds-=pixel.r;
+	Clusters[i].greens-=pixel.g;
+	Clusters[i].blues-=pixel.b;
+	Clusters[i].pixelCount--;
+	Clusters[i].red = Clusters[i].reds/Clusters[i].pixelCount;
+	Clusters[i].green = Clusters[i].greens/Clusters[i].pixelCount;
+	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;
+}
+
 
 void clear(int i) {
 	struct cluster Clusters[i];
