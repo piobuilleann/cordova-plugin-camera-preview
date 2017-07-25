@@ -270,17 +270,6 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 
 
 
-
-int getId(cluster){
-	return 1;
-}
-
-newCluser NewCluster() {
-	struct cluster nCluster;
-	nCluster.getId = &getId;
-	return nCluster;
-}
-
 typedef struct cluster {
 	int id; 
 	int pixelCount; 
@@ -292,6 +281,17 @@ typedef struct cluster {
 	int blues; 	
 	int (*getId)();
 } cluster;
+
+int getId(cluster){
+	return 1;
+}
+
+cluster Cluster() {
+	struct cluster nCluster;
+	nCluster.getId = &getId;
+	return nCluster;
+}
+
 
 
 
@@ -331,7 +331,7 @@ void createClusters() {
 	int y = 0; 
 	int dx = width/k; 
 	int dy = height/k; 
-	struct cluster nCluster = NewCluster();
+	struct cluster nCluster = Cluster();
 	for (int i=0;i<k;i++) { 
 		//nCluster.
 		//result[i] = new Cluster(i,image.getRGB(x, y)); 
