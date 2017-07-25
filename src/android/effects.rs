@@ -309,7 +309,6 @@ void createClusters() {
 	// Here the clusters are taken with specific steps, 
 	// so the result looks always same with same image. 
 	// You can randomize the cluster centers, if you like. 	
-	//Cluster[] result = new Cluster[k]; 
 	int x = 0; 
 	int y = 0; 
 	int dx = width/k; 
@@ -318,6 +317,16 @@ void createClusters() {
 	for (int i=0;i<k;i++) { 
 		struct cluster Clusters[i];
 		Clusters[i].id = i;
+
+		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
+		
+		Clusters[i].red = pixel.r;
+		Clusters[i].green = pixel.g;
+		Clusters[i].blue = pixel.b;
+		
+		
+		
+		
 
 		x+=dx;
 		y+=dy; 
