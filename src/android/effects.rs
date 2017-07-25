@@ -339,10 +339,7 @@ void clear(int i) {
 	Clusters[i].pixelCount = 0;
 }
 
-int getId(int i) {
-	struct cluster Clusters[i];
-	return Clusters[i].id;
-}
+
 
 void createClusters() {
 	// Here the clusters are taken with specific steps, 
