@@ -286,7 +286,7 @@ int getId(){
 	return 1;
 }
 
-cluster Cluster() {
+Cluster() {
 	struct cluster nCluster;
 	nCluster.getId = &getId;
 	return nCluster;
