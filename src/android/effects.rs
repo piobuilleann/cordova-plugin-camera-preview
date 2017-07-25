@@ -282,7 +282,7 @@ typedef struct cluster {
 	int (*getId)();
 } cluster;
 
-int getId(cluster){
+int getId(){
 	return 1;
 }
 
