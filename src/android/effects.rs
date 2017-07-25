@@ -316,7 +316,7 @@ void createClusters() {
 	int dy = height/k; 
 
 	for (int i=0;i<k;i++) { 
-		struct custer Clusters[i];
+		struct cluster Clusters[i];
 		Clusters[i].id = i;
 
 		x+=dx;
