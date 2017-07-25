@@ -317,6 +317,7 @@ void createClusters() {
 	for (int i=0;i<k;i++) { 
 		struct cluster Clusters[i];
 		Clusters[i].id = i;
+		Clusters[i].pixelCount = 0;
 
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
 		
@@ -324,9 +325,16 @@ void createClusters() {
 		Clusters[i].green = pixel.g;
 		Clusters[i].blue = pixel.b;
 		
+		Clusters[i].reds+=pixel.r;
+		Clusters[i].greens+=pixel.g;
+		Clusters[i].blues+=pixel.b;
+		Clusters[i].pixelCount++;
+		Clusters[i].red = Clusters[i].reds/Clusters[i].pixelCount;
+		Clusters[i].green = Clusters[i].greens/Clusters[i].pixelCount;
+		Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;
 		
 		
-		
+
 
 		x+=dx;
 		y+=dy; 
