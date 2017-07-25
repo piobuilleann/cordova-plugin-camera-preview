@@ -13,6 +13,7 @@ rs_allocation mAllocationKmeans;
 int k;
 int width;
 int height;
+char Clusters;
 //
 
 
@@ -270,7 +271,7 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 
 
 
-/*typedef struct cluster {
+typedef struct cluster {
 	int id; 
 	int pixelCount; 
 	int red; 
@@ -278,38 +279,8 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 	int blue; 
 	int reds; 
 	int greens; 
-	int blues; 	
-	int (*getId)();
+	int blues;
 } cluster;
-
-int getId(){
-	return 1;
-}
-
-cluster Cluster() {
-	struct cluster nCluster;
-	nCluster.getId = &getId;
-	return nCluster;
-}
-*/
-
-
-typedef struct hello {
-    int (*someFunction)();
-} hello;
-
-int foo() {
-    return 0;
-}
-
-hello Hello() {
-    struct hello aHello;
-    aHello.someFunction = &foo;
-    return aHello;
-}
-
-
-
 
 
 
@@ -343,10 +314,11 @@ void createClusters() {
 	int y = 0; 
 	int dx = width/k; 
 	int dy = height/k; 
-	struct cluster nCluster = Cluster();
+
 	for (int i=0;i<k;i++) { 
-		//nCluster.
-		//result[i] = new Cluster(i,image.getRGB(x, y)); 
+		struct custer Clusters[i];
+		Clusters[i].id = i;
+
 		x+=dx;
 		y+=dy; 
 	} 
