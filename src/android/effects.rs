@@ -304,6 +304,15 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 
 
 
+void addPixel(int i, uchar4 pixel) {
+	Clusters[i].reds+=pixel.r;
+	Clusters[i].greens+=pixel.g;
+	Clusters[i].blues+=pixel.b;
+	Clusters[i].pixelCount++;
+	Clusters[i].red = Clusters[i].reds/Clusters[i].pixelCount;
+	Clusters[i].green = Clusters[i].greens/Clusters[i].pixelCount;
+	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;
+}
 
 void createClusters() {
 	// Here the clusters are taken with specific steps, 
@@ -333,16 +342,6 @@ void createClusters() {
 	//return result; 	
 }
 
-void addPixel(int i, uchar4 pixel) {
-	Clusters[i].reds+=pixel.r;
-	Clusters[i].greens+=pixel.g;
-	Clusters[i].blues+=pixel.b;
-	Clusters[i].pixelCount++;
-	Clusters[i].red = Clusters[i].reds/Clusters[i].pixelCount;
-	Clusters[i].green = Clusters[i].greens/Clusters[i].pixelCount;
-	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;
-		
-}
 
 
 
