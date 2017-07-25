@@ -305,6 +305,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 
 
 void addPixel(int i, uchar4 pixel) {
+	struct cluster Clusters[i];
 	Clusters[i].reds+=pixel.r;
 	Clusters[i].greens+=pixel.g;
 	Clusters[i].blues+=pixel.b;
