@@ -9,8 +9,13 @@ rs_allocation mAllocationOut;
 rs_allocation mAllocationKmeans;
 
 
+//
+int k;
+int width;
+int height;
+//
 
-uint32_t width;
+
 uint32_t offset_to_u;
 uint32_t offset_to_v;
 
@@ -274,4 +279,72 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    //Place modified data in output allocation  
    rsSetElementAt_uchar4(mAllocationOut, modifiedData, x, y);  	
 }
+
+void createClusters() {
+	// Here the clusters are taken with specific steps, 
+	// so the result looks always same with same image. 
+	// You can randomize the cluster centers, if you like. 	
+	//Cluster[] result = new Cluster[k]; 
+	int x = 0; 
+	int y = 0; 
+	int dx = image.getWidth()/k; 
+	int dy = image.getHeight()/k; 
+	
+	for (int i=0;i<k;i++) { 
+		//result[i] = new Cluster(i,image.getRGB(x, y)); 
+		x+=dx;
+		y+=dy; 
+	} 
+	//return result; 	
+}
+
+typedef struct cluster {
+	int id; 
+	int pixelCount; 
+	int red; 
+	int green; 
+	int blue; 
+	int reds; 
+	int greens; 
+	int blues; 	
+} cluster;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
