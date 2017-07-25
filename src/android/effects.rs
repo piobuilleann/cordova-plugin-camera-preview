@@ -339,7 +339,23 @@ void clear(int i) {
 	Clusters[i].pixelCount = 0;
 }
 
+int distance(int i, uchar4 pixel) {
+	struct cluster Clusters[i];
 
+	int rx = abs(Clusters[i].red - pixel.r);
+	int gx = abs(Clusters[i].green - pixel.g);
+	int bx = abs(Clusters[i].blue - pixel.b);
+	int d = (rx+gx+bx) / 3;
+	return d;
+
+/*
+            int rx = Math.abs(red-r); 
+            int gx = Math.abs(green-g); 
+            int bx = Math.abs(blue-b); 
+            int d = (rx+gx+bx) / 3; 
+            return d; 
+*/	
+}
 
 void createClusters() {
 	// Here the clusters are taken with specific steps, 
