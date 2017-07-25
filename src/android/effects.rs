@@ -289,13 +289,24 @@ void createClusters() {
 	int y = 0; 
 	int dx = width/k; 
 	int dy = height/k; 
-	
+	struct cluster nCluster = NewCluster();
 	for (int i=0;i<k;i++) { 
+		//nCluster.
 		//result[i] = new Cluster(i,image.getRGB(x, y)); 
 		x+=dx;
 		y+=dy; 
 	} 
 	//return result; 	
+}
+
+int getId(cluster){
+	return 1;
+}
+
+newCluser NewCluster() {
+	struct cluster nCluster;
+	nCluster.getId = &getId;
+	return nCluster;
 }
 
 typedef struct cluster {
@@ -307,6 +318,7 @@ typedef struct cluster {
 	int reds; 
 	int greens; 
 	int blues; 	
+	int (*getId)();
 } cluster;
 
 
