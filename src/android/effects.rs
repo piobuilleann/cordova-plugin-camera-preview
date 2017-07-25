@@ -339,7 +339,7 @@ void clear(int i) {
 	Clusters[i].pixelCount = 0;
 }
 
-int getDistance(int i, uchar4 pixel) {
+int static getDistance(int i, uchar4 pixel) {
 	struct cluster Clusters[i];
 
 	int rx = abs(Clusters[i].red - pixel.r);
