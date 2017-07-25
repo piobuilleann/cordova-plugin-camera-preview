@@ -287,8 +287,8 @@ void createClusters() {
 	//Cluster[] result = new Cluster[k]; 
 	int x = 0; 
 	int y = 0; 
-	int dx = image.getWidth()/k; 
-	int dy = image.getHeight()/k; 
+	int dx = width/k; 
+	int dy = height/k; 
 	
 	for (int i=0;i<k;i++) { 
 		//result[i] = new Cluster(i,image.getRGB(x, y)); 
