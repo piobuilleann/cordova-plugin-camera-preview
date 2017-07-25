@@ -270,7 +270,7 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 
 
 
-typedef struct cluster {
+/*typedef struct cluster {
 	int id; 
 	int pixelCount; 
 	int red; 
@@ -286,15 +286,27 @@ int getId(){
 	return 1;
 }
 
-Item Cluster() {
+cluster Cluster() {
 	struct cluster nCluster;
 	nCluster.getId = &getId;
 	return nCluster;
 }
+*/
 
 
+typedef struct hello {
+    int (*someFunction)();
+} hello;
 
+int foo() {
+    return 0;
+}
 
+hello Hello() {
+    struct hello aHello;
+    aHello.someFunction = &foo;
+    return aHello;
+}
 
 
 
