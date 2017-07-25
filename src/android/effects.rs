@@ -315,6 +315,19 @@ void addPixel(int i, uchar4 pixel) {
 	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;
 }
 
+
+void clear(int i) {
+	struct cluster Clusters[i];
+	
+	Clusters[i].red = 0;
+	Clusters[i].green = 0;
+	Clusters[i].blue = 0;
+	Clusters[i].reds = 0;
+	Clusters[i].greens = 0;
+	Clusters[i].blues = 0;
+	Clusters[i].pixelCount = 0;
+}
+
 void createClusters() {
 	// Here the clusters are taken with specific steps, 
 	// so the result looks always same with same image. 
