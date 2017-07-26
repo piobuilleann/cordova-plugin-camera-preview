@@ -347,8 +347,7 @@ int static getDistance(int i, uchar4 pixel) {
 
 
 char static findMinimalCluster(int i, uchar4 pixel) {
-	char cluster = null;
-	int min = SHRT__MAX;
+	int min = 2147483647;
 	
 	for (int i=0;i<clusterInt;i++) { 
 		struct cluster Clusters[i];
