@@ -347,14 +347,6 @@ int static getDistance(int i, uchar4 pixel) {
 	int bx = abs(Clusters[i].blue - pixel.b);
 	int d = (rx+gx+bx) / 3;
 	return d;
-
-/*
-            int rx = Math.abs(red-r); 
-            int gx = Math.abs(green-g); 
-            int bx = Math.abs(blue-b); 
-            int d = (rx+gx+bx) / 3; 
-            return d; 
-*/	
 }
 
 void createClusters() {
