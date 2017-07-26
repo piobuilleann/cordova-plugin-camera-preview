@@ -14,6 +14,7 @@ int k;
 int width;
 int height;
 int clusterInt;
+int lut;
 char Clusters;
 //
 
@@ -280,23 +281,6 @@ typedef struct cluster {
 
 
 
-void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
-   uchar4 modifiedData;  
-   
-   //Get item from input allocation  
-   modifiedData = rsGetElementAt_uchar4(kmeans_in, x, y);  
-	//rsDebug("float4: ", modifiedData);
-   
-   uchar addVal = 0;  
-   //Increment all values by addVal  
-   modifiedData.r += addVal;  
-   modifiedData.g += addVal;  
-   modifiedData.b += addVal;  
-   //modifiedData.a += addVal;  
-   
-   //Place modified data in output allocation  
-   rsSetElementAt_uchar4(mAllocationOut, modifiedData, x, y);  	
-}
 
 
 
@@ -346,8 +330,9 @@ int static getDistance(int i, uchar4 pixel) {
 }
 
 
-char static findMinimalCluster(int i, uchar4 pixel) {
+int static findMinimalCluster(int i, uchar4 pixel) {
 	int min = 2147483647;
+	int clusterInt;
 	
 	for (int i=0;i<clusterInt;i++) { 
 		struct cluster Clusters[i];
@@ -358,9 +343,13 @@ char static findMinimalCluster(int i, uchar4 pixel) {
 		cPixel.b = Clusters[i].blue;
 		
 		int distance = getDistance(i, cPixel);
-		
+		if (distance<min) { 
+			min  = distance;
+			clusterInt = i;
+		}
 		
 	}
+	return clusterInt;
 }
 
 void addClusterInt(){
@@ -375,6 +364,7 @@ void createClusters() {
 	int y = 0; 
 	int dx = width/k; 
 	int dy = height/k; 
+	lut = [width*height];
 
 	for (int i=0;i<k;i++) { 
 		struct cluster Clusters[i];
@@ -401,6 +391,31 @@ void createClusters() {
 
 
 
+void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
+   uchar4 pixel;  
+   
+   //Get item from input allocation  
+   pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
+	//rsDebug("float4: ", pixel);
+   
+   /*uchar addVal = 0;  
+   //Increment all values by addVal  
+   pixel.r += addVal;  
+   pixel.g += addVal;  
+   pixel.b += addVal;  
+   //pixel.a += addVal;  */
+   
+   //Place modified data in output allocation  
+   
+   int cInt = findMinimalCluster(int i, uchar4 pixel);
+   struct cluster Clusters[cInt];
+   if (lut[width*y+x]!=Clusters[cInt].id) { 
+	
+   }
+   
+   
+   rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
+}
 
 
 
