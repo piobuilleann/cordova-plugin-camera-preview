@@ -351,7 +351,7 @@ int static getDistance(int i, uchar4 pixel) {
 
 int static getClusterLength() {
 	int length = 0;
-	while(Clusters[length] != '\0')
+	while(Clusters[length]!='\0')
 	{
 		length++;
 	}
