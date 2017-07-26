@@ -166,6 +166,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
 
 			mEffects.set_kmeans_in(mAllocationKmeans);
+			mEffects.set_clusterInt(0);
 
 			mEffects.set_width(mWidth);
 			mEffects.set_height(mHeight);

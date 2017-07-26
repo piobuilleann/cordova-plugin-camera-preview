@@ -13,6 +13,7 @@ rs_allocation mAllocationKmeans;
 int k;
 int width;
 int height;
+int clusterInt;
 char Clusters;
 //
 
@@ -95,11 +96,6 @@ uchar4 __attribute__((kernel)) yuv_to_rgba(uint32_t x, uint32_t y) {
     out.a = 255;
     return out;	
 }
-
-
-
-
-
 
 uchar4 __attribute__((kernel)) blend(uchar4 in, uint32_t x, uint32_t y) {
 	uchar r = rsGetElementAt_uchar(raw, x, y);
@@ -349,21 +345,28 @@ int static getDistance(int i, uchar4 pixel) {
 	return d;
 }
 
-int static getClusterLength() {
-	int length = 0;
-	while(Clusters[length]!='\0')
-	{
-		length++;
-	}
-	return length;
-}
-/*char static findMinimalCluster(int i, uchar4 pixel) {
+
+char static findMinimalCluster(int i, uchar4 pixel) {
 	char cluster = null;
 	int min = SHRT__MAX;
 	
-	for (int i=0;i<k;i++) { 
+	for (int i=0;i<clusterInt;i++) { 
+		struct cluster Clusters[i];
+		
+		uchar4 cPixel;
+		cPixel.r = Clusters[i].red;
+		cPixel.g = Clusters[i].green;
+		cPixel.b = Clusters[i].blue;
+		
+		int distance = getDistance(i, cPixel);
+		
+		
 	}
-}*/
+}
+
+void addClusterInt(){
+		clusterInt++;
+}
 
 void createClusters() {
 	// Here the clusters are taken with specific steps, 
@@ -378,7 +381,8 @@ void createClusters() {
 		struct cluster Clusters[i];
 		Clusters[i].id = i;
 		Clusters[i].pixelCount = 0;
-
+		addClusterInt();
+		
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
 		
 		Clusters[i].red = pixel.r;
