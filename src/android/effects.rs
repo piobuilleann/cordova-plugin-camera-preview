@@ -349,6 +349,22 @@ int static getDistance(int i, uchar4 pixel) {
 	return d;
 }
 
+int static getClusterLength() {
+	int length = 0;
+	while(Clusters[length] != '\0')
+	{
+		length++;
+	}
+	return length;
+}
+/*char static findMinimalCluster(int i, uchar4 pixel) {
+	char cluster = null;
+	int min = SHRT__MAX;
+	
+	for (int i=0;i<k;i++) { 
+	}
+}*/
+
 void createClusters() {
 	// Here the clusters are taken with specific steps, 
 	// so the result looks always same with same image. 
