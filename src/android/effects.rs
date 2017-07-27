@@ -365,7 +365,7 @@ void createClusters() {
 	int y = 0; 
 	int dx = width/k; 
 	int dy = height/k; 
-	double lut [width*height];
+	double lut[width*height];
 
 	for (int i=0;i<k;i++) { 
 		struct cluster Clusters[i];
@@ -416,7 +416,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 		//int pixelInt = width*y+x;
 		
 		if (lut[clusterId]!=0) {			
-			removePixel(pixelInt, pixel);
+			removePixel(clusterId, pixel);
 		}
 		addPixel(cInt, pixel);
 		rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
