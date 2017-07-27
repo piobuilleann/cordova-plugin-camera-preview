@@ -330,7 +330,7 @@ int static getDistance(int i, uchar4 pixel) {
 }
 
 
-int static findMinimalCluster(int i, uchar4 pixel) {
+int static findMinimalCluster(uchar4 pixel) {
 	// min defined the max value of an int
 	int min = 2147483647;
 	int clusterInt;
@@ -408,7 +408,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    
    //Place modified data in output allocation  
    
-   int cInt = findMinimalCluster(i, pixel);
+   int cInt = findMinimalCluster(pixel);
    struct cluster Clusters[cInt];
    if (lut[width*y+x]!=Clusters[cInt].id) { 
 		int pixelInt = width*y+x;
