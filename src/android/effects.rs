@@ -369,7 +369,7 @@ void createClusters() {
 	int dy = height/k; 
 	
 	imageDimenstion = width*height;
-	lut[imageDimenstion];
+	lut[10];
 
 	for (int i=0;i<k;i++) { 
 		struct cluster Clusters[i];
