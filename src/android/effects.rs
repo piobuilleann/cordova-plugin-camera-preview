@@ -14,7 +14,7 @@ int k;
 int width;
 int height;
 int clusterInt;
-typedef uint8_t lut[];
+int lut[];
 char Clusters;
 //
 
@@ -412,10 +412,10 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    struct cluster Clusters[cInt];
    
    int clusterId = width*y+x;
-   if (lut[clusterId]!=Clusters[cInt].id) { 
+   if (*lut[clusterId]!=Clusters[cInt].id) { 
 		//int pixelInt = width*y+x;
 		
-		if (lut[clusterId]!=0) {			
+		if (*lut[clusterId]!=0) {			
 			removePixel(clusterId, pixel);
 		}
 		addPixel(cInt, pixel);
