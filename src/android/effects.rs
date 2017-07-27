@@ -394,6 +394,7 @@ void createClusters() {
 
 void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    uchar4 pixel;  
+   Point_t clusterId;
    
    //Get item from input allocation  
    pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
@@ -411,11 +412,11 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    int cInt = findMinimalCluster(pixel);
    struct cluster Clusters[cInt];
    
-   Point_t clusterId = width*y+x;
+   clusterId = width*y+x;
    if (lut[clusterId]!=Clusters[cInt].id) { 
-		int pixelInt = width*y+x;
+		//int pixelInt = width*y+x;
 		
-		if (lut[pixelInt]!=0) {			
+		if (lut[clusterId]!=0) {			
 			removePixel(pixelInt, pixel);
 		}
 		addPixel(cInt, pixel);
