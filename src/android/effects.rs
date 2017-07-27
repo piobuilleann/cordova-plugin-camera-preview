@@ -14,7 +14,7 @@ int k;
 int width;
 int height;
 int clusterInt;
-double lut;
+typedef uint8_t lut[];
 char Clusters;
 //
 
@@ -365,7 +365,7 @@ void createClusters() {
 	int y = 0; 
 	int dx = width/k; 
 	int dy = height/k; 
-	double lut[width*height];
+	lut[width*height];
 
 	for (int i=0;i<k;i++) { 
 		struct cluster Clusters[i];
