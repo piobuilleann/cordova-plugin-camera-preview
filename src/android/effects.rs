@@ -411,8 +411,8 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    int cInt = findMinimalCluster(pixel);
    struct cluster Clusters[cInt];
    
-   int clusterId = width*y+x;
-   if (lut[clusterId]!=1) { 
+   Point_t clusterId = width*y+x;
+   if (lut[clusterId]!=Clusters[cInt].id) { 
 		int pixelInt = width*y+x;
 		
 		if (lut[pixelInt]!=0) {			
