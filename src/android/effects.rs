@@ -369,7 +369,7 @@ void createClusters() {
 	int dy = height/k; 
 	
 	imageDimenstion = width*height;
-	lut[10];
+	int* lut[imageDimenstion];
 
 	for (int i=0;i<k;i++) { 
 		struct cluster Clusters[i];
@@ -426,7 +426,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 		pixelChangedCluster = true;
 		
 		//update lut
-		lut[clusterId] = Clusters[cInt].id
+		lut[clusterId] = Clusters[cInt].id;
    }
 	rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
    
