@@ -16,6 +16,7 @@ int height;
 int clusterInt;
 int* lut;
 int imageDimenstion;
+bool pixelChangedCluster;
 char Clusters;
 //
 
@@ -422,8 +423,12 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 			removePixel(clusterId, pixel);
 		}
 		addPixel(cInt, pixel);
-		rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
+		pixelChangedCluster = true;
+		
+		//update lut
+		lut[w*y+x] = clusterId
    }
+	rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
    
    
 }
