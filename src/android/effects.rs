@@ -426,7 +426,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 		pixelChangedCluster = true;
 		
 		//update lut
-		lut[w*y+x] = clusterId
+		lut[clusterId] = clusterId
    }
 	rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
    
