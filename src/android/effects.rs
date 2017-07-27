@@ -415,7 +415,9 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    struct cluster Clusters[cInt];
    
    int clusterId = width*y+x;
-   rsDebug("cluster id: ", Clusters[cInt].id);
+   //rsDebug("cluster id: ", Clusters[cInt].id);
+   rsDebug("x: ", x);
+   rsDebug("y: ", y);
    
    if (lut[clusterId]!=Clusters[cInt].id) { 
 		//int pixelInt = width*y+x;
