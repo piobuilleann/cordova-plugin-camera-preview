@@ -422,7 +422,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    struct cluster Clusters[cInt];
    
    rsDebug("fuck int: ", cInt);
-   rsDebug("fuck: ", Clusters[cInt]);
+   rsDebug("fuck: ", Clusters[cInt].red);
    
    int clusterId = width*y+x;
    //rsDebug("cluster id: ", Clusters[cInt].id);
