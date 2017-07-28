@@ -321,15 +321,15 @@ void clear(int i) {
 	Clusters[i].pixelCount = 0;
 }
 
-int static getDistance(int* i, uchar4 pixel) {
+int static getDistance(int i, uchar4 pixel) {
 	struct cluster Clusters[i];
 
 	int rx = abs(Clusters[i].red - pixel.r);
 	int gx = abs(Clusters[i].green - pixel.g);
 	int bx = abs(Clusters[i].blue - pixel.b);
 	int d = (rx+gx+bx) / 3;
-	rsDebug("Clusters[i].red: ", Clusters[i].red);
-	rsDebug("pixel.r: ", pixel.r);
+	//rsDebug("Clusters[i].red: ", Clusters[i].red);
+	//rsDebug("pixel.r: ", pixel.r);
 	return d;
 }
 
@@ -393,6 +393,7 @@ void createClusters() {
 		y+=dy; 
 		
 		rsDebug("cluster id: ", Clusters[i].id);
+		rsDebug("cluster id: ", Clusters[i].red);
 	} 
 	//return result; 	
 }
