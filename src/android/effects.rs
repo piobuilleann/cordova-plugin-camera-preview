@@ -335,7 +335,7 @@ int static getDistance(int i, uchar4 pixel) {
 int static findMinimalCluster(uchar4 pixel) {
 	// min defined the max value of an int
 	int min = 2147483647;
-	int clusterInt;
+	//int clusterInt;
 	
 	for (int i=0;i<clusterInt;i++) { 
 		struct cluster Clusters[i];
@@ -368,6 +368,7 @@ void createClusters() {
 	int y = 0; 
 	int dx = width/k; 
 	int dy = height/k; 
+	clusterInt = 0;
 	
 	imageDimenstion = width*height;
 	int* lut[imageDimenstion];
