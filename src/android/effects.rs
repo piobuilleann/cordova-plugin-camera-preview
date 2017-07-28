@@ -323,6 +323,7 @@ void clear(int i) {
 
 int static getDistance(int i, uchar4 pixel) {
 	struct cluster Clusters[i];
+	rsDebug("cluster i red: ", Clusters[i].red - pixel.r);
 
 	int rx = abs(Clusters[i].red - pixel.r);
 	int gx = abs(Clusters[i].green - pixel.g);
@@ -346,7 +347,7 @@ int static findMinimalCluster(uchar4 pixel) {
 		cPixel.b = Clusters[i].blue;
 		
 		int distance = getDistance(i, cPixel);
-		 rsDebug("distance: ", distance);
+		//rsDebug("distance: ", distance);
 		if (distance<min) { 
 			min  = distance;
 			clusterInt = i;
