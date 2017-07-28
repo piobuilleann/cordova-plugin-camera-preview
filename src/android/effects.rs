@@ -323,12 +323,12 @@ void clear(int i) {
 
 int static getDistance(int i, uchar4 pixel) {
 	struct cluster Clusters[i];
-	rsDebug("cluster i red: ", abs(Clusters[i].red - pixel.r));
 
 	int rx = abs(Clusters[i].red - pixel.r);
 	int gx = abs(Clusters[i].green - pixel.g);
 	int bx = abs(Clusters[i].blue - pixel.b);
 	int d = (rx+gx+bx) / 3;
+	rsDebug("distance: ", d);
 	return d;
 }
 
