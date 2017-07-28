@@ -387,6 +387,8 @@ void createClusters() {
 
 		x+=dx;
 		y+=dy; 
+		
+		rsDebug("cluster id: ", Clusters[cInt].id);
 	} 
 	//return result; 	
 }
