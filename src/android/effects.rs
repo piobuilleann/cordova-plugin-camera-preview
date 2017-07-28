@@ -414,6 +414,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    //Place modified data in output allocation  
    
    int cInt = findMinimalCluster(pixel);
+   rsDebug("minimum cluster id: ", cInt);
    struct cluster Clusters[cInt];
    
    int clusterId = width*y+x;
