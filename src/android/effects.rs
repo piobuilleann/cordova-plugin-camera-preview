@@ -421,6 +421,8 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    int cInt = findMinimalCluster(pixel);
    struct cluster Clusters[cInt];
    
+   rsDebug("fuck: ", Clusters[2].red);
+   
    int clusterId = width*y+x;
    //rsDebug("cluster id: ", Clusters[cInt].id);
    //rsDebug("x: ", x);
