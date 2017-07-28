@@ -328,7 +328,7 @@ int static getDistance(int i, uchar4 pixel) {
 	int gx = abs(Clusters[i].green - pixel.g);
 	int bx = abs(Clusters[i].blue - pixel.b);
 	int d = (rx+gx+bx) / 3;
-	rsDebug("distance: ", d);
+	rsDebug("distance: ", rx /t gx /t bx);
 	return d;
 }
 
