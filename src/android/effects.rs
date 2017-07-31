@@ -322,7 +322,7 @@ void clear(int i) {
 }
 
 int static getDistance(int i, uchar4 pixel) {
-	char cluster Clusters[i];
+	//cluster Clusters[i];
 
 	int rx = abs(Clusters[i].red - pixel.r);
 	int gx = abs(Clusters[i].green - pixel.g);
