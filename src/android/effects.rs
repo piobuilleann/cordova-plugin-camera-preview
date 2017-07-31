@@ -322,7 +322,7 @@ void clear(int i) {
 }
 
 int static getDistance(int i, uchar4 pixel) {
-	cluster Clusters[i];
+	struct cluster Clusters[i];
 
 	int rx = abs(Clusters[i].red - pixel.r);
 	int gx = abs(Clusters[i].green - pixel.g);
@@ -378,7 +378,7 @@ void createClusters() {
 	for (int i=0;i<k;i++) { 
 		static cluster Clusters[i];
 
-		Clusters[&i].id = i;
+		Clusters[i].id = i;
 		Clusters[i].pixelCount = 0;
 		addClusterInt();
 		
