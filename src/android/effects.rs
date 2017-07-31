@@ -376,7 +376,8 @@ void createClusters() {
 	int* lut[imageDimenstion];
 
 	for (int i=0;i<k;i++) { 
-		struct cluster Clusters[i];
+		static cluster Clusters[i];
+		
 		Clusters[i].id = i;
 		Clusters[i].pixelCount = 0;
 		addClusterInt();
