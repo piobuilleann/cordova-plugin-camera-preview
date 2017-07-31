@@ -322,11 +322,11 @@ void clear(int i) {
 }
 
 int static getDistance(int i, uchar4 pixel) {
-	//cluster Clusters[i];
+	cluster Clusters[i];
 
-	int rx = abs(Clusters[&i].red - pixel.r);
-	int gx = abs(Clusters[&i].green - pixel.g);
-	int bx = abs(Clusters[&i].blue - pixel.b);
+	int rx = abs(Clusters[i].red - pixel.r);
+	int gx = abs(Clusters[i].green - pixel.g);
+	int bx = abs(Clusters[i].blue - pixel.b);
 	int d = (rx+gx+bx) / 3;
 	//rsDebug("Clusters[i].red: ", Clusters[i].red);
 	//rsDebug("pixel.r: ", pixel.r);
@@ -378,7 +378,7 @@ void createClusters() {
 	for (int i=0;i<k;i++) { 
 		static cluster Clusters[i];
 
-		Clusters[i].id = i;
+		Clusters[&i].id = i;
 		Clusters[i].pixelCount = 0;
 		addClusterInt();
 		
