@@ -162,13 +162,29 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			//yuvToRgbScript.setInput(mAllocationIn);
 			//yuvToRgbScript.forEach(mAllocationRgb);
 			
+			
+			/*
+			 *	Copy the incoming YUV byte[] into the appropriate allocation
+			 *
+			 */
 			mAllocationIn.copyFrom(yuv);
 			
+			
+			
+			/*
+			 *	The format is YUV, although we want it in RGBA_8888. Let's convert it!
+			 *
+			 */			
 			yuvToRgbIntrinsic.setInput(mAllocationIn);
 			yuvToRgbIntrinsic.forEach(mAllocationKmeans);
 
-
-			lutScript.forEach(mAllocationIn, mAllocationLUT);
+			
+			
+			/*
+			 *		Let's create a look up table for 
+			 *
+			 */
+			lutScript.forEach(mAllocationKmeans, mAllocationLUT);
 			
 			
 			
@@ -206,7 +222,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			mEffects.forEach_yuv_to_rgba(mAllocationOut);
 			*/
             //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-            ioSendOutput(mAllocationOut);
+            ioSendOutput(mAllocationLUT);
         }
     }
 
