@@ -11,6 +11,7 @@ import android.renderscript.Type;
 import android.view.TextureView;
 
 import android.renderscript.ScriptIntrinsicYuvToRGB;
+import android.renderscript.ScriptIntrinsicLUT;
 
 public class Filter implements TextureView.SurfaceTextureListener {
     private int mWidth;
@@ -38,6 +39,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 	
 	//
 	private ScriptIntrinsicYuvToRGB yuvToRgbScript;
+	private ScriptIntrinsicLUT lutScript;
     private Allocation mAllocationRgb;
 	//
 	
@@ -47,6 +49,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mEffects = new ScriptC_effects(mRS);
         mHistogram = ScriptIntrinsicHistogram.create(mRS, Element.U8(mRS));
 		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.U8_4(mRS));
+		lutScript = ScriptIntrinsicLUT.create(mRS, Element.U8_4(mRS));
     }
 
     private void setupSurface() {
@@ -165,6 +168,10 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			yuvToRgbIntrinsic.forEach(mAllocationKmeans);
 
 
+			lutScript.forEach(mAllocationIn, mAllocationOut);
+			
+			/*
+			
 			mEffects.set_kmeans_in(mAllocationKmeans);
 			mEffects.set_clusterInt(0);
 
@@ -177,6 +184,13 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			mEffects.set_mAllocationOut(mAllocationOut);
 			
             mEffects.forEach_kMeans(mAllocationKmeans, mAllocationOut);
+			
+			*/
+			
+			
+			
+			
+			
 			
 			//mAllocationOut.copyFrom(mAllocationTest);
 			
