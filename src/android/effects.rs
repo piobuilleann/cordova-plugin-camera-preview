@@ -378,7 +378,7 @@ void createClusters() {
 	for (int i=0;i<k;i++) { 
 		//char cluster Clusters[i];
 
-		Clusters[i].id = i;
+		cluster[i].id = i;
 		Clusters[i].pixelCount = 0;
 		addClusterInt();
 		
