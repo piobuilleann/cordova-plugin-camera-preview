@@ -374,7 +374,7 @@ void createClusters() {
 	clusterInt = 0;
 	
 	imageDimenstion = width*height;
-	int* lut[imageDimenstion];
+	//int* lut[imageDimenstion];
 	
 
 
@@ -412,6 +412,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    
    //Get item from input allocation  
    pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
+   uchar4 lut = rsGetElementAt_uchar4(lut, x, y);  
    
    /*uchar addVal = 0;  
    //Increment all values by addVal  
@@ -429,7 +430,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    //rsDebug("fuck: ", Clusters[cInt].red);
    
    int clusterId = width*y+x;
-   //rsDebug("cluster id: ", Clusters[cInt].id);
+   rsDebug("lut->red: ", lut.r);
    //rsDebug("x: ", x);
    //rsDebug("y: ", y);
    

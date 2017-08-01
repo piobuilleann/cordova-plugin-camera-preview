@@ -181,15 +181,15 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			
 			
 			/*
-			 *		Let's create a look up table for 
+			 *		Let's create a look up table (LUT) for the algorythem to use
 			 *
 			 */
 			lutScript.forEach(mAllocationKmeans, mAllocationLUT);
+			mEffects.set_lut(mAllocationLUT);
 			
 			
 			
 			mEffects.set_kmeans_in(mAllocationKmeans);
-			mEffects.set_lut(mAllocationLUT);
 			mEffects.set_clusterInt(0);
 
 			mEffects.set_width(mWidth);
@@ -222,7 +222,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			mEffects.forEach_yuv_to_rgba(mAllocationOut);
 			*/
             //mEffects.forEach_copy(mAllocationIn, mAllocationOut);
-            ioSendOutput(mAllocationLUT);
+            ioSendOutput(mAllocationOut);
         }
     }
 
