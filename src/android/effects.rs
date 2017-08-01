@@ -413,8 +413,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    
    //Get item from input allocation  
    pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
-   uint32_t lutInt = 4;
-   lut = rsGetElementAt_uchar4(lut, x, y, lutInt);
+   lut = rsGetElementAt_uchar4(lut, x, y);
    
    /*uchar addVal = 0;  
    //Increment all values by addVal  
