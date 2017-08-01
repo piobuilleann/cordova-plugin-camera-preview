@@ -413,7 +413,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    
    //Get item from input allocation  
    pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
-   //lut = rsGetElementAt_uchar4(lut, x, y);
+   lut = rsGetElementAt_uchar4(lut, x, y);
    
    /*uchar addVal = 0;  
    //Increment all values by addVal  
@@ -431,7 +431,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    //rsDebug("fuck: ", Clusters[cInt].red);
    
    int clusterId = width*y+x;
-   rsDebug("lut->red: ", lut.r);
+   //rsDebug("lut->red: ", lut.r);
    //rsDebug("x: ", x);
    //rsDebug("y: ", y);
    
