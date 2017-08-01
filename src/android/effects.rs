@@ -409,10 +409,11 @@ void createClusters() {
 
 void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    uchar4 pixel;  
+   uchar4 lut;  
    
    //Get item from input allocation  
    pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
-   uchar4 lut = rsGetElementAt_uchar4(lut, x, y);  
+   lut = rsGetElementAt_uchar4(lut, x, y);  
    
    /*uchar addVal = 0;  
    //Increment all values by addVal  
