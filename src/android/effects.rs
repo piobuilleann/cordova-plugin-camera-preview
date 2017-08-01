@@ -6,6 +6,7 @@
 
 rs_allocation yuv_in;
 rs_allocation kmeans_in;
+rs_allocation lut;
 rs_allocation mAllocationOut;
 rs_allocation mAllocationKmeans;
 
@@ -15,7 +16,6 @@ int k;
 int width;
 int height;
 int clusterInt;
-int* lut;
 int imageDimenstion;
 bool pixelChangedCluster;
 char *Clusters;
@@ -425,15 +425,15 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    int cInt = findMinimalCluster(pixel);
    struct cluster Clusters[cInt];
    
-   rsDebug("fuck int: ", cInt);
-   rsDebug("fuck: ", Clusters[cInt].red);
+   //rsDebug("fuck int: ", cInt);
+   //rsDebug("fuck: ", Clusters[cInt].red);
    
    int clusterId = width*y+x;
    //rsDebug("cluster id: ", Clusters[cInt].id);
    //rsDebug("x: ", x);
    //rsDebug("y: ", y);
    
-   if (lut[clusterId]!=Clusters[cInt].id) { 
+   /*if (lut[clusterId]!=Clusters[cInt].id) { 
 		//int pixelInt = width*y+x;
 		
 		if (lut[clusterId]!=0) {			
@@ -447,7 +447,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 		
 		//update lut
 		lut[clusterId] = Clusters[cInt].id;
-   }
+   }*/
 	rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
    
    

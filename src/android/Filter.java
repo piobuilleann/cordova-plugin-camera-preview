@@ -23,7 +23,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
     private Allocation mAllocationBlurred;
     private Allocation mAllocationDirection;
     private Allocation mAllocationEdge;
-    private Allocation mAllocationTest;
+    private Allocation mAllocationLUT;
     private Allocation mAllocationOut;
     private Allocation mAllocationKmeans;
     private ScriptC_effects mEffects;
@@ -105,7 +105,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mAllocationKmeans = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
         tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
-        mAllocationTest = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
+        mAllocationLUT = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
 		tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
         mAllocationOut = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT |
@@ -168,11 +168,12 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			yuvToRgbIntrinsic.forEach(mAllocationKmeans);
 
 
-			lutScript.forEach(mAllocationIn, mAllocationOut);
+			lutScript.forEach(mAllocationIn, mAllocationLUT);
 			
-			/*
+			
 			
 			mEffects.set_kmeans_in(mAllocationKmeans);
+			mEffects.set_lut(mAllocationLUT);
 			mEffects.set_clusterInt(0);
 
 			mEffects.set_width(mWidth);
@@ -185,7 +186,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			
             mEffects.forEach_kMeans(mAllocationKmeans, mAllocationOut);
 			
-			*/
+			
 			
 			
 			
