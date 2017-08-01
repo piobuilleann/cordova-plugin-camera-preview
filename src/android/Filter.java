@@ -184,7 +184,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			 *		Let's create a look up table (LUT) for the algorythem to use
 			 *
 			 */
-			lutScript.forEach(mAllocationIn, mAllocationLUT);
+			lutScript.forEach(mAllocationKmeans, mAllocationLUT);
 			mEffects.set_lut(mAllocationLUT);
 			
 			
