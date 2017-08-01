@@ -2,7 +2,7 @@
 #pragma rs java_package_name(com.cordovaplugincamerapreview)
 #pragma rs_fp_relaxed
 #include "rs_debug.rsh" 
-#include<stdlib.h>
+
 
 rs_allocation yuv_in;
 rs_allocation kmeans_in;
@@ -376,12 +376,12 @@ void createClusters() {
 	imageDimenstion = width*height;
 	int* lut[imageDimenstion];
 	
-	struct cluster *Clusters;
-	Clusters = (struct cluster) malloc(k * sizeof(struct cluster));
+
 
 	for (int i=0;i<k;i++) { 
-
-		&(Clusters+i)->id = i;
+		struct cluster Clusters[i];
+		
+		Clusters[i].id = i;
 		Clusters[i].pixelCount = 0;
 		addClusterInt();
 		
