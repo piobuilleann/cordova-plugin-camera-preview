@@ -17,7 +17,7 @@ int clusterInt;
 int* lut;
 int imageDimenstion;
 bool pixelChangedCluster;
-char Clusters;
+char *Clusters;
 //
 
 
