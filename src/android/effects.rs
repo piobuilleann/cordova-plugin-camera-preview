@@ -336,6 +336,7 @@ int static getDistance(int i, uchar4 pixel) {
 	//rsDebug("Clusters[i].red: ", Clusters[i].red);
 	//rsDebug("pixel.r: ", pixel.r);
 	return d;*/
+	return 1;
 }
 
 
@@ -361,6 +362,7 @@ int static findMinimalCluster(uchar4 pixel) {
 		
 	}
 	return clusterInt;*/
+	return 1;
 }
 
 void addClusterInt(){
@@ -387,7 +389,7 @@ void createClusters() {
 	
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
 	
-		red[i]; = pixel.r;
+		red[i] = pixel.r;
 		/*struct cluster Clusters[i];
 		
 		Clusters[i].id = i;
