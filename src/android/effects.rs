@@ -288,30 +288,30 @@ typedef struct cluster {
 
 
 void addPixel(int i, uchar4 pixel) {
-	struct cluster Clusters[i];
+	/*struct cluster Clusters[i];
 	Clusters[i].reds+=pixel.r;
 	Clusters[i].greens+=pixel.g;
 	Clusters[i].blues+=pixel.b;
 	Clusters[i].pixelCount++;
 	Clusters[i].red = Clusters[i].reds/Clusters[i].pixelCount;
 	Clusters[i].green = Clusters[i].greens/Clusters[i].pixelCount;
-	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;
+	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;*/
 }
 
 void removePixel(int i, uchar4 pixel) {
-	struct cluster Clusters[i];
+	/*struct cluster Clusters[i];
 	Clusters[i].reds-=pixel.r;
 	Clusters[i].greens-=pixel.g;
 	Clusters[i].blues-=pixel.b;
 	Clusters[i].pixelCount--;
 	Clusters[i].red = Clusters[i].reds/Clusters[i].pixelCount;
 	Clusters[i].green = Clusters[i].greens/Clusters[i].pixelCount;
-	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;
+	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;*/
 }
 
 
 void clear(int i) {
-	struct cluster Clusters[i];
+	/*struct cluster Clusters[i];
 	
 	Clusters[i].red = 0;
 	Clusters[i].green = 0;
@@ -319,11 +319,11 @@ void clear(int i) {
 	Clusters[i].reds = 0;
 	Clusters[i].greens = 0;
 	Clusters[i].blues = 0;
-	Clusters[i].pixelCount = 0;
+	Clusters[i].pixelCount = 0;*/
 }
 
 int static getDistance(int i, uchar4 pixel) {
-	struct cluster Clusters[i];
+	/*struct cluster Clusters[i];
 
 	int rx = abs(Clusters[i].red - pixel.r);
 	int gx = abs(Clusters[i].green - pixel.g);
@@ -331,13 +331,13 @@ int static getDistance(int i, uchar4 pixel) {
 	int d = (rx+gx+bx) / 3;
 	//rsDebug("Clusters[i].red: ", Clusters[i].red);
 	//rsDebug("pixel.r: ", pixel.r);
-	return d;
+	return d;*/
 }
 
 
 int static findMinimalCluster(uchar4 pixel) {
 	// min defined the max value of an int
-	int min = 2147483647;
+	/*int min = 2147483647;
 	//int clusterInt;
 	
 	for (int i=0;i<clusterInt;i++) { 
@@ -356,7 +356,7 @@ int static findMinimalCluster(uchar4 pixel) {
 		}
 		
 	}
-	return clusterInt;
+	return clusterInt;*/
 }
 
 void addClusterInt(){
@@ -379,11 +379,10 @@ void createClusters() {
 
 
 	for (int i=0;i<k;i++) { 
-		struct cluster Clusters[i];
+		/*struct cluster Clusters[i];
 		
 		Clusters[i].id = i;
 		Clusters[i].pixelCount = 0;
-		addClusterInt();
 		
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
 		
@@ -391,6 +390,7 @@ void createClusters() {
 		Clusters[i].green = pixel.g;
 		Clusters[i].blue = pixel.b;
 		
+		addClusterInt();
 		addPixel(i, pixel);
 
 		x+=dx;
@@ -398,6 +398,7 @@ void createClusters() {
 		
 		rsDebug("cluster id: ", Clusters[i].id);
 		rsDebug("cluster id: ", Clusters[i].red);
+		*/
 	} 
 	//return result; 	
 }
@@ -425,7 +426,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    //Place modified data in output allocation  
    
    int cInt = findMinimalCluster(pixel);
-   struct cluster Clusters[cInt];
+   //struct cluster Clusters[cInt];
    
    //rsDebug("fuck int: ", cInt);
    //rsDebug("fuck: ", Clusters[cInt].red);
