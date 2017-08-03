@@ -19,6 +19,10 @@ int clusterInt;
 int imageDimenstion;
 bool pixelChangedCluster;
 char *Clusters;
+
+
+
+int8_t *red;
 //
 
 
@@ -271,7 +275,7 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 
 
 
-typedef struct cluster {
+/*typedef struct cluster {
 	int id; 
 	int pixelCount; 
 	int red; 
@@ -280,7 +284,7 @@ typedef struct cluster {
 	int reds; 
 	int greens; 
 	int blues;
-} cluster;
+} cluster;*/
 
 
 
