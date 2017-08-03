@@ -27,6 +27,8 @@ public class Filter implements TextureView.SurfaceTextureListener {
     private Allocation mAllocationOut;
     private Allocation mAllocationKmeans;
     private Allocation mAllocationRed;
+    private Allocation mAllocationGreen;
+    private Allocation mAllocationBlue;
     private ScriptC_effects mEffects;
     private boolean mHaveSurface;
     private SurfaceTexture mSurface;
