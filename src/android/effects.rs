@@ -332,31 +332,28 @@ void clear(int i) {
 }
 
 int static getDistance(int i, uchar4 pixel) {
-	/*struct cluster Clusters[i];
 
-	int rx = abs(Clusters[i].red - pixel.r);
-	int gx = abs(Clusters[i].green - pixel.g);
-	int bx = abs(Clusters[i].blue - pixel.b);
+	int rx = abs(red[i] - pixel.r);
+	int gx = abs(green[i] - pixel.g);
+	int bx = abs(blue[i] - pixel.b);
 	int d = (rx+gx+bx) / 3;
 	//rsDebug("Clusters[i].red: ", Clusters[i].red);
 	//rsDebug("pixel.r: ", pixel.r);
-	return d;*/
-	return 1;
+	return d;
 }
 
 
 int static findMinimalCluster(uchar4 pixel) {
 	// min defined the max value of an int
-	/*int min = 2147483647;
+	int min = 2147483647;
 	//int clusterInt;
 	
 	for (int i=0;i<clusterInt;i++) { 
-		struct cluster Clusters[i];
 		
 		uchar4 cPixel;
-		cPixel.r = Clusters[i].red;
-		cPixel.g = Clusters[i].green;
-		cPixel.b = Clusters[i].blue;
+		cPixel.r = red[i];
+		cPixel.g = green[i];
+		cPixel.b = blue[i];
 		
 		int distance = getDistance(i, cPixel);
 		//rsDebug("distance: ", distance);
@@ -366,8 +363,7 @@ int static findMinimalCluster(uchar4 pixel) {
 		}
 		
 	}
-	return clusterInt;*/
-	return 1;
+	return clusterInt;
 }
 
 void addClusterInt(){
@@ -397,6 +393,8 @@ void createClusters() {
 		red[i] = pixel.r;
 		green[i] = pixel.g;
 		blue[i] = pixel.b;
+		
+		addClusterInt();
 		/*struct cluster Clusters[i];
 		
 		Clusters[i].id = i;
@@ -408,7 +406,6 @@ void createClusters() {
 		Clusters[i].green = pixel.g;
 		Clusters[i].blue = pixel.b;
 		
-		addClusterInt();
 		addPixel(i, pixel);
 
 		x+=dx;
