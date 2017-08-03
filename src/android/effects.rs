@@ -383,6 +383,11 @@ void createClusters() {
 
 
 	for (int i=0;i<k;i++) { 
+	
+	
+		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
+	
+		red[i]; = pixel.r;
 		/*struct cluster Clusters[i];
 		
 		Clusters[i].id = i;
@@ -437,7 +442,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    
    int clusterId = width*y+x;
    
-   //rsDebug("Cluster [2]->red: ", *Clusters[].red);
+   rsDebug("Cluster [2]->red: ", red[2]);
    //rsDebug("lut->red: ", currentLUT.r);
    //rsDebug("x: ", x);
    //rsDebug("y: ", y);
