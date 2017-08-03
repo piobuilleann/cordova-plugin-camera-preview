@@ -363,7 +363,7 @@ void addClusterInt(){
 		clusterInt++;
 }
 
-void attribute((kernel)) createClusters() {
+void createClusters() {
 	// Here the clusters are taken with specific steps, 
 	// so the result looks always same with same image. 
 	// You can randomize the cluster centers, if you like. 	
