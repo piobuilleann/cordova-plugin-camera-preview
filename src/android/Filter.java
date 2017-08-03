@@ -194,6 +194,8 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			lutScript.forEach(mAllocationKmeans, mAllocationLUT);
 			mEffects.set_lut(mAllocationLUT);
 			
+			mEffects.set_redLen(8*5);
+			mEffects.bind_red(mAllocationRed);
 			
 			
 			mEffects.set_kmeans_in(mAllocationKmeans);

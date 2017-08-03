@@ -23,6 +23,7 @@ char *Clusters;
 
 
 int8_t *red;
+int8_t redLen;
 //
 
 
