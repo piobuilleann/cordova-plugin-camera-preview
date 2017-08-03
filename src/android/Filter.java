@@ -108,7 +108,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
 		
 		//
-       mAllocationRed = Allocation.createSized(mRS, Element.I8(mRS), 5);
+       mAllocationRed = Allocation.createSized(mRS, Element.I32(mRS), 5);
 		//
 		
         tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);

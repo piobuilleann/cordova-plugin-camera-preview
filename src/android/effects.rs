@@ -22,8 +22,8 @@ char *Clusters;
 
 
 
-int8_t *red;
-int8_t redLen;
+int32_t *red;
+int32_t redLen;
 //
 
 
