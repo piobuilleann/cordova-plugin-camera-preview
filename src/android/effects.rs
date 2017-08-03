@@ -24,6 +24,10 @@ char *Clusters;
 
 int32_t *red;
 int32_t redLen;
+int32_t *green;
+int32_t greenLen;
+int32_t *blue;
+int32_t blueLen;
 //
 
 
@@ -391,6 +395,8 @@ void createClusters() {
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
 	
 		red[i] = pixel.r;
+		green[i] = pixel.g;
+		blue[i] = pixel.b;
 		/*struct cluster Clusters[i];
 		
 		Clusters[i].id = i;
