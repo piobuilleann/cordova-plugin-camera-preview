@@ -389,7 +389,7 @@ void createClusters() {
 	
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
 	
-		red[i] = pixel.r;
+		//red[i] = pixel.r;
 		/*struct cluster Clusters[i];
 		
 		Clusters[i].id = i;
