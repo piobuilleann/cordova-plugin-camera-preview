@@ -44,10 +44,13 @@ public class Filter implements TextureView.SurfaceTextureListener {
     private Allocation mAllocationRgb;
 	//
 	
+	private int k;
+	
 	
     public Filter(RenderScript rs) {
         mRS = rs;
         mEffects = new ScriptC_effects(mRS);
+		k = 5;
         mHistogram = ScriptIntrinsicHistogram.create(mRS, Element.U8(mRS));
 		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.U8_4(mRS));
 		lutScript = ScriptIntrinsicLUT.create(mRS, Element.U8_4(mRS));
@@ -108,7 +111,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
 		
 		//
-       mAllocationRed = Allocation.createSized(mRS, Element.I32(mRS), 5);
+       mAllocationRed = Allocation.createSized(mRS, Element.I32(mRS), k);
 		//
 		
         tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
@@ -194,7 +197,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			lutScript.forEach(mAllocationKmeans, mAllocationLUT);
 			mEffects.set_lut(mAllocationLUT);
 			
-			mEffects.set_redLen(5);
+			mEffects.set_redLen(k);
 			mEffects.bind_red(mAllocationRed);
 			
 			
@@ -203,7 +206,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
 			mEffects.set_width(mWidth);
 			mEffects.set_height(mHeight);
-			mEffects.set_k(5);
+			mEffects.set_k(k);
 			mEffects.invoke_createClusters();
 			
 			
