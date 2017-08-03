@@ -108,7 +108,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 
 		
 		//
-       mAllocationRed = Allocation.createSized(mRS, Element.I8(mRS), (8*5));
+       mAllocationRed = Allocation.createSized(mRS, Element.I8(mRS), (8*5) -1);
 		//
 		
         tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
@@ -194,7 +194,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			lutScript.forEach(mAllocationKmeans, mAllocationLUT);
 			mEffects.set_lut(mAllocationLUT);
 			
-			mEffects.set_redLen(8*5);
+			mEffects.set_redLen((8*5) -1);
 			mEffects.bind_red(mAllocationRed);
 			
 			
