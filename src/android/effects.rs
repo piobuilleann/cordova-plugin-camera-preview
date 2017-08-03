@@ -320,6 +320,12 @@ void removePixel(int i, uchar4 pixel) {
 
 
 void clear(int i) {
+	
+	red[i] = 0;
+	green[i] = 0;
+	blue[i] = 0;
+	
+	
 	/*struct cluster Clusters[i];
 	
 	Clusters[i].red = 0;
