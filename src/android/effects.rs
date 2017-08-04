@@ -6,7 +6,7 @@
 
 rs_allocation yuv_in;
 rs_allocation kmeans_in;
-rs_allocation lut;
+//rs_allocation lut;
 rs_allocation mAllocationOut;
 rs_allocation mAllocationKmeans;
 
@@ -18,7 +18,7 @@ int height;
 int clusterInt;
 int imageDimenstion;
 bool pixelChangedCluster;
-char *Clusters;
+//char *Clusters;
 
 
 
@@ -28,6 +28,10 @@ int32_t *green;
 int32_t greenLen;
 int32_t *blue;
 int32_t blueLen;
+
+
+int32_t lut;
+int32_t lutLen;
 //
 
 
@@ -435,7 +439,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    
    //Get item from input allocation  
    pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
-   currentLUT    = rsGetElementAt_uchar4(lut, x, y);
+   //currentLUT    = rsGetElementAt_uchar4(lut, x, y);
    
    /*uchar addVal = 0;  
    //Increment all values by addVal  

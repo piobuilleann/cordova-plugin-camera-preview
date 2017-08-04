@@ -23,12 +23,12 @@ public class Filter implements TextureView.SurfaceTextureListener {
     private Allocation mAllocationBlurred;
     private Allocation mAllocationDirection;
     private Allocation mAllocationEdge;
-    private Allocation mAllocationLUT;
     private Allocation mAllocationOut;
     private Allocation mAllocationKmeans;
     private Allocation mAllocationRed;
     private Allocation mAllocationGreen;
     private Allocation mAllocationBlue;
+    private Allocation mAllocationLUT;
     private ScriptC_effects mEffects;
     private boolean mHaveSurface;
     private SurfaceTexture mSurface;
@@ -42,7 +42,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 	
 	//
 	private ScriptIntrinsicYuvToRGB yuvToRgbScript;
-	private ScriptIntrinsicLUT lutScript;
+	//private ScriptIntrinsicLUT lutScript;
     private Allocation mAllocationRgb;
 	//
 	
@@ -55,7 +55,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 		k = 5;
         mHistogram = ScriptIntrinsicHistogram.create(mRS, Element.U8(mRS));
 		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.U8_4(mRS));
-		lutScript = ScriptIntrinsicLUT.create(mRS, Element.U8_4(mRS));
+		//lutScript = ScriptIntrinsicLUT.create(mRS, Element.U8_4(mRS));
     }
 
     private void setupSurface() {
@@ -116,10 +116,9 @@ public class Filter implements TextureView.SurfaceTextureListener {
        mAllocationRed = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationGreen = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationBlue = Allocation.createSized(mRS, Element.I32(mRS), k);
+       mAllocationLUT = Allocation.createSized(mRS, Element.I32(mRS), k);
 		//
 		
-        tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
-        mAllocationLUT = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
 		tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
         mAllocationOut = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT |
@@ -198,8 +197,9 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			 *		Let's create a look up table (LUT) for the algorythem to use
 			 *
 			 */
-			lutScript.forEach(mAllocationKmeans, mAllocationLUT);
-			mEffects.set_lut(mAllocationLUT);
+			//lutScript.forEach(mAllocationKmeans, mAllocationLUT);
+			mEffects.set_lutLen(mAllocationLUT);
+			mEffects.bind_lut(mAllocationLUT);
 			
 			mEffects.set_redLen(k);
 			mEffects.set_greenLen(k);
