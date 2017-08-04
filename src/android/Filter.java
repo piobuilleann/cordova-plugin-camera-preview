@@ -126,7 +126,6 @@ public class Filter implements TextureView.SurfaceTextureListener {
        mAllocationBlues = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationPixelCount = Allocation.createSized(mRS, Element.I32(mRS), mSize);
        mAllocationLUT = Allocation.createSized(mRS, Element.I32(mRS), mSize);
-       mAllocationContinueBool = Allocation.createSized(mRS, Element.BOOLEAN(mRS), );
 		//
 		
 
