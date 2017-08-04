@@ -457,7 +457,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 		
 		if (lut[clusterId]!=-1) {			
 			//rsDebug("remove pixel from cluster id: ", clusterId);
-			removePixel(clusterId, pixel);
+			removePixel(cInt, pixel);
 		}
 
 		//rsDebug("add pixel from cluster id: ", clusterId);
