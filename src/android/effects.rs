@@ -320,14 +320,13 @@ void addPixel(int i, uchar4 pixel) {
 }
 
 void removePixel(int i, uchar4 pixel) {
-	/*struct cluster Clusters[i];
-	Clusters[i].reds-=pixel.r;
-	Clusters[i].greens-=pixel.g;
-	Clusters[i].blues-=pixel.b;
-	Clusters[i].pixelCount--;
-	Clusters[i].red = Clusters[i].reds/Clusters[i].pixelCount;
-	Clusters[i].green = Clusters[i].greens/Clusters[i].pixelCount;
-	Clusters[i].blue = Clusters[i].blues/Clusters[i].pixelCount;*/
+	reds[i]-=pixel.r;
+	greens[i]-=pixel.g;
+	blues[i]-=pixel.b;
+	pixelCount[i]--;
+	red[i] = reds[i]/pixelCount[i];
+	green[i] = greens[i]/pixelCount[i];
+	blue[i] = blues[i]/pixelCount[i];
 }
 
 
@@ -336,17 +335,10 @@ void clear(int i) {
 	red[i] = 0;
 	green[i] = 0;
 	blue[i] = 0;
-	
-	
-	/*struct cluster Clusters[i];
-	
-	Clusters[i].red = 0;
-	Clusters[i].green = 0;
-	Clusters[i].blue = 0;
-	Clusters[i].reds = 0;
-	Clusters[i].greens = 0;
-	Clusters[i].blues = 0;
-	Clusters[i].pixelCount = 0;*/
+	reds[i] = 0;
+	greens[i] = 0;
+	blues[i] = 0;
+	pixelCount[i] = 0;
 }
 
 int static getDistance(int i, uchar4 pixel) {
@@ -407,11 +399,13 @@ void createClusters() {
 	
 	
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
-	
+		int clusterId = width*y+x;
+		
 		red[i] = pixel.r;
 		green[i] = pixel.g;
 		blue[i] = pixel.b;
-		
+		addPixel(i, pixel);
+		lut[clusterId] = -1;
 		addClusterInt();
 		/*struct cluster Clusters[i];
 		
