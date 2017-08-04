@@ -33,6 +33,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
     private Allocation mAllocationBlues;
     private Allocation mAllocationPixelCount;
     private Allocation mAllocationLUT;
+    private Allocation mAllocationContinueBool;
     private ScriptC_effects mEffects;
     private boolean mHaveSurface;
     private SurfaceTexture mSurface;
@@ -125,10 +126,15 @@ public class Filter implements TextureView.SurfaceTextureListener {
        mAllocationBlues = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationPixelCount = Allocation.createSized(mRS, Element.I32(mRS), mSize);
        mAllocationLUT = Allocation.createSized(mRS, Element.I32(mRS), mSize);
+       mAllocationContinueBool = Allocation.createSized(mRS, Element.BOOLEAN(mRS), );
 		//
 		
 
-		tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
+		tb = new Type.Builder(mRS, Element.BOOLEAN(mRS));
+        mAllocationContinueBool = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
+
+
+				tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
         mAllocationOut = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT |
                 Allocation.USAGE_IO_OUTPUT);
 
@@ -235,6 +241,8 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			
 			
 			mEffects.set_mAllocationOut(mAllocationOut);
+			
+			
 			
             mEffects.forEach_kMeans(mAllocationKmeans, mAllocationOut);
 			
