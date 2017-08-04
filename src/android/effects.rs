@@ -366,7 +366,7 @@ int static findMinimalCluster(uchar4 pixel) {
 		cPixel.b = blue[i];
 		
 		int distance = getDistance(i, cPixel);
-		rsDebug("distance: ", distance);
+		//rsDebug("distance: ", distance);
 		if (distance<min) { 
 			min  = distance;
 			clusterInt = i;
@@ -456,11 +456,11 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 		//int pixelInt = width*y+x;
 		
 		if (lut[clusterId]!=-1) {			
-			rsDebug("remove pixel from cluster id: ", clusterId);
+			//rsDebug("remove pixel from cluster id: ", clusterId);
 			removePixel(clusterId, pixel);
 		}
 
-		rsDebug("add pixel from cluster id: ", clusterId);
+		//rsDebug("add pixel from cluster id: ", clusterId);
 		addPixel(cInt, pixel);
 		pixelChangedCluster = true;
 		
