@@ -30,7 +30,7 @@ int32_t *blue;
 int32_t blueLen;
 
 
-int32_t lut;
+int32_t *lut;
 int32_t lutLen;
 //
 
