@@ -390,11 +390,6 @@ void createClusters() {
 	int dy = height/k; 
 	clusterInt = 0;
 	
-	imageDimenstion = width*height;
-	//int* lut[imageDimenstion];
-	
-
-
 	for (int i=0;i<k;i++) { 
 	
 	
@@ -407,27 +402,9 @@ void createClusters() {
 		addPixel(i, pixel);
 		lut[clusterId] = -1;
 		addClusterInt();
-		/*struct cluster Clusters[i];
-		
-		Clusters[i].id = i;
-		Clusters[i].pixelCount = 0;
-		
-		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
-		
-		Clusters[i].red = pixel.r;
-		Clusters[i].green = pixel.g;
-		Clusters[i].blue = pixel.b;
-		
-		addPixel(i, pixel);
-
 		x+=dx;
 		y+=dy; 
-		
-		rsDebug("cluster id: ", Clusters[i].id);
-		rsDebug("cluster id: ", Clusters[i].red);
-		*/
 	} 
-	//return result; 	
 }
 
 
