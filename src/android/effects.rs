@@ -409,7 +409,15 @@ void createClusters() {
 
 
 
-
+uchar4 void getRGB(int i){
+	uchar4 pixel;
+	
+	pixel.r = red[i];
+	pixel.g = green[i];
+	pixel.b = blue[i];
+	
+	return pixel;
+}
 
 
 void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
@@ -418,7 +426,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    int clusterId;
    
    //Get item from input allocation  
-   pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
+   //pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
    clusterId = width*y+x;
    //currentLUT    = rsGetElementAt_uchar4(lut, x, y);
    
@@ -459,6 +467,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 		//update lut
 		lut[clusterId] = cInt;
    }
+	pixel = getRGB(cInt);
 	rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
    
    
