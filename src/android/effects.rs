@@ -409,7 +409,7 @@ void createClusters() {
 
 
 
-uchar4 void getRGB(int i){
+uchar4 static getRGB(int i){
 	uchar4 pixel;
 	
 	pixel.r = red[i];
