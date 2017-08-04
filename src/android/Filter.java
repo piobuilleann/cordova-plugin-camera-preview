@@ -116,7 +116,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
        mAllocationRed = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationGreen = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationBlue = Allocation.createSized(mRS, Element.I32(mRS), k);
-       mAllocationLUT = Allocation.createSized(mRS, Element.I32(mRS), k);
+       mAllocationLUT = Allocation.createSized(mRS, Element.I32(mRS), mSize);
 		//
 		
 
@@ -198,7 +198,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			 *
 			 */
 			//lutScript.forEach(mAllocationKmeans, mAllocationLUT);
-			mEffects.set_lutLen(mAllocationLUT);
+			mEffects.set_lutLen(mSize);
 			mEffects.bind_lut(mAllocationLUT);
 			
 			mEffects.set_redLen(k);
