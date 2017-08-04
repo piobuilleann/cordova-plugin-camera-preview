@@ -415,9 +415,11 @@ void createClusters() {
 void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    uchar4 pixel;  
    uchar4 currentLUT;  
+   int clusterId;
    
    //Get item from input allocation  
    pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
+   clusterId = width*y+x;
    //currentLUT    = rsGetElementAt_uchar4(lut, x, y);
    
    /*uchar addVal = 0;  
@@ -442,10 +444,10 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    //rsDebug("x: ", x);
    //rsDebug("y: ", y);
    
-   /*if (lut[clusterId]!=Clusters[cInt].id) { 
+   if (lut[clusterId]!=cInt) { 
 		//int pixelInt = width*y+x;
 		
-		if (lut[clusterId]!=0) {			
+		if (lut[clusterId]!=-1) {			
 			rsDebug("remove pixel from cluster id: ", clusterId);
 			removePixel(clusterId, pixel);
 		}
@@ -455,8 +457,8 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
 		pixelChangedCluster = true;
 		
 		//update lut
-		lut[clusterId] = Clusters[cInt].id;
-   }*/
+		lut[clusterId] = cInt;
+   }
 	rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
    
    
