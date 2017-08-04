@@ -215,14 +215,14 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			mEffects.set_redsLen(k);
 			mEffects.set_greensLen(k);
 			mEffects.set_bluesLen(k);
-			mEffects.pixelCountLen(k);
+			mEffects.pixelCountLen(mSize);
 			mEffects.bind_red(mAllocationRed);
 			mEffects.bind_green(mAllocationGreen);
 			mEffects.bind_blue(mAllocationBlue);
 			mEffects.bind_reds(mAllocationReds);
 			mEffects.bind_greens(mAllocationGreens);
 			mEffects.bind_blues(mAllocationBlues);
-			mEffects.bind_pixelCount(mSize);
+			mEffects.bind_pixelCount(mAllocationPixelCount);
 			
 			
 			mEffects.set_kmeans_in(mAllocationKmeans);
