@@ -28,6 +28,14 @@ int32_t *green;
 int32_t greenLen;
 int32_t *blue;
 int32_t blueLen;
+int32_t *reds;
+int32_t redsLen;
+int32_t *greens;
+int32_t greensLen;
+int32_t *blues;
+int32_t bluesLen;
+int32_t *pixelCount;
+int32_t pixelCountLen;
 
 
 int32_t *lut;

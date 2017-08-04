@@ -28,6 +28,10 @@ public class Filter implements TextureView.SurfaceTextureListener {
     private Allocation mAllocationRed;
     private Allocation mAllocationGreen;
     private Allocation mAllocationBlue;
+    private Allocation mAllocationReds;
+    private Allocation mAllocationGreens;
+    private Allocation mAllocationBlues;
+    private Allocation mAllocationPixelCount;
     private Allocation mAllocationLUT;
     private ScriptC_effects mEffects;
     private boolean mHaveSurface;
@@ -116,6 +120,10 @@ public class Filter implements TextureView.SurfaceTextureListener {
        mAllocationRed = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationGreen = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationBlue = Allocation.createSized(mRS, Element.I32(mRS), k);
+       mAllocationReds = Allocation.createSized(mRS, Element.I32(mRS), k);
+       mAllocationGreens = Allocation.createSized(mRS, Element.I32(mRS), k);
+       mAllocationBlues = Allocation.createSized(mRS, Element.I32(mRS), k);
+       mAllocationPixelCount = Allocation.createSized(mRS, Element.I32(mRS), k);
        mAllocationLUT = Allocation.createSized(mRS, Element.I32(mRS), mSize);
 		//
 		
@@ -204,9 +212,17 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			mEffects.set_redLen(k);
 			mEffects.set_greenLen(k);
 			mEffects.set_blueLen(k);
+			mEffects.set_redsLen(k);
+			mEffects.set_greensLen(k);
+			mEffects.set_bluesLen(k);
+			mEffects.pixelCountLen(k);
 			mEffects.bind_red(mAllocationRed);
 			mEffects.bind_green(mAllocationGreen);
 			mEffects.bind_blue(mAllocationBlue);
+			mEffects.bind_reds(mAllocationReds);
+			mEffects.bind_greens(mAllocationGreens);
+			mEffects.bind_blues(mAllocationBlues);
+			mEffects.bind_pixelCount(mSize);
 			
 			
 			mEffects.set_kmeans_in(mAllocationKmeans);
