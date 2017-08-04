@@ -445,7 +445,7 @@ void kMeans(const uchar4* in, uchar4* out, uint32_t x, uint32_t y) {
    //rsDebug("fuck int: ", cInt);
    //rsDebug("fuck: ", Clusters[cInt].red);
    
-   clusterId = width*y+x;
+   //clusterId = width*y+x;
    
    //rsDebug("Cluster [2]->red: ", red[2]);
    //rsDebug("lut->red: ", currentLUT.r);
