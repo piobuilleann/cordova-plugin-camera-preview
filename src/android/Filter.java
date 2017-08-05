@@ -133,7 +133,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
         mAllocationContinueBool = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT);
 
 
-				tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
+		tb = new Type.Builder(mRS, Element.RGBA_8888(mRS)).setX(mWidth).setY(mHeight);
         mAllocationOut = Allocation.createTyped(mRS, tb.create(), Allocation.USAGE_SCRIPT |
                 Allocation.USAGE_IO_OUTPUT);
 
