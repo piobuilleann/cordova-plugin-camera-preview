@@ -57,7 +57,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
     public Filter(RenderScript rs) {
         mRS = rs;
         mEffects = new ScriptC_effects(mRS);
-		k = 5;
+		k = 7;
         mHistogram = ScriptIntrinsicHistogram.create(mRS, Element.U8(mRS));
 		yuvToRgbScript = ScriptIntrinsicYuvToRGB.create(mRS, Element.U8_4(mRS));
 		//lutScript = ScriptIntrinsicLUT.create(mRS, Element.U8_4(mRS));
