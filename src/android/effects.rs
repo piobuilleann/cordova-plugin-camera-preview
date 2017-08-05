@@ -420,7 +420,7 @@ uchar4 static getRGB(int i){
 }
 
 
-void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
+void __attribute__((kernel)) kMeans(uchar4 in, uchar4 out, uint32_t x, uint32_t y) {
    uchar4 pixel;  
    uchar4 currentLUT;  
    int clusterId;
