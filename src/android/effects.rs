@@ -415,6 +415,7 @@ void createClusters() {
 		rsDebug("i -> blue ", blue[i]);
 		rsDebug("lut Id ", clusterId);
 		rsDebug("clusterId ", lut[clusterId]);
+		rsDebug("cluster below ", lut[clusterId-1]);
 	} 
 }
 
