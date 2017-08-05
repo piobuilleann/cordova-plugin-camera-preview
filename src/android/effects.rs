@@ -413,6 +413,8 @@ void createClusters() {
 		rsDebug("i -> red ", red[i]);
 		rsDebug("i -> green ", green[i]);
 		rsDebug("i -> blue ", blue[i]);
+		rsDebug("lut Id ", clusterId);
+		rsDebug("clusterId ", lut[clusterId]);
 	} 
 }
 
