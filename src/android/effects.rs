@@ -348,7 +348,7 @@ int static getDistance(int i, uchar4 pixel) {
 	int bx = abs(blue[i] - pixel.b);
 	int d = (rx+gx+bx) / 3;
 	//rsDebug("Clusters[i].red: ", Clusters[i].red);
-	rsDebug("Distance ", d);
+	//rsDebug("Distance ", d);
 	return d;
 }
 
@@ -404,6 +404,13 @@ void createClusters() {
 		addClusterInt();
 		x+=dx;
 		y+=dy; 
+		
+		
+		
+		rsDebug("int: ", i);
+		rsDebug("i -> red ", red[i]);
+		rsDebug("i -> green ", green[i]);
+		rsDebug("i -> blue ", blue[i]);
 	} 
 }
 
