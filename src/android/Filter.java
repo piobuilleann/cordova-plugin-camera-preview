@@ -243,7 +243,7 @@ public class Filter implements TextureView.SurfaceTextureListener {
 			
 			
 			
-            mEffects.forEach_kMeans(mAllocationKmeans, cs);
+            mEffects.forEach_kMeans(mAllocationKmeans, sc);
 			
 			
 			
