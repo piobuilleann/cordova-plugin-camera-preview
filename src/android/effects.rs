@@ -415,6 +415,7 @@ uchar4 static getRGB(int i){
 	pixel.r = red[i];
 	pixel.g = green[i];
 	pixel.b = blue[i];
+	pixel.a = 136;
 	
 	return pixel;
 }
@@ -467,8 +468,8 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 		//update lut
 		lut[clusterId] = cInt;
    }
-	//pixel = getRGB(cInt);
-	pixel = rsGetElementAt_uchar4(kmeans_in, x, y); 
+	pixel = getRGB(cInt);
+	//pixel = rsGetElementAt_uchar4(kmeans_in, x, y); 
 	rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
    
    
