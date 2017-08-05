@@ -314,9 +314,9 @@ void addPixel(int i, uchar4 pixel) {
 	greens[i]+=pixel.g;
 	blues[i]+=pixel.b;
 	pixelCount[i]++;
-	red[i] = reds[i]/pixelCount[i];
+	/*red[i] = reds[i]/pixelCount[i];
 	green[i] = greens[i]/pixelCount[i];
-	blue[i] = blues[i]/pixelCount[i];
+	blue[i] = blues[i]/pixelCount[i];*/
 }
 
 void removePixel(int i, uchar4 pixel) {
