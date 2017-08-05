@@ -467,7 +467,8 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 		//update lut
 		lut[clusterId] = cInt;
    }
-	pixel = getRGB(cInt);
+	//pixel = getRGB(cInt);
+	pixel = rsGetElementAt_uchar4(kmeans_in, x, y); 
 	rsSetElementAt_uchar4(mAllocationOut, pixel, x, y);  	
    
    
