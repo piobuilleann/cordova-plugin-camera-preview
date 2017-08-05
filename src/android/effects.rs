@@ -310,19 +310,19 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 
 void addPixel(int i, uchar4 pixel) {
 
-	reds[i]+=pixel.r;
-	greens[i]+=pixel.g;
-	blues[i]+=pixel.b;
+	reds[i] = reds[i] + pixel.r;
+	greens[i] = greens[i] + pixel.g;
+	blues[i] = blues[i] + pixel.b;
 	pixelCount[i]++;
-	/*red[i] = reds[i]/pixelCount[i];
+	red[i] = reds[i]/pixelCount[i];
 	green[i] = greens[i]/pixelCount[i];
-	blue[i] = blues[i]/pixelCount[i];*/
+	blue[i] = blues[i]/pixelCount[i];
 }
 
 void removePixel(int i, uchar4 pixel) {
-	reds[i]-=pixel.r;
-	greens[i]-=pixel.g;
-	blues[i]-=pixel.b;
+	reds[i] = reds[i] - pixel.r;
+	greens[i] = greens[i] - pixel.g;
+	blues[i] = blues[i] - pixel.b;
 	pixelCount[i]--;
 	red[i] = reds[i]/pixelCount[i];
 	green[i] = greens[i]/pixelCount[i];
@@ -395,6 +395,8 @@ void createClusters() {
 	
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
 		int clusterId = width*y+x;
+		
+		clear(i);		
 		
 		red[i] = pixel.r;
 		green[i] = pixel.g;
