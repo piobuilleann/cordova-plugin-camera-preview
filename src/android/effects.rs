@@ -409,13 +409,13 @@ void createClusters() {
 		
 		
 		
-		rsDebug("int: ", i);
+		/*rsDebug("int: ", i);
 		rsDebug("i -> red ", red[i]);
 		rsDebug("i -> green ", green[i]);
 		rsDebug("i -> blue ", blue[i]);
 		rsDebug("lut Id ", clusterId);
 		rsDebug("clusterId ", lut[clusterId]);
-		rsDebug("cluster below ", lut[clusterId-1]);
+		rsDebug("cluster below ", lut[clusterId-1]);*/
 	} 
 }
 
@@ -469,7 +469,7 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
 		//int pixelInt = width*y+x;
 		
 		if (lut[clusterId]!=-1) {			
-			//rsDebug("remove pixel from cluster id: ", clusterId);
+			rsDebug("remove pixel from cluster id: ", clusterId);
 			removePixel(cInt, pixel);
 		}
 
