@@ -445,7 +445,7 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    
 	//int lutTest = rsGetElementAt(lut, clusterId);
 	int lutTest = lut[clusterId];
-   rsDebug("lutTest: ", &lutTest);
+   rsDebug("lutTest: ", *lutTest);
    
    /*uchar addVal = 0;  
    //Increment all values by addVal  
