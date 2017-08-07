@@ -459,7 +459,7 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    int cInt = findMinimalCluster(pixel);
    //struct cluster Clusters[cInt];
    
-   //rsDebug("fuck int: ", cInt);
+   rsDebug("fuck int: ", cInt);
    //rsDebug("fuck: ", Clusters[cInt].red);
    
    //clusterId = width*y+x;
