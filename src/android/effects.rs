@@ -443,6 +443,9 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    clusterId = width*y+x;
    //currentLUT    = rsGetElementAt_uchar4(lut, x, y);
    
+	int lutTest = rsGetElementAt_int(lut, clusterId);
+   rsDebug("lutTest: ", lutTest);
+   
    /*uchar addVal = 0;  
    //Increment all values by addVal  
    pixel.r += addVal;  
