@@ -439,7 +439,7 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    int32_t clusterId;
    
    //Get item from input allocation  
-   //pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
+   pixel = rsGetElementAt_uchar4(kmeans_in, x, y);  
    clusterId = width*y+x;
    //currentLUT    = rsGetElementAt_uchar4(lut, x, y);
    
