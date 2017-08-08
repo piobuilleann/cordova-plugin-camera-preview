@@ -366,7 +366,7 @@ int static findMinimalCluster(uchar4 pixel) {
 		cPixel.b = blue[i];
 		
 		int distance = getDistance(i, cPixel);
-		//rsDebug("distance: ", distance);
+		rsDebug("distance: ", distance);
 		if (distance<min) { 
 			min  = distance;
 			clInt = i;
