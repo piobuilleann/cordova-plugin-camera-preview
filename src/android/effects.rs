@@ -358,7 +358,7 @@ int static findMinimalCluster(uchar4 pixel) {
 	int min = 2147483647;
 	//int clusterInt;
 	
-	for (int i=0;i<clusterInt;i++) { 
+	for (int i=0;i<k;i++) { 
 		
 		uchar4 cPixel;
 		cPixel.r = red[i];
