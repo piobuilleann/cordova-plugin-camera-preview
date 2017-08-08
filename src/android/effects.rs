@@ -356,7 +356,7 @@ int static getDistance(int i, uchar4 pixel) {
 int static findMinimalCluster(uchar4 pixel) {
 	// min defined the max value of an int
 	int min = 2147483647;
-	//int clusterInt;
+	int clInt;
 	
 	for (int i=0;i<k;i++) { 
 		
@@ -369,11 +369,11 @@ int static findMinimalCluster(uchar4 pixel) {
 		//rsDebug("distance: ", distance);
 		if (distance<min) { 
 			min  = distance;
-			clusterInt = i;
+			clInt = i;
 		}
 		
 	}
-	return clusterInt;
+	return clInt;
 }
 
 void addClusterInt(){
