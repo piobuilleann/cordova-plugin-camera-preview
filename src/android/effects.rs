@@ -446,7 +446,7 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    
 	//int lutTest = rsGetElementAt(lut, clusterId);
 	int32_t lutTest = lut[clusterId];
-   rsDebug("lutTest: ", lutTest);
+   //rsDebug("lutTest: ", lutTest);
    
    /*uchar addVal = 0;  
    //Increment all values by addVal  
@@ -460,7 +460,7 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    int cInt = findMinimalCluster(pixel);
    //struct cluster Clusters[cInt];
    
-   rsDebug("fuck int: ", cInt);
+   //rsDebug("fuck int: ", cInt);
    //rsDebug("fuck: ", Clusters[cInt].red);
    
    //clusterId = width*y+x;
