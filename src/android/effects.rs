@@ -344,12 +344,10 @@ void clear(int i) {
 int static getDistance(int i, uchar4 pixel) {
 
 	int rx = abs(red[i] - pixel.r);
-	rsDebug("rx: ", rx);
-	rsDebug("red[i]: ", red[i]);
-	rsDebug("pixel.r: ", pixel.r);
 	int gx = abs(green[i] - pixel.g);
 	int bx = abs(blue[i] - pixel.b);
 	int d = (rx+gx+bx) / 3;
+	rsDebug("schmorgishbourg: ", (rx+gx+bx));
 	//rsDebug("Clusters[i].red: ", Clusters[i].red);
 	//rsDebug("Distance ", d);
 	return d;
