@@ -412,7 +412,7 @@ void createClusters() {
 		uchar4 pixel = rsGetElementAt_uchar4(kmeans_in, x, y);
 		int clusterId = width*y+x;
 		
-		//clear(i);		
+		clear(i);		
 		
 		red[i] = pixel.r;
 		green[i] = pixel.g;
