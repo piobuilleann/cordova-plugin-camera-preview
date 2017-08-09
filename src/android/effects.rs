@@ -440,7 +440,6 @@ void createClusters() {
 uchar4 static getRGB(int i){
 	uchar4 pixel;
 	
-	pixelCount[i]
 	pixel.r = red[i] / pixelCount[i];
 	pixel.g = green[i] / pixelCount[i];
 	pixel.b = blue[i] / pixelCount[i];
