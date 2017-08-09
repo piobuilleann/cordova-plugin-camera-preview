@@ -309,10 +309,16 @@ uchar4 __attribute__((kernel)) hysteresis(uint32_t x, uint32_t y) {
 
 
 void addPixel(int i, uchar4 pixel) {
+	
+	
+	int r = pixel.r>>16&0x000000FF;
+	int g = pixel.g>>8&0x000000FF;
+	int b = pixel.b>>0&0x000000FF;
+	
 
-	reds[i] = reds[i] + pixel.r;
-	greens[i] = greens[i] + pixel.g;
-	blues[i] = blues[i] + pixel.b;
+	reds[i] = reds[i] + r;
+	greens[i] = greens[i] + g;
+	blues[i] = blues[i] + b;
 	pixelCount[i]++;
 	red[i] = reds[i]/pixelCount[i];
 	green[i] = greens[i]/pixelCount[i];
@@ -320,9 +326,14 @@ void addPixel(int i, uchar4 pixel) {
 }
 
 void removePixel(int i, uchar4 pixel) {
-	reds[i] = reds[i] - pixel.r;
-	greens[i] = greens[i] - pixel.g;
-	blues[i] = blues[i] - pixel.b;
+	
+	int r = pixel.r>>16&0x000000FF;
+	int g = pixel.g>>8&0x000000FF;
+	int b = pixel.b>>0&0x000000FF;	
+	
+	reds[i] = reds[i] - r;
+	greens[i] = greens[i] - g;
+	blues[i] = blues[i] - b;
 	pixelCount[i]--;
 	red[i] = reds[i]/pixelCount[i];
 	green[i] = greens[i]/pixelCount[i];
@@ -351,7 +362,7 @@ int static getDistance(int i, uchar4 pixel) {
 	int gx = abs(green[i] - g);
 	int bx = abs(blue[i] - b);
 	int d = (rx+gx+bx) / 3;
-	rsDebug("schmorgishbourg: ", (rx+gx+bx));
+	//rsDebug("schmorgishbourg: ", (rx+gx+bx));
 	//rsDebug("Clusters[i].red: ", Clusters[i].red);
 	//rsDebug("Distance ", d);
 	return d;
@@ -371,7 +382,7 @@ int static findMinimalCluster(uchar4 pixel) {
 		cPixel.b = blue[i];
 		
 		int distance = getDistance(i, cPixel);
-		rsDebug("distance: ", distance);
+		//rsDebug("distance: ", distance);
 		if (distance<min) { 
 			min  = distance;
 			clInt = i;
