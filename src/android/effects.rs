@@ -445,8 +445,8 @@ uchar4 static getRGB(int i){
 	pixel.b = blue[i] / pixelCount[i];
 	//pixel.a = 136;
 	
-	//return pixel;
-	return 0xff000000|pixel.r<<16|pixel.g<<8|pixel.b; 
+	return pixel;
+	//return 0xff000000|pixel.r<<16|pixel.g<<8|pixel.b; 
 }
 
 
