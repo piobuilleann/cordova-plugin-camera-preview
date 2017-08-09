@@ -488,9 +488,9 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    if (lut[clusterId]!=cInt) { 
 		//int pixelInt = width*y+x;
 		
-		rsDebug("cluster id from lut: ", lut[clusterId]);
+		//rsDebug("cluster id from lut: ", lut[clusterId]);
 		if (lut[clusterId]!=-1) {			
-			rsDebug("remove pixel from cluster id: ", clusterId);
+			//rsDebug("remove pixel from cluster id: ", clusterId);
 			removePixel(cInt, pixel);
 		}
 
