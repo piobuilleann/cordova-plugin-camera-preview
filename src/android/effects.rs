@@ -382,7 +382,7 @@ int static findMinimalCluster(uchar4 pixel) {
 		cPixel.b = blue[i];
 		
 		int distance = getDistance(i, cPixel);
-		rsDebug("distance: ", distance);
+		//rsDebug("distance: ", distance);
 		if (distance<min) { 
 			min  = distance;
 			clInt = i;
@@ -476,7 +476,7 @@ void __attribute__((kernel)) kMeans(uchar4 in, uint32_t x, uint32_t y) {
    int cInt = findMinimalCluster(pixel);
    //struct cluster Clusters[cInt];
    
-   rsDebug("fuck int: ", cInt);
+   //rsDebug("fuck int: ", cInt);
    //rsDebug("fuck: ", Clusters[cInt].red);
    
    //clusterId = width*y+x;
